@@ -20,9 +20,6 @@ void Player::Updata()
 {
 	_input->Updata();
 
-	//double aimPos;		// 移動の目標座標
-	//double len;			// 目標座標までの距離
-
 	// プレイヤーの移動処理
 	auto move = [&](std::weak_ptr<InputState> keyData, INPUT_ID id, Vector2Dbl moveSpeed)	//(入力されたキー,キーデータ,現在のpos,移動速度)
 	{
@@ -32,21 +29,6 @@ void Player::Updata()
 			// shared_ptrのオブジェクトを取得(.lock)
 			if ((*keyData.lock()).state(id).first)
 			{
-				//// 上の移動制御
-				//if (_pos.y + moveSpeed.y < LIMIT_UP)
-				//{
-				//	aimPos = LIMIT_UP;
-				//}
-				//// 下の移動制御
-				//else if (_pos.y + moveSpeed.y > LIMIT_DOWN)
-				//{
-				//	aimPos = LIMIT_DOWN;
-				//}
-				//else
-				//{
-				//	aimPos = _pos.y + moveSpeed.y;
-				//}
-
 				// 上の移動制御
 				if (_pos.y + moveSpeed.y < LIMIT_UP - 20.0)
 				{
