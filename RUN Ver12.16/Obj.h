@@ -1,0 +1,59 @@
+#pragma once
+#include <vector>
+#include <memory>
+#include <map>
+#include "common/Vector2.h"
+#include "Scene\SceneMng.h"
+#include "Bg.h"
+
+enum class STATE
+{
+	NORMAL,		// 通常状態
+	CRASH,		// 転倒
+	MAX
+};
+
+enum class OBJ_ID
+{
+	NON,		// 何もない状態
+	PLAYER,		// プレイヤー
+	ITEM,		// アイテム
+	OBSTACLES,  // 障害物
+	MAX
+};
+
+class Obj;
+
+using AnimVector = std::vector<std::pair<int, unsigned int>>;					// ｺﾏとﾌﾚｰﾑ
+using sharedObj = std::shared_ptr<Obj>;
+
+class Obj
+{
+public:
+	Obj();
+	virtual void Updata();
+	void Draw(void);
+	void Draw(int id);
+	virtual ~Obj();
+
+	bool state(const STATE state);
+	const STATE state(void) const;
+
+	const Vector2Dbl &pos(void) const;
+	const Vector2Dbl &size(void) const;
+	const OBJ_ID &objID(void) const;
+	bool SetAnim(const STATE state, AnimVector& data);	// アニメーションのセット
+	//bool isAnimEnd(void);								// アニメーションが終了しているかの情報取得
+private:
+	std::map<STATE, AnimVector>_animMap;
+	STATE _state;
+	unsigned int _animFrame;							// なんﾌﾚｰﾑか
+	unsigned int _animCount;							// 見出しから何回ﾙｰﾌﾟしてるか
+protected:
+	Vector2Dbl _pos;									// 座標
+	Vector2Dbl _size;									// サイズ
+	int _zOrder;										// 描画優先度
+	OBJ_ID _objID;
+	Bg bg;
+};
+
