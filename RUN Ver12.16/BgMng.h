@@ -10,7 +10,6 @@ public:
 	BgMng();
 	~BgMng();
 private:
-	int Bg[3];
 	void BgSet(void);
 	void Draw(void);
 	bool Init(void);
