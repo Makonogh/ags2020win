@@ -32,7 +32,7 @@ void Player::Updata()
 				// ã‚ÌˆÚ“®§Œä
 				if (_pos.y + moveSpeed.y < LIMIT_UP - 20.0)
 				{
-					_pos.y = LIMIT_UP ;
+					_pos.y = LIMIT_UP;
 				}
 				// ‰º‚ÌˆÚ“®§Œä
 				else if (_pos.y + moveSpeed.y > LIMIT_DOWN)
@@ -54,15 +54,15 @@ void Player::Updata()
 	{
 		if (!(*_input).state(INPUT_ID::DOWN).first)
 		{
-			plSpeed = { 0.0,-moveLane};
+			plSpeed = { 0.0,-moveLane };
 			move(_input, INPUT_ID::UP, plSpeed);
 		}
-	} 
+	}
 
 	// ‰ºˆÚ“®
 	if ((*_input).state(INPUT_ID::DOWN).first && !(*_input).state(INPUT_ID::DOWN).second)
 	{
-		plSpeed = { 0.0,moveLane};
+		plSpeed = { 0.0,moveLane };
 		move(_input, INPUT_ID::DOWN, plSpeed);
 	}
 }
@@ -78,11 +78,11 @@ void Player::Init(void)
 	AnimVector data;
 
 	data.reserve(1);
-	data.emplace_back( IMAGE_ID("·¬×")[0], 8 );
-	data.emplace_back( IMAGE_ID("·¬×")[1], 16 );
-	data.emplace_back( IMAGE_ID("·¬×")[2], 24 );
-	data.emplace_back( IMAGE_ID("·¬×")[3], 32 );
-	data.emplace_back( IMAGE_ID("·¬×")[4], 40 );
+
+	for (int i = 0; i < PL_DIV_CNT; i++)
+	{
+		data.emplace_back(IMAGE_ID("·¬×")[i], (i + 1) * 8);
+	}
 
 	SetAnim(STATE::NORMAL, data);
 

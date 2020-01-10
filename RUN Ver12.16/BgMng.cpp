@@ -25,13 +25,13 @@ void BgMng::BgSet(void)
 	_Bglist.emplace_back(0);
 }
 
-void BgMng::Draw(void)
-{
-	for (const auto i : _Bglist)
-	{
-		lpSceneMng.AddDrawQue({ Bg[_Bglist[i]],0.0,INT_MAX, LAYER::BG });
-	}
-}
+//void BgMng::Draw(void)
+//{
+//	for (const auto i : _Bglist)
+//	{
+//		lpSceneMng.AddDrawQue({ Bg[_Bglist[i]],0.0,INT_MAX, LAYER::BG });
+//	}
+//}
 
 bool BgMng::Init(void)
 {
