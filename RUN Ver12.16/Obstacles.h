@@ -26,12 +26,12 @@ class Obstacles :
 public:
 	Obstacles();
 	Obstacles(ObsState& state);
-	const OBS_TYPE& type() { return _type; }
+	const OBS_TYPE& type() { return _obsType; }
 	void Updata() override;
 	~Obstacles();
 	double obsSpeed;
 private:
-	OBS_TYPE _type;
+	OBS_TYPE _obsType;
 	void Init(void);
 };
 
