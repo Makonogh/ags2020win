@@ -123,6 +123,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bg.cpp" />
+    <ClCompile Include="BG\GameBg.cpp" />
     <ClCompile Include="common\ImgMng.cpp" />
     <ClCompile Include="GameBg.cpp" />
     <ClCompile Include="Input\InputID.cpp" />
@@ -142,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bg.h" />
+    <ClInclude Include="BG\GameBg.h" />
     <ClInclude Include="common\detail\Vector2b.h" />
     <ClInclude Include="common\ImgMng.h" />
     <ClInclude Include="common\Vector2.h" />
