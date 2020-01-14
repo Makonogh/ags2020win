@@ -22,23 +22,23 @@ void BgMng::BgSet(void)
 	_Bglist.emplace_back(0);
 }
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
+////void BgMng::Draw(void)
+////{
+////	for (const auto i : _Bglist)
+////	{
+////		lpSceneMng.AddDrawQue({ Bg[_Bglist[i]],0.0,INT_MAX, LAYER::BG });
+////	}
+////}
+//=======
 //void BgMng::Draw(void)
 //{
 //	for (const auto i : _Bglist)
 //	{
-//		lpSceneMng.AddDrawQue({ Bg[_Bglist[i]],0.0,INT_MAX, LAYER::BG });
+//		lpSceneMng.AddDrawQue({IMAGE_ID("¹Þ°Ñ”wŒi")[_Bglist[i]],320 + i * 640.0,288.0,0.0,INT_MAX, LAYER::BG });
 //	}
 //}
-=======
-void BgMng::Draw(void)
-{
-	for (const auto i : _Bglist)
-	{
-		lpSceneMng.AddDrawQue({IMAGE_ID("¹Þ°Ñ”wŒi")[_Bglist[i]],320 + i * 640.0,288.0,0.0,INT_MAX, LAYER::BG });
-	}
-}
->>>>>>> 293efa733dddd3fefc3118460008b64e49b26fc8
+//>>>>>>> 293efa733dddd3fefc3118460008b64e49b26fc8
 
 bool BgMng::Init(void)
 {

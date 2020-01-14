@@ -14,11 +14,11 @@ GameScene::GameScene()
 	lpImgMng.GetID("∑¨◊", "image/pl2.png", { 60,150 }, { PL_DIV_CNT,1 });
 	lpImgMng.GetID("ÇÊÅ[Ç¢", "image/ready.png", { 210,75 }, { 1,2 });
 
-	_objList.emplace_back(new Player({ 125.0, (LIMIT_UP + LIMIT_DOWN) / 2.0 }, { 0,0 }));
+	_objList.emplace_back(new Player({ 125.0, (LIMIT_UP + LIMIT_DOWN) / 2.0 }, { 60.0,150.0 }));
 
 	for (auto type : OBS_TYPE())
 	{
-		ObsState state = { static_cast<OBS_TYPE>(type),{ 1200, LIMIT_UP + 50 + 70 * static_cast<int>(type) },{ 0,0 } };
+		ObsState state = { static_cast<OBS_TYPE>(type),{ 500.0 + ((rand() % 3) * 100), LIMIT_UP + ((rand() % 2) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0)) },{ 100.0,10.0 } };
 		_objList.emplace_back(new Obstacles(state));
 	}
 

@@ -9,7 +9,7 @@
 enum class STATE
 {
 	NORMAL,		// ’Êíó‘Ô
-	CRASH,		// “]“|
+	FALL,		// “]“|
 	MAX
 };
 
