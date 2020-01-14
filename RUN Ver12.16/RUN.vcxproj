@@ -123,8 +123,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bg.cpp" />
-    <ClCompile Include="BgMng.cpp" />
     <ClCompile Include="common\ImgMng.cpp" />
+    <ClCompile Include="GameBg.cpp" />
     <ClCompile Include="Input\InputID.cpp" />
     <ClCompile Include="Input\InputState.cpp" />
     <ClCompile Include="Input\KeyState.cpp" />
@@ -142,10 +142,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bg.h" />
-    <ClInclude Include="BgMng.h" />
     <ClInclude Include="common\detail\Vector2b.h" />
     <ClInclude Include="common\ImgMng.h" />
     <ClInclude Include="common\Vector2.h" />
+    <ClInclude Include="GameBg.h" />
     <ClInclude Include="Input\InputID.h" />
     <ClInclude Include="Input\InputState.h" />
     <ClInclude Include="Input\KeyState.h" />

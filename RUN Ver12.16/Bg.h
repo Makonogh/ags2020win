@@ -6,26 +6,23 @@
 #define STAGE_SIZE_Y 216
 
 class Bg;
-using unique_BG = std::unique_ptr<Bg>;
-
-enum class BG_TYPE
-{
-	TITLE,				// À²ÄÙ
-	GAME,				// ¹Ş°Ñ
-	RESULT				// Ø»ŞÙÄ
-};
+using shared_BG = std::shared_ptr<Bg>;
 
 class Bg
 {
 public:
 	Bg();
-	~Bg();
-	void Draw(BG_TYPE);
-	Vector2Dbl _pos;
-	const Vector2Dbl _size;
+	virtual void Updata();
+	void Draw(void);
+	void Draw(int id);
+	virtual ~Bg();
 	int bgSpeed;
 private:
 	unsigned int _animFrame;							// ‚È‚ñÌÚ°Ñ‚©
 	unsigned int _animCount;							// Œ©o‚µ‚©‚ç‰½‰ñÙ°Ìß‚µ‚Ä‚é‚©
+protected:
+	Vector2Dbl _pos;
+	Vector2Dbl _size;
+	int _zOrder;										// •`‰æ—Dæ“x
 };
 
