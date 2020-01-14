@@ -1,7 +1,5 @@
 #include "GameBg.h"
 
-
-
 GameBg::GameBg()
 {
 }
