@@ -17,7 +17,6 @@ enum class OBJ_ID
 {
 	NON,		// 何もない状態
 	PLAYER,		// プレイヤー
-	ITEM,		// アイテム
 	OBSTACLES,  // 障害物
 	MAX
 };
@@ -56,4 +55,3 @@ protected:
 	OBJ_ID _objID;
 	Bg bg;
 };
-

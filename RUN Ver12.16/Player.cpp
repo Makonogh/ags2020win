@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Obstacles.h"
 #include <common/ImgMng.h>
 #include <Input/KeyState.h>
 #include <_debug\_DebugConOut.h>
@@ -88,3 +89,28 @@ void Player::Init(void)
 
 	_input = std::make_shared<KeyState>();
 }
+
+//// プレイヤーと障害物の当たり判定
+//void Player::isHit(void)
+//{
+//	int fallTime = 0;
+//	AnimVector data;
+//
+//	for (auto type : _obsType)
+//	{
+//		if (_pos.y == 障害物のY座標)
+//		{
+//			if (abs(_pos.x - 障害物のX座標) <= (_size.x + 障害物のXサイズ)
+//			{
+//				// プレイヤーの状態 == STATE::FALL;
+//				SetAnim(STATE::FALL, data);
+//				while (fallTime >= 規定時間)
+//				{
+//					fallTime++;
+//				}
+//				// プレイヤーの状態 == STATE::NORMAL;
+//				SetAnim(STATE::NORMAL, data);
+//			}
+//		}
+//	}
+//}

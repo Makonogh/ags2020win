@@ -1,6 +1,6 @@
 #include <DxLib.h>
-#include "Obj.h"
 #include <common/ImgMng.h>
+#include "Obj.h"
 
 Obj::Obj()
 {

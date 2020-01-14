@@ -8,12 +8,12 @@ Obstacles::Obstacles()
 
 Obstacles::Obstacles(ObsState & state)
 {
-	_type = std::move(std::get <static_cast<int>(OBS_STATE::TYPE)>(state));
+	_obsType = std::move(std::get <static_cast<int>(OBS_STATE::TYPE)>(state));
 	_pos = std::move(std::get <static_cast<int>(OBS_STATE::VECTOR)>(state));
 	_size = std::move(std::get <static_cast<int>(OBS_STATE::SIZE)>(state));
 	_objID = OBJ_ID::OBSTACLES;
 
-	switch (_type)
+	switch (_obsType)
 	{
 	case OBS_TYPE::CAR:
 		if (bg.bgSpeed >= 1)
@@ -58,7 +58,7 @@ void Obstacles::Init(void)
 	AnimVector data;
 
 	data.reserve(1);
-	data.emplace_back(IMAGE_ID("è·äQï®")[static_cast<int>(_type)], 30);
+	data.emplace_back(IMAGE_ID("è·äQï®")[static_cast<int>(_obsType)], 30);
 	SetAnim(STATE::NORMAL, data);
 }
 
