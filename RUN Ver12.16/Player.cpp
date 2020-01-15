@@ -65,6 +65,13 @@ void Player::Updata()
 		plSpeed = { 0.0,moveLane };
 		move(_input, INPUT_ID::DOWN, plSpeed);
 	}
+
+	if ((*_input).state(INPUT_ID::ACTION).first && !(*_input).state(INPUT_ID::ACTION).second)
+	{
+		double time = GetNowCount();
+		bool flag = 1;
+		Player::Jump(time, flag);
+	}
 }
 
 
@@ -101,7 +108,7 @@ void Player::isHit(ObsState& state)
 	{
 		if (_pos.y == _obsPos.y)
 		{
-			if (abs(_pos.x - _obsPos.x) < (_size.x + _obsSize.x))
+			if (abs(_pos.x - _obsPos.x) < (_size.x + _obsSize.x) / 2)
 			{
 				// プレイヤーの状態 == STATE::FALL;
 				SetAnim(STATE::FALL, data);
@@ -112,6 +119,29 @@ void Player::isHit(ObsState& state)
 				// プレイヤーの状態 == STATE::NORMAL;
 				SetAnim(STATE::NORMAL, data);
 			}
+		}
+	}
+}
+
+void Player::Jump(double time1,bool flag)
+{
+	int g = 9.8;			// 重力加速度
+	int jumpMax = 2.0;
+	double time2;
+	double tmpY = _pos.y;
+
+	while (flag)
+	{
+		time2 = GetNowCount();
+		double t = (double)(time2 - time1) / 1000.000;
+		double y = (sqrt(2.0 * g * jumpMax) * t - 0.500 * g * t * t) * 480.000 / jumpMax;
+		
+		_pos.y -= y;
+
+		if (_pos.y > tmpY)
+		{
+			flag = 0;
+			_pos.y = tmpY;
 		}
 	}
 }

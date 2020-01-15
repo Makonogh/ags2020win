@@ -1,4 +1,5 @@
 #pragma once
+#include <DxLib.h>
 #include "Obj.h"
 #include "Obstacles.h"
 #include "Input/KeyState.h"
@@ -16,5 +17,6 @@ private:
 
 	void Init(void);
 	void isHit(ObsState& state);
+	void Jump(double time1, bool flag);
 	std::shared_ptr<InputState>_input;
 };
