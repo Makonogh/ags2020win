@@ -51,7 +51,7 @@ unique_Base GameScene::Update(unique_Base own)
 	}
 
 
-	bg.Draw(BG_TYPE::GAME);
+	/*bg.Draw(BG_TYPE::GAME);*/
 
 	Vector2Dbl UICenter = { lpSceneMng.GameSize.x / 2.0 ,(lpSceneMng.ScreenSize.y + lpSceneMng.GameSize.y) / 2.0 };
 

@@ -127,7 +127,6 @@
     <ClCompile Include="BG\ResultBg.cpp" />
     <ClCompile Include="BG\TitleBg.cpp" />
     <ClCompile Include="common\ImgMng.cpp" />
-    <ClCompile Include="GameBg.cpp" />
     <ClCompile Include="Input\InputID.cpp" />
     <ClCompile Include="Input\InputState.cpp" />
     <ClCompile Include="Input\KeyState.cpp" />
@@ -135,14 +134,12 @@
     <ClCompile Include="Obj.cpp" />
     <ClCompile Include="Obstacles.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="ResultBg.cpp" />
     <ClCompile Include="Scene\ResultScene.cpp" />
     <ClCompile Include="Scene\BaseScene.cpp" />
     <ClCompile Include="Scene\GameScene.cpp" />
     <ClCompile Include="Scene\LAYER.cpp" />
     <ClCompile Include="Scene\SceneMng.cpp" />
     <ClCompile Include="Scene\TitleScene.cpp" />
-    <ClCompile Include="TitleBg.cpp" />
     <ClCompile Include="_debug\_DebugConOut.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,21 +150,18 @@
     <ClInclude Include="common\detail\Vector2b.h" />
     <ClInclude Include="common\ImgMng.h" />
     <ClInclude Include="common\Vector2.h" />
-    <ClInclude Include="GameBg.h" />
     <ClInclude Include="Input\InputID.h" />
     <ClInclude Include="Input\InputState.h" />
     <ClInclude Include="Input\KeyState.h" />
     <ClInclude Include="Obj.h" />
     <ClInclude Include="Obstacles.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="ResultBg.h" />
     <ClInclude Include="Scene\ResultScene.h" />
     <ClInclude Include="Scene\BaseScene.h" />
     <ClInclude Include="Scene\GameScene.h" />
     <ClInclude Include="Scene\LAYER.h" />
     <ClInclude Include="Scene\SceneMng.h" />
     <ClInclude Include="Scene\TitleScene.h" />
-    <ClInclude Include="TitleBg.h" />
     <ClInclude Include="_debug\_DebugConOut.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
