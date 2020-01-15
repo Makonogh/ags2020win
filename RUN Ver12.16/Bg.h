@@ -17,11 +17,12 @@ public:
 	void Draw(int id);
 	virtual ~Bg();
 	int bgSpeed;
+	Vector2Dbl _pos;
 private:
 	unsigned int _animFrame;							// ‚È‚ñÌÚ°Ñ‚©
 	unsigned int _animCount;							// Œ©o‚µ‚©‚ç‰½‰ñÙ°Ìß‚µ‚Ä‚é‚©
 protected:
-	Vector2Dbl _pos;
+	
 	Vector2Dbl _size;
 	int _zOrder;										// •`‰æ—Dæ“x
 };
