@@ -8,6 +8,14 @@
 class Bg;
 using shared_BG = std::shared_ptr<Bg>;
 
+enum class BG_TYPE
+{
+	TITLE,
+	GAME,
+	RESULT,
+	MAX
+};
+
 class Bg
 {
 public:
