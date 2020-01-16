@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Scene\GameScene.h"
 #include <common/ImgMng.h>
 #include <Input/KeyState.h>
 #include <_debug\_DebugConOut.h>
@@ -18,6 +19,8 @@ Player::Player(Vector2Dbl pos, Vector2Dbl size)
 
 void Player::Updata()
 {
+	double moveLane = (LIMIT_DOWN - LIMIT_UP) / 2.0;
+
 	_input->Updata();
 
 	// プレイヤーの移動処理
@@ -47,8 +50,6 @@ void Player::Updata()
 		}
 	};
 
-	double moveLane = (LIMIT_DOWN - LIMIT_UP) / 2.0;
-
 	// 上移動
 	if ((*_input).state(INPUT_ID::UP).first && !(*_input).state(INPUT_ID::UP).second)
 	{
@@ -68,9 +69,23 @@ void Player::Updata()
 
 	if ((*_input).state(INPUT_ID::ACTION).first && !(*_input).state(INPUT_ID::ACTION).second)
 	{
-		double time = GetNowCount();
-		bool flag = 1;
-		Player::Jump(time, flag);
+		bool flag = true;
+		int jumpMax = 200;
+		int count = 0;
+
+		double tmpY = _pos.y;
+
+		while (flag)
+		{
+			count++;
+			_pos.y = (tmpY - jumpMax) + abs((count % (jumpMax * 2)) - jumpMax);
+
+			if (_pos.y >= tmpY)
+			{
+				_pos.y = tmpY;
+				flag = false;
+			}
+		}
 	}
 }
 
@@ -89,6 +104,7 @@ void Player::Init(void)
 	{
 		data.emplace_back(IMAGE_ID("ｷｬﾗ")[i], (i + 1) * 8);
 	}
+
 	SetAnim(STATE::NORMAL, data);
 
 	_input = std::make_shared<KeyState>();
@@ -119,29 +135,6 @@ void Player::isHit(ObsState& state)
 				// プレイヤーの状態 == STATE::NORMAL;
 				SetAnim(STATE::NORMAL, data);
 			}
-		}
-	}
-}
-
-void Player::Jump(double time1,bool flag)
-{
-	int g = 9.8;			// 重力加速度
-	int jumpMax = 2.0;
-	double time2;
-	double tmpY = _pos.y;
-
-	while (flag)
-	{
-		time2 = GetNowCount();
-		double t = (double)(time2 - time1) / 1000.000;
-		double y = (sqrt(2.0 * g * jumpMax) * t - 0.500 * g * t * t) * 480.000 / jumpMax;
-		
-		_pos.y -= y;
-
-		if (_pos.y > tmpY)
-		{
-			flag = 0;
-			_pos.y = tmpY;
 		}
 	}
 }

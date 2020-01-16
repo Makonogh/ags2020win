@@ -17,6 +17,6 @@ private:
 
 	void Init(void);
 	void isHit(ObsState& state);
-	void Jump(double time1, bool flag);
+	void Jump(bool flag);
 	std::shared_ptr<InputState>_input;
 };
