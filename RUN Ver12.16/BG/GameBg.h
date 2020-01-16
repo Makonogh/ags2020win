@@ -6,5 +6,7 @@ class GameBg :
 public:
 	GameBg();
 	~GameBg();
+private:
+	bool GameBgInit();
 };
 

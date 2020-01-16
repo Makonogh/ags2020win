@@ -27,6 +27,7 @@ public:
 	int bgSpeed;
 	Vector2Dbl _pos;
 private:
+	unsigned int image;									// ‚»‚Ì¸×½‚Å‚ÌŠi”[‚·‚é‰æ‘œ
 	unsigned int _animFrame;							// ‚È‚ñÌÚ°Ñ‚©
 	unsigned int _animCount;							// Œ©o‚µ‚©‚ç‰½‰ñÙ°Ìß‚µ‚Ä‚é‚©
 protected:

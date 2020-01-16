@@ -6,5 +6,7 @@ class ResultBg :
 public:
 	ResultBg();
 	~ResultBg();
+private:
+	bool ResultBgInit();
 };
 
