@@ -12,9 +12,6 @@
 
 #define SPEED_X 5.0
 #define SPEED_Y 5.0
-#define LIMIT_UP 360.0
-#define LIMIT_DOWN 504.0
-#define PL_DIV_CNT 6
 
 enum class DRAW_QUE
 {

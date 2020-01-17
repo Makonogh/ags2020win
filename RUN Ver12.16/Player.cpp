@@ -102,7 +102,7 @@ void Player::Init(void)
 	data.reserve(PL_DIV_CNT);
 	for (int i = 0; i < PL_DIV_CNT; i++)
 	{
-		data.emplace_back(IMAGE_ID("·¬×")[i], (i + 1) * 8);
+		data.emplace_back(IMAGE_ID("·¬×")[i], (i + 1) * 2);
 	}
 
 	SetAnim(STATE::NORMAL, data);

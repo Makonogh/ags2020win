@@ -11,10 +11,10 @@ GameScene::GameScene()
 	lpImgMng.GetID("πﬁ∞—îwåi", "image/BGB.png");
 	lpImgMng.GetID("UI", "image/UI.png");
 	lpImgMng.GetID("è·äQï®", "image/Obj1.png", { 160,160 }, { 3,1 });
-	lpImgMng.GetID("∑¨◊", "image/pl2.png", { 60,150 }, { PL_DIV_CNT,1 });
+	lpImgMng.GetID("∑¨◊", "image/plEx.png", { 100,150 }, { PL_DIV_CNT,1 });
 	lpImgMng.GetID("ÇÊÅ[Ç¢", "image/ready.png", { 210,75 }, { 1,2 });
 
-	_objList.emplace_back(new Player({ 125.0, (LIMIT_UP + LIMIT_DOWN) / 2.0 }, { 60.0,150.0 }));
+	_objList.emplace_back(new Player({ 125.0, (LIMIT_UP + LIMIT_DOWN) / 2.0 }, { 70.0,150.0 }));
 
 	for (auto type : OBS_TYPE())
 	{

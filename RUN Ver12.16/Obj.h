@@ -6,6 +6,10 @@
 #include "Scene\SceneMng.h"
 #include "Bg.h"
 
+#define LIMIT_UP 360.0
+#define LIMIT_DOWN 504.0
+#define PL_DIV_CNT 15
+
 enum class STATE
 {
 	NORMAL,		// ’Êíó‘Ô

@@ -46,7 +46,7 @@ void Obj::Draw(void)
 		_animFrame = 0;
 		_animCount = 0;
 	}
-	lpSceneMng.AddDrawQue({ _animMap[_state][_animFrame].first ,_pos.x + OffSet, _pos.y ,0,_zOrder,LAYER::CHAR });
+	lpSceneMng.AddDrawQue({ _animMap[_state][_animFrame].first ,_pos.x + OffSet, _pos.y - (LIMIT_DOWN - LIMIT_UP) / 4.0,0,_zOrder,LAYER::CHAR });
 }
 
 void Obj::Updata()
