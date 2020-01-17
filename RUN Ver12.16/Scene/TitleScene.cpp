@@ -21,7 +21,8 @@ unique_Base TitleScene::Update(unique_Base own)
 	{
 		return std::make_unique<GameScene>();
 	}
-	//bg.Draw(BG_TYPE::TITLE); new TitleBg("À²ÄÙ”wŒi");
+	
+
 	SceneCount++;
 	return std::move(own);
 }
