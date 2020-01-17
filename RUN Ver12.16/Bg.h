@@ -8,6 +8,13 @@
 class Bg;
 using shared_BG = std::shared_ptr<Bg>;
 
+enum class STATE
+{
+	IMAGE,
+	POS,
+	SIZE,
+};
+
 enum class BG_TYPE
 {
 	TITLE,
@@ -27,11 +34,11 @@ public:
 	int bgSpeed;
 	Vector2Dbl _pos;
 private:
-	unsigned int image;									// ‚»‚Ì¸×½‚Å‚ÌŠi”[‚·‚é‰æ‘œ
+	
 	unsigned int _animFrame;							// ‚È‚ñÌÚ°Ñ‚©
 	unsigned int _animCount;							// Œ©o‚µ‚©‚ç‰½‰ñÙ°Ìß‚µ‚Ä‚é‚©
 protected:
-	
+	std::string image;									// Še¸×½‚Å‚Ì²Ò°¼Ş‚Ì–¼‘O
 	Vector2Dbl _size;
 	int _zOrder;										// •`‰æ—Dæ“x
 };
