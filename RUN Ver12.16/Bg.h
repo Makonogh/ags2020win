@@ -33,7 +33,7 @@ public:
 	void Draw(void);
 	void Draw(int id);
 	virtual ~Bg();
-	double bgSpeed;
+	int bgSpeed;
 	Vector2Dbl _pos;
 private:
 	

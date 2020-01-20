@@ -10,7 +10,9 @@ public:
 	GameScene();
 	~GameScene();
 	unique_Base Update(unique_Base);
+	double score;
 private:
+	int tmpScore;
 	std::vector<sharedObj> _objList;
 	std::vector<sharedBG> _bgList;
 };
