@@ -5,14 +5,29 @@ GameBg::GameBg()
 {
 }
 
+GameBg::GameBg(BG_DATA bg_data)
+{
+	GameBgInit(bg_data);
+}
+
 
 GameBg::~GameBg()
 {
 }
 
-bool GameBg::GameBgInit()
+bool GameBg::GameBgInit(BG_DATA bg_data)
 {
-	lpImgMng.GetID("À²ÄÙ‰æ–Ê", "image/TitleText.png");
+	Img_List.insert(std::make_pair(GAME_TYPE::BG1, "¹Þ°Ñ”wŒi1"));
+	Img_List.insert(std::make_pair(GAME_TYPE::BG2, "¹Þ°Ñ”wŒi2"));
+	Img_List.insert(std::make_pair(GAME_TYPE::BG3, "¹Þ°Ñ”wŒi3"));
 
+	image = Img_List.at(std::get<static_cast<int>(BG_STATE::IMAGE)>(bg_data));
+
+	_pos = std::get<static_cast<int>(BG_STATE::POS)>(bg_data);
 	return false;
+}
+
+void GameBg::Updata(void)
+{
+	_pos.x -= bgSpeed;
 }

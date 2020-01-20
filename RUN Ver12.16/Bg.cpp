@@ -6,6 +6,7 @@
 
 Bg::Bg()
 {
+	bgSpeed = 4.0;
 }
 
 void Bg::Updata()

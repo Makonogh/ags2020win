@@ -9,6 +9,7 @@
 class Bg;
 using sharedBG = std::shared_ptr<Bg>;
 
+
 enum class BG_STATE
 {
 	IMAGE,
@@ -32,7 +33,7 @@ public:
 	void Draw(void);
 	void Draw(int id);
 	virtual ~Bg();
-	int bgSpeed;
+	double bgSpeed;
 	Vector2Dbl _pos;
 private:
 	
