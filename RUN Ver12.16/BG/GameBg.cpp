@@ -30,4 +30,6 @@ bool GameBg::GameBgInit(BG_DATA bg_data)
 void GameBg::Updata(void)
 {
 	_pos.x -= bgSpeed;
+
+
 }

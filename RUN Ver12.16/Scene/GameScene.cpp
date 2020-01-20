@@ -6,6 +6,7 @@
 #include "Obstacles.h"
 #include "DxLib.h"
 #include "Bg.h"
+#include "Bg/GameBg.h"
 
 GameScene::GameScene()
 {
@@ -14,6 +15,9 @@ GameScene::GameScene()
 	lpImgMng.GetID("è·äQï®", "image/Obj1.png", { 160,160 }, { 3,1 });
 	lpImgMng.GetID("∑¨◊", "image/plEx.png", { 100,150 }, { PL_DIV_CNT,1 });
 	lpImgMng.GetID("ÇÊÅ[Ç¢", "image/ready.png", { 210,75 }, { 1,2 });
+	lpImgMng.GetID("πﬁ∞—îwåi1","image/BGB.png");
+	lpImgMng.GetID("πﬁ∞—îwåi2","image/BG1.png");
+	lpImgMng.GetID("πﬁ∞—îwåi3", "image/BG2.png");
 
 	_objList.emplace_back(new Player({ 125.0, (LIMIT_UP + LIMIT_DOWN) / 2.0 }, { 70.0,150.0 }));
 
@@ -23,6 +27,9 @@ GameScene::GameScene()
 		_objList.emplace_back(new Obstacles(state));
 	}
 
+	_bgList.emplace_back(new GameBg({ GAME_TYPE::BG1, { 320.0,288.0 }, {640,576} }));
+	_bgList.emplace_back(new GameBg({ GAME_TYPE::BG2, { 960.0,288.0 }, { 640,576 }}));
+	_bgList.emplace_back(new GameBg({GAME_TYPE::BG3, { 1600.0,288.0 }, { 640,576 }}));
 	SceneCount = 0;
 }
 
@@ -40,19 +47,33 @@ unique_Base GameScene::Update(unique_Base own)
 			(*data).Updata();
 		}
 		bg._pos.x -= bg.bgSpeed;
+		for (auto data : _bgList)
+		{
+			(*data).Updata();
+			if ((*data)._pos.x == -320)
+			{
+				_bgList.emplace_back(new GameBg({ static_cast<GAME_TYPE>(rand() % 3),{ 1600.0,288.0 },{ 640,576 } }));
+				break;
+			}
+		}
+	
 	}
 	else
 	{
 		lpSceneMng.AddDrawQue({ IMAGE_ID("ÇÊÅ[Ç¢")[0],lpSceneMng.GameSize.x / 2.0,lpSceneMng.GameSize.y / 2.0,0.0,INT_MAX, LAYER::UI });
 	}
 
+	
+
 	for (auto data : _objList)
 	{
 		(*data).Draw();
 	}
 
-
-	/*bg.Draw(BG_TYPE::GAME);*/
+	for (auto data : _bgList)
+	{
+		(*data).Draw();
+	}
 
 	Vector2Dbl UICenter = { lpSceneMng.GameSize.x / 2.0 ,(lpSceneMng.ScreenSize.y + lpSceneMng.GameSize.y) / 2.0 };
 
