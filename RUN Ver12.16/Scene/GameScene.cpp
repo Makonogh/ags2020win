@@ -1,3 +1,4 @@
+#include <functional>
 #include "GameScene.h"
 #include "Player.h"
 #include <Scene/ResultScene.h>

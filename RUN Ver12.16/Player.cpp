@@ -12,6 +12,7 @@ Player::Player()
 Player::Player(Vector2Dbl pos, Vector2Dbl size)
 {
 	_pos = pos;
+	_lane = ((pos.x - 360) / 3) + 1;
 	_size = size;
 	_objID = OBJ_ID::PLAYER;
 	Init();

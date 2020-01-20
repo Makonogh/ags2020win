@@ -55,6 +55,7 @@ private:
 protected:
 	Vector2Dbl _pos;									// 座標
 	Vector2Dbl _size;									// サイズ
+	int _lane;
 	int _zOrder;										// 描画優先度
 	OBJ_ID _objID;
 	Bg bg;
