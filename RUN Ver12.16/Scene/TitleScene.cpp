@@ -2,12 +2,17 @@
 #include "DxLib.h"
 #include "GameScene.h"
 #include "common/ImgMng.h"
+#include "Bg/TitleBg.h"
+
 
 TitleScene::TitleScene()
 {
 	lpImgMng.GetID("À²ÄÙ”wŒi", "image/pl1.png");
 	lpImgMng.GetID("À²ÄÙÃ·½Ä", "image/TitleText.png");
 	SceneCount = 0;
+
+	_bgList.emplace_back(new TitleBg({ TITLE_TYPE::BG ,lpSceneMng.ScreenCenter,lpSceneMng.ScreenSize }));
+	_bgList.emplace_back(new TitleBg({ TITLE_TYPE::TEXT,lpSceneMng.ScreenCenter / 2,{600,150} }));
 }
 
 
@@ -22,6 +27,10 @@ unique_Base TitleScene::Update(unique_Base own)
 		return std::make_unique<GameScene>();
 	}
 	
+	for (auto data : _bgList)
+	{
+		(*data).Draw();
+	}
 
 	SceneCount++;
 	return std::move(own);

@@ -12,17 +12,18 @@ enum class TITLE_TYPE
 	MAX,
 };
 
-using BG_STATE = std::tuple<TITLE_TYPE,Vector2Dbl,Vector2Dbl>;					// <画像ﾀｲﾌﾟ、座標、ｻｲｽﾞ>
+using BG_DATA = std::tuple<TITLE_TYPE,Vector2,Vector2>;					// <画像ﾀｲﾌﾟ、座標、ｻｲｽﾞ>
 
 class TitleBg :
 	public Bg
 {
 public:
 	TitleBg();
-	TitleBg(BG_STATE);
+	TitleBg(BG_DATA);
 	~TitleBg();
 private:
-	bool TitleBgInit(BG_STATE);
+	bool TitleBgInit(BG_DATA);
 	std::map<TITLE_TYPE, std::string> Img_List;			// 
+
 };
 

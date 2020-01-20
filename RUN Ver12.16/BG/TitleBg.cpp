@@ -5,23 +5,23 @@
 
 TitleBg::TitleBg()
 {
-	TitleBgInit();
+	
 }
 
-TitleBg::TitleBg(BG_STATE bg_state)
+TitleBg::TitleBg(BG_DATA bg_data)
 {
-	TitleBgInit(bg_state);
+	TitleBgInit(bg_data);
 }
 
 TitleBg::~TitleBg()
 {
 }
 
-bool TitleBg::TitleBgInit(BG_STATE bg_state)
+bool TitleBg::TitleBgInit(BG_DATA bg_data)
 {
 	Img_List.insert(std::make_pair(TITLE_TYPE::BG, "À²ÄÙ”wŒi"));
 	Img_List.insert(std::make_pair(TITLE_TYPE::TEXT, "À²ÄÙÃ·½Ä"));
 
-	image = Img_List.at(std::get<static_cast<int>(STATE::IMAGE)>(bg_state));
+	image = Img_List.at(std::get<static_cast<int>(BG_STATE::IMAGE)>(bg_data));
 	return false;
 }

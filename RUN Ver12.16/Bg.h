@@ -1,14 +1,15 @@
 #pragma once
 #include "common/Vector2.h"
 #include <memory>
+#include <string>
 
 #define STAGE_SIZE_X 640
 #define STAGE_SIZE_Y 216
 
 class Bg;
-using shared_BG = std::shared_ptr<Bg>;
+using sharedBG = std::shared_ptr<Bg>;
 
-enum class STATE
+enum class BG_STATE
 {
 	IMAGE,
 	POS,
