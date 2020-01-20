@@ -4,6 +4,13 @@
 #include "Obstacles.h"
 #include "Input/KeyState.h"
 
+enum class PL_STATE
+{
+	LANE,
+	SIZE,
+	MAX
+};
+
 class Player :
 	public Obj
 {
@@ -17,6 +24,6 @@ private:
 
 	void Init(void);
 	void isHit(ObsState& state);
-	//void Jump(bool flag);
+
 	std::shared_ptr<InputState>_input;
 };
