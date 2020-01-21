@@ -14,7 +14,7 @@ GameScene::GameScene()
 	lpImgMng.GetID("è·äQï®", "image/Obj1.png", { 160,160 }, { 3,1 });
 	lpImgMng.GetID("∑¨◊", "image/pl.png", { 100,150 }, { PL_DIV_CNT,1 });
 	lpImgMng.GetID("ÇÊÅ[Ç¢", "image/ready.png", { 210,75 }, { 1,2 });
-	lpImgMng.GetID("Ω∫±", "image/number.png", { 60,60 }, { 10,1 });
+	lpImgMng.GetID("Ω∫±", "image/num.png", { 60,60 }, { 10,1 });
 	lpImgMng.GetID("πﬁ∞—îwåi1", "image/BGB.png");
 	lpImgMng.GetID("πﬁ∞—îwåi2", "image/BG1.png");
 	lpImgMng.GetID("πﬁ∞—îwåi3", "image/BG2.png");
