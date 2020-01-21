@@ -11,7 +11,7 @@ GameScene::GameScene()
 {
 	lpImgMng.GetID("πﬁ∞—îwåi", "image/BGB.png");
 	lpImgMng.GetID("UI", "image/UI2.png");
-	lpImgMng.GetID("è·äQï®", "image/Obj1.png", { 160,160 }, { 3,1 });
+	lpImgMng.GetID("è·äQï®", "image/Obj1.png", { 200,200 }, { 3,1 });
 	lpImgMng.GetID("∑¨◊", "image/pl.png", { 100,150 }, { PL_DIV_CNT,1 });
 	lpImgMng.GetID("ÇÊÅ[Ç¢", "image/ready.png", { 210,75 }, { 1,2 });
 	lpImgMng.GetID("Ω∫±", "image/num.png", { 60,60 }, { 10,1 });
@@ -56,7 +56,7 @@ unique_Base GameScene::Update(unique_Base own)
 				_objList.emplace_back(new Obstacles(state));
 				break;
 			}
-			score += static_cast<double>(bg.bgSpeed) / 100;
+			score += static_cast<double>(bg.bgSpeed) / 1000;
 		}
 
 		for (auto data : _bgList)
