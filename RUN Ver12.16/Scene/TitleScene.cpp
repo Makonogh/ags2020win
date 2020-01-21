@@ -9,10 +9,12 @@ TitleScene::TitleScene()
 {
 	lpImgMng.GetID("À²ÄÙ”wŒi", "image/title.png");
 	lpImgMng.GetID("À²ÄÙÃ·½Ä", "image/TitleText.png");
+	lpImgMng.GetID("À²ÄÙ", "image/GameName.png");
 	SceneCount = 0;
 
 	_bgList.emplace_back(new TitleBg({ TITLE_TYPE::BG ,{ 640.0,288.0 },lpSceneMng.ScreenSize }));
 	_bgList.emplace_back(new TitleBg({ TITLE_TYPE::TEXT,{ 640.0,static_cast<double>(lpSceneMng.ScreenSize.y - (lpSceneMng.UISize.y / 2 ))},{600,150} }));
+	_bgList.emplace_back(new TitleBg({ TITLE_TYPE::TITLE ,{ 320.0,172.5 },lpSceneMng.ScreenSize }));
 }
 
 

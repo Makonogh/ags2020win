@@ -80,14 +80,16 @@ void Player::Updata()
 	if ((*_input).state(INPUT_ID::ACTION).first && !(*_input).state(INPUT_ID::ACTION).second && PlayerCount >= 0)
 	{
 		TRACE("ƒAƒNƒVƒ‡ƒ“\n");
+		_animCount = 0;
 		_animFrame = 0;
-		state(STATE::FALL);
-		PlayerCount = -70;
+		state(STATE::JUMP);
+		PlayerCount = -75;
 	}
 	if (PlayerCount >= 0)
 	{
 		state(STATE::NORMAL);
 	}
+	TRACE("%d\n",_animCount);
 }
 
 

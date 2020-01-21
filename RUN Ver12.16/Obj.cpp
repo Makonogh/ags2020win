@@ -36,7 +36,7 @@ void Obj::Draw(void)
 		}
 	}
 
-	_animCount++;
+	
 
 	double OffSet;		// äÓèÄç¿ïW(πﬁ∞—âÊñ ÇÃâ∫)Ç∆ÇÃyÇÃç∑ï™
 	OffSet = lpSceneMng.GameSize.y - _pos.y;
@@ -45,6 +45,10 @@ void Obj::Draw(void)
 	{
 		_animFrame = 0;
 		_animCount = 0;
+	}
+	else
+	{
+		_animCount++;
 	}
 	lpSceneMng.AddDrawQue({ _animMap[_state][_animFrame].first ,_pos.x + OffSet, _pos.y - (LIMIT_DOWN - LIMIT_UP) / 4.0,0,_pos.y,LAYER::CHAR });
 }
