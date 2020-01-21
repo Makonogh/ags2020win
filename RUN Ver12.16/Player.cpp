@@ -69,7 +69,7 @@ void Player::Updata()
 		move(_input, INPUT_ID::DOWN, plSpeed);
 	}
 
-	if (Player::CheckHit(_pos, _size))
+	if (Player::CheckHit(_lane,_pos, _size))
 	{
 
 	}
@@ -78,6 +78,7 @@ void Player::Updata()
 	if ((*_input).state(INPUT_ID::ACTION).first && !(*_input).state(INPUT_ID::ACTION).second)
 	{
 		TRACE("アクション\n");
+		state(STATE::FALL);
 	}
 }
 
@@ -96,14 +97,21 @@ void Player::Init(void)
 	{
 		data.emplace_back(IMAGE_ID("ｷｬﾗ")[i], (i + 1) * 2);
 	}
-
 	SetAnim(STATE::NORMAL, data);
+
+	data.reserve(PL_DIV_CNT);
+	for (int i = 0; i < PL_DIV_CNT; i++)
+	{
+		data.emplace_back(IMAGE_ID("転倒")[i], (i + 1));
+	}
+	SetAnim(STATE::FALL, data);
+
 
 	_input = std::make_shared<KeyState>();
 }
 
 // プレイヤーと障害物の当たり判定
-bool Player::CheckHit(Vector2Dbl plPos, Vector2Dbl plSize)
+bool Player::CheckHit(int lane,Vector2Dbl plPos, Vector2Dbl plSize)
 {
 	return false;
 }

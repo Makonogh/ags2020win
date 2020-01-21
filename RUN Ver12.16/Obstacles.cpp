@@ -16,6 +16,7 @@ Obstacles::Obstacles(ObsState & state)
 	switch (_obsType)
 	{
 	case OBS_TYPE::CAR:
+		_size = { 200.0,0.0 };
 		if (bg.bgSpeed >= 1)
 		{
 			obsSpeed = bg.bgSpeed + 3.0;
@@ -26,6 +27,7 @@ Obstacles::Obstacles(ObsState & state)
 		}
 		break;
 	case OBS_TYPE::BICYCLE:
+		_size = { 100.0,0.0 };
 		if (bg.bgSpeed >= 1)
 		{
 			obsSpeed = bg.bgSpeed + 1.0;
@@ -36,6 +38,7 @@ Obstacles::Obstacles(ObsState & state)
 		}
 		break;
 	case OBS_TYPE::BANANA:
+		_size = { 60.0,0.0 };
 		obsSpeed = bg.bgSpeed;
 		break;
 	}
