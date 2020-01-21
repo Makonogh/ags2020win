@@ -7,7 +7,7 @@
 
 TitleScene::TitleScene()
 {
-	lpImgMng.GetID("À²ÄÙ”wŒi", "image/pl1.png");
+	lpImgMng.GetID("À²ÄÙ”wŒi", "image/title.png");
 	lpImgMng.GetID("À²ÄÙÃ·½Ä", "image/TitleText.png");
 	SceneCount = 0;
 

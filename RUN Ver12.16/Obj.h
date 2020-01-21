@@ -13,6 +13,7 @@
 enum class STATE
 {
 	NORMAL,		// ’Êíó‘Ô
+	JUMP,		// ƒWƒƒƒ“ƒv
 	FALL,		// “]“|
 	MAX
 };

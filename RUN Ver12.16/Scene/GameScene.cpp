@@ -13,6 +13,7 @@ GameScene::GameScene()
 	lpImgMng.GetID("UI", "image/UI2.png");
 	lpImgMng.GetID("è·äQï®", "image/Obj1.png", { 200,200 }, { 3,1 });
 	lpImgMng.GetID("∑¨◊", "image/pl.png", { 100,150 }, { PL_DIV_CNT,1 });
+	lpImgMng.GetID("ºﬁ¨›Ãﬂ", "image/Jump.png", { 150,150 }, { PL_DIV_CNT,1 });
 	lpImgMng.GetID("ì]ì|", "image/FALL.png", { 160,144 }, { PL_DIV_CNT,1 });
 	lpImgMng.GetID("ÇÊÅ[Ç¢", "image/ready.png", { 210,75 }, { 1,2 });
 	lpImgMng.GetID("Ω∫±", "image/num.png", { 60,60 }, { 10,1 });

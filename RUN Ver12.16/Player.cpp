@@ -78,7 +78,7 @@ void Player::Updata()
 	if ((*_input).state(INPUT_ID::ACTION).first && !(*_input).state(INPUT_ID::ACTION).second)
 	{
 		TRACE("ƒAƒNƒVƒ‡ƒ“\n");
-		state(STATE::FALL);
+		state(STATE::JUMP);
 	}
 }
 
@@ -102,10 +102,16 @@ void Player::Init(void)
 	data.reserve(PL_DIV_CNT);
 	for (int i = 0; i < PL_DIV_CNT; i++)
 	{
+		data.emplace_back(IMAGE_ID("¼Þ¬ÝÌß")[i], (i + 1) * 2);
+	}
+	SetAnim(STATE::JUMP, data);
+
+	data.reserve(PL_DIV_CNT);
+	for (int i = 0; i < PL_DIV_CNT; i++)
+	{
 		data.emplace_back(IMAGE_ID("“]“|")[i], (i + 1));
 	}
 	SetAnim(STATE::FALL, data);
-
 
 	_input = std::make_shared<KeyState>();
 }
