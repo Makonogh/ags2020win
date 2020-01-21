@@ -11,8 +11,8 @@ TitleScene::TitleScene()
 	lpImgMng.GetID("À²ÄÙÃ·½Ä", "image/TitleText.png");
 	SceneCount = 0;
 
-	_bgList.emplace_back(new TitleBg({ TITLE_TYPE::BG ,{640.0,360.0},lpSceneMng.ScreenSize }));
-	_bgList.emplace_back(new TitleBg({ TITLE_TYPE::TEXT,{ 640.0,500.0 },{600,150} }));
+	_bgList.emplace_back(new TitleBg({ TITLE_TYPE::BG ,{ 640.0,288.0 },lpSceneMng.ScreenSize }));
+	_bgList.emplace_back(new TitleBg({ TITLE_TYPE::TEXT,{ 640.0,static_cast<double>(lpSceneMng.ScreenSize.y - (lpSceneMng.UISize.y / 2 ))},{600,150} }));
 }
 
 

@@ -51,8 +51,8 @@ public:
 private:
 	std::map<STATE, AnimVector>_animMap;
 	STATE _state;
-	unsigned int _animFrame;							// なんﾌﾚｰﾑか
-	unsigned int _animCount;							// 見出しから何回ﾙｰﾌﾟしてるか
+
+
 protected:
 	Vector2Dbl _pos;									// 座標
 	Vector2Dbl _size;									// サイズ
@@ -60,4 +60,6 @@ protected:
 	int _zOrder;										// 描画優先度
 	OBJ_ID _objID;
 	Bg bg;
+	unsigned int _animCount;							// 見出しから何回ﾙｰﾌﾟしてるか
+	unsigned int _animFrame;							// なんﾌﾚｰﾑか
 };

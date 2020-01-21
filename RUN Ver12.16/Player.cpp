@@ -80,16 +80,13 @@ void Player::Updata()
 	if ((*_input).state(INPUT_ID::ACTION).first && !(*_input).state(INPUT_ID::ACTION).second && PlayerCount >= 0)
 	{
 		TRACE("ƒAƒNƒVƒ‡ƒ“\n");
-<<<<<<< HEAD
-		state(STATE::JUMP);
-=======
+		_animFrame = 0;
 		state(STATE::FALL);
-		PlayerCount = -75;
+		PlayerCount = -70;
 	}
 	if (PlayerCount >= 0)
 	{
 		state(STATE::NORMAL);
->>>>>>> 32abdddc98f86e0a2fde2f241913edcba953ec07
 	}
 }
 
@@ -113,18 +110,14 @@ void Player::Init(void)
 	data.reserve(PL_DIV_CNT);
 	for (int i = 0; i < PL_DIV_CNT; i++)
 	{
-<<<<<<< HEAD
-		data.emplace_back(IMAGE_ID("¼Þ¬ÝÌß")[i], (i + 1) * 2);
+		data.emplace_back(IMAGE_ID("¼Þ¬ÝÌß")[i], (i + 1) * 5);
 	}
 	SetAnim(STATE::JUMP, data);
 
 	data.reserve(PL_DIV_CNT);
 	for (int i = 0; i < PL_DIV_CNT; i++)
 	{
-		data.emplace_back(IMAGE_ID("“]“|")[i], (i + 1));
-=======
 		data.emplace_back(IMAGE_ID("“]“|")[i], (i + 1)* 5);
->>>>>>> 32abdddc98f86e0a2fde2f241913edcba953ec07
 	}
 	SetAnim(STATE::FALL, data);
 
