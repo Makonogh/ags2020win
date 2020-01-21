@@ -6,11 +6,12 @@
 
 Bg::Bg()
 {
-	bgSpeed = 4;
+	bgSpeed = 32;
 }
 
 void Bg::Updata()
 {
+
 }
 
 void Bg::Draw(void)
