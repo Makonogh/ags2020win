@@ -14,11 +14,13 @@ Player::Player(Vector2Dbl pos, Vector2Dbl size)
 	_pos = pos;
 	_size = size;
 	_objID = OBJ_ID::PLAYER;
+	PlayerCount = 0;
 	Init();
 }
 
 void Player::Updata()
 {
+	PlayerCount++;
 	double moveLane = (LIMIT_DOWN - LIMIT_UP) / 2.0;
 
 	_lane = ((static_cast<int>(_pos.y - 360.0) % 3) + 1);
@@ -75,10 +77,19 @@ void Player::Updata()
 	}
 
 
-	if ((*_input).state(INPUT_ID::ACTION).first && !(*_input).state(INPUT_ID::ACTION).second)
+	if ((*_input).state(INPUT_ID::ACTION).first && !(*_input).state(INPUT_ID::ACTION).second && PlayerCount >= 0)
 	{
 		TRACE("ƒAƒNƒVƒ‡ƒ“\n");
+<<<<<<< HEAD
 		state(STATE::JUMP);
+=======
+		state(STATE::FALL);
+		PlayerCount = -75;
+	}
+	if (PlayerCount >= 0)
+	{
+		state(STATE::NORMAL);
+>>>>>>> 32abdddc98f86e0a2fde2f241913edcba953ec07
 	}
 }
 
@@ -102,6 +113,7 @@ void Player::Init(void)
 	data.reserve(PL_DIV_CNT);
 	for (int i = 0; i < PL_DIV_CNT; i++)
 	{
+<<<<<<< HEAD
 		data.emplace_back(IMAGE_ID("¼Þ¬ÝÌß")[i], (i + 1) * 2);
 	}
 	SetAnim(STATE::JUMP, data);
@@ -110,6 +122,9 @@ void Player::Init(void)
 	for (int i = 0; i < PL_DIV_CNT; i++)
 	{
 		data.emplace_back(IMAGE_ID("“]“|")[i], (i + 1));
+=======
+		data.emplace_back(IMAGE_ID("“]“|")[i], (i + 1)* 5);
+>>>>>>> 32abdddc98f86e0a2fde2f241913edcba953ec07
 	}
 	SetAnim(STATE::FALL, data);
 
