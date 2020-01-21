@@ -16,9 +16,15 @@ GameScene::GameScene()
 	lpImgMng.GetID("“]“|", "image/FALL.png", { 160,144 }, { PL_DIV_CNT,1 });
 	lpImgMng.GetID("‚æ[‚¢", "image/ready.png", { 210,75 }, { 1,2 });
 	lpImgMng.GetID("½º±", "image/num.png", { 60,60 }, { 10,1 });
-	lpImgMng.GetID("¹Þ°Ñ”wŒi1", "image/BGB.png");
-	lpImgMng.GetID("¹Þ°Ñ”wŒi2", "image/BG1.png");
-	lpImgMng.GetID("¹Þ°Ñ”wŒi3", "image/BG2.png");
+	lpImgMng.GetID("¹Þ°Ñ”wŒi0", "image/BGB.png");
+	lpImgMng.GetID("¹Þ°Ñ”wŒi1", "image/BG1.png");
+	lpImgMng.GetID("¹Þ°Ñ”wŒi2", "image/BG2.png");
+	lpImgMng.GetID("¹Þ°Ñ”wŒi3", "image/BG3.png");
+	lpImgMng.GetID("¹Þ°Ñ”wŒi4", "image/BG4.png");
+	lpImgMng.GetID("¹Þ°Ñ”wŒi5", "image/BG5.png");
+	lpImgMng.GetID("¹Þ°Ñ”wŒi6", "image/BG6.png");
+	lpImgMng.GetID("¹Þ°Ñ”wŒi7", "image/BG7.png");
+
 
 	_objList.emplace_back(new Player({ 125.0, (LIMIT_UP + LIMIT_DOWN) / 2.0 }, { 70.0,150.0 }));
 
@@ -28,9 +34,9 @@ GameScene::GameScene()
 		_objList.emplace_back(new Obstacles(state));
 	}
 
-	_bgList.emplace_back(new GameBg({ GAME_TYPE::BG1,{ 320.0,288.0 },{ 640,576 } }));
-	_bgList.emplace_back(new GameBg({ GAME_TYPE::BG2,{ 960.0,288.0 },{ 640,576 } }));
-	_bgList.emplace_back(new GameBg({ GAME_TYPE::BG3,{ 1600.0,288.0 },{ 640,576 } }));
+	_bgList.emplace_back(new GameBg({ GAME_TYPE::BG0,{ 320.0,288.0 },{ 640,576 } }));
+	_bgList.emplace_back(new GameBg({ GAME_TYPE::BG1,{ 960.0,288.0 },{ 640,576 } }));
+	_bgList.emplace_back(new GameBg({ GAME_TYPE::BG2,{ 1600.0,288.0 },{ 640,576 } }));
 	SceneCount = 0;
 
 	score = 0.0;
@@ -43,9 +49,10 @@ GameScene::~GameScene()
 
 unique_Base GameScene::Update(unique_Base own)
 {
+	
 	Vector2Dbl UICenter = { lpSceneMng.GameSize.x / 2.0 ,(lpSceneMng.ScreenSize.y + lpSceneMng.GameSize.y) / 2.0 };
 
-	if (SceneCount >= 180)
+	if (SceneCount >= 60)
 	{
 		for (auto data : _objList)
 		{
@@ -69,10 +76,13 @@ unique_Base GameScene::Update(unique_Base own)
 		{
 			if ((*data)._pos.x == -320)
 			{
-				_bgList.emplace_back(new GameBg({ static_cast<GAME_TYPE>(rand() % 3),{ 1600.0,288.0 },{ 640,576 } }));
+				_bgList.erase(_bgList.begin());
+				_bgList.emplace_back(new GameBg({ static_cast<GAME_TYPE>(rand() % 8),{ 1600.0,288.0 },{ 640,576 } }));
+				
 				break;
 			}
 		}
+		
 	}
 	else
 	{

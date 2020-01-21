@@ -5,9 +5,14 @@
 
 enum class GAME_TYPE
 {
+	BG0,
 	BG1,
 	BG2,
 	BG3,
+	BG4,
+	BG5,
+	BG6,
+	BG7,
 	MAX
 };
 
