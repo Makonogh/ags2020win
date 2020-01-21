@@ -62,6 +62,10 @@ unique_Base GameScene::Update(unique_Base own)
 		for (auto data : _bgList)
 		{
 			(*data).Updata();
+	
+		}
+		for (auto data : _bgList)
+		{
 			if ((*data)._pos.x == -320)
 			{
 				_bgList.emplace_back(new GameBg({ static_cast<GAME_TYPE>(rand() % 3),{ 1600.0,288.0 },{ 640,576 } }));
