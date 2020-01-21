@@ -97,7 +97,7 @@ unique_Base GameScene::Update(unique_Base own)
 
 	SceneCount++;
 
-	tmpScore = score;
+	tmpScore = static_cast<int> (score);
 
 	// スコアの表示
 	lpSceneMng.AddDrawQue({ IMAGE_ID("ｽｺｱ")[tmpScore % 10],270.05,UICenter.y + 30.0,0.0,INT_MAX, LAYER::UI });

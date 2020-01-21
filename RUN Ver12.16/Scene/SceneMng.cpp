@@ -5,6 +5,7 @@
 #include "TitleScene.h"
 #include <algorithm>
 #include <_debug/_DebugConOut.h>
+#include <time.h>
 
 SceneMng* SceneMng::sInstance = nullptr;
 Bg bg;
@@ -133,6 +134,8 @@ bool SceneMng::SysInit(void)
 		_screenID.try_emplace(layer, MakeScreen(ScreenSize.x, ScreenSize.y, true));
 	}
 
+	
+	srand(static_cast<unsigned int>(time(NULL)));
 
 	GameCount = 0;
 	return false;
