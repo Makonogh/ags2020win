@@ -10,7 +10,7 @@ Obstacles::Obstacles(ObsState & state)
 {
 	_obsType = std::move(std::get <static_cast<int>(OBS_STATE::TYPE)>(state));
 	_pos = std::move(std::get <static_cast<int>(OBS_STATE::VECTOR)>(state));
-	_size = std::move(std::get <static_cast<int>(OBS_STATE::SIZE)>(state));
+	//_size = std::move(std::get <static_cast<int>(OBS_STATE::SIZE)>(state));
 	_objID = OBJ_ID::OBSTACLES;
 
 	switch (_obsType)
@@ -46,6 +46,7 @@ Obstacles::Obstacles(ObsState & state)
 void Obstacles::Updata()
 {
 	_pos.x -= obsSpeed;
+	_lane = ((static_cast<int>(_pos.y - 360.0) % 3) + 1);
 }
 
 Obstacles::~Obstacles()

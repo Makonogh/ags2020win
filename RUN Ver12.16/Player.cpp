@@ -12,7 +12,6 @@ Player::Player()
 Player::Player(Vector2Dbl pos, Vector2Dbl size)
 {
 	_pos = pos;
-	_lane = static_cast<int>(((pos.x - 360.0) / 3.0) + 1.0);
 	_size = size;
 	_objID = OBJ_ID::PLAYER;
 	Init();
@@ -21,6 +20,8 @@ Player::Player(Vector2Dbl pos, Vector2Dbl size)
 void Player::Updata()
 {
 	double moveLane = (LIMIT_DOWN - LIMIT_UP) / 2.0;
+
+	_lane = ((static_cast<int>(_pos.y - 360.0) % 3) + 1);
 
 	_input->Updata();
 
@@ -68,25 +69,15 @@ void Player::Updata()
 		move(_input, INPUT_ID::DOWN, plSpeed);
 	}
 
+	if (Player::CheckHit(_pos, _size))
+	{
+
+	}
+
+
 	if ((*_input).state(INPUT_ID::ACTION).first && !(*_input).state(INPUT_ID::ACTION).second)
 	{
-		bool flag = true;
-		int jumpMax = 200;
-		int count = 0;
-
-		double tmpY = _pos.y;
-
-		while (flag)
-		{
-			count++;
-			_pos.y = (tmpY - jumpMax) + abs((count % (jumpMax * 2)) - jumpMax);
-
-			if (_pos.y >= tmpY)
-			{
-				_pos.y = tmpY;
-				flag = false;
-			}
-		}
+		TRACE("アクション\n");
 	}
 }
 
@@ -112,30 +103,7 @@ void Player::Init(void)
 }
 
 // プレイヤーと障害物の当たり判定
-void Player::isHit(ObsState& state)
+bool Player::CheckHit(Vector2Dbl plPos, Vector2Dbl plSize)
 {
-	int fallTime = 0;
-	AnimVector data;
-	OBS_TYPE _obsType;
-
-	Vector2Dbl _obsPos = std::get<static_cast<int>(OBS_STATE::VECTOR)>(state);
-	Vector2Dbl _obsSize = std::get<static_cast<int>(OBS_STATE::SIZE)>(state);
-
-	for (auto type : _obsType)
-	{
-		if (_pos.y == _obsPos.y)
-		{
-			if (abs(_pos.x - _obsPos.x) < (_size.x + _obsSize.x) / 2)
-			{
-				// プレイヤーの状態 == STATE::FALL;
-				SetAnim(STATE::FALL, data);
-				while (fallTime < 180)
-				{
-					fallTime++;
-				}
-				// プレイヤーの状態 == STATE::NORMAL;
-				SetAnim(STATE::NORMAL, data);
-			}
-		}
-	}
+	return false;
 }

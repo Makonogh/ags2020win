@@ -23,7 +23,6 @@ private:
 	Vector2Dbl plSpeed;		// プレイヤーのスピード
 
 	void Init(void);
-	void isHit(ObsState& state);
-
+	bool CheckHit(Vector2Dbl plPos, Vector2Dbl plSize);
 	std::shared_ptr<InputState>_input;
 };
