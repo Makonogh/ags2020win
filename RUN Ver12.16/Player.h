@@ -19,6 +19,7 @@ public:
 	Player(Vector2Dbl pos, Vector2Dbl size);
 	void Updata() override;
 	~Player();
+	int PlayerCount;
 private:
 	Vector2Dbl plSpeed;		// プレイヤーのスピード
 
