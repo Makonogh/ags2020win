@@ -3,6 +3,8 @@
 #include "Obj.h"
 #include <vector>
 
+#define DFBG_SPEED 4
+
 class GameScene :
 	public BaseScene
 {
@@ -12,6 +14,7 @@ public:
 	unique_Base Update(unique_Base);
 	double score;
 	int tmpScore;
+	
 private:
 	int tmpTime;
 	std::vector<sharedObj> _objList;

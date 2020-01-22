@@ -84,16 +84,16 @@ void Player::Updata()
 		_animCount = 0;
 		_animFrame = 0;
 		
-		state(STATE::JUMP);
-		bg.bgSpeed = 0;
+		state(STATE::FALL);
+		lpSceneMng.bgSpeed = 0;
 		PlayerCount = -75;
 	}
 	if (PlayerCount >= 0)
 	{
 		state(STATE::NORMAL);
-		/*bg.bgSpeed = DFBG_SPEED;*/
+		lpSceneMng.bgSpeed = DFBG_SPEED;
 	}
-	/*TRACE("%d\n",bg.bgSpeed);*/
+	/*TRACE("%d\n",lpSceneMng.bgSpeed);*/
 }
 
 

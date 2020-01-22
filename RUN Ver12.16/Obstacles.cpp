@@ -13,35 +13,7 @@ Obstacles::Obstacles(ObsState & state)
 	//_size = std::move(std::get <static_cast<int>(OBS_STATE::SIZE)>(state));
 	_objID = OBJ_ID::OBSTACLES;
 
-	switch (_obsType)
-	{
-	case OBS_TYPE::CAR:
-		_size = { 200.0,0.0 };
-		if (bg.bgSpeed >= 1)
-		{
-			obsSpeed = bg.bgSpeed + 3.0;
-		}
-		else
-		{
-			obsSpeed = 3.0;
-		}
-		break;
-	case OBS_TYPE::BICYCLE:
-		_size = { 100.0,0.0 };
-		if (bg.bgSpeed >= 1)
-		{
-			obsSpeed = bg.bgSpeed + 1.0;
-		}
-		else
-		{
-			obsSpeed = 1.0;
-		}
-		break;
-	case OBS_TYPE::BANANA:
-		_size = { 60.0,0.0 };
-		obsSpeed = bg.bgSpeed;
-		break;
-	}
+
 
 	Init();
 }
@@ -50,6 +22,35 @@ void Obstacles::Updata()
 {
 	_pos.x -= obsSpeed;
 	_lane = ((static_cast<int>(_pos.y - 360.0) % 3) + 1);
+	switch (_obsType)
+	{
+	case OBS_TYPE::CAR:
+		_size = { 200.0,0.0 };
+		if (lpSceneMng.bgSpeed >= 1)
+		{
+			obsSpeed = lpSceneMng.bgSpeed + 3.0;
+		}
+		else
+		{
+			obsSpeed = 3.0;
+		}
+		break;
+	case OBS_TYPE::BICYCLE:
+		_size = { 100.0,0.0 };
+		if (lpSceneMng.bgSpeed >= 1)
+		{
+			obsSpeed = lpSceneMng.bgSpeed + 1.0;
+		}
+		else
+		{
+			obsSpeed = 1.0;
+		}
+		break;
+	case OBS_TYPE::BANANA:
+		_size = { 60.0,0.0 };
+		obsSpeed = lpSceneMng.bgSpeed;
+		break;
+	}
 }
 
 Obstacles::~Obstacles()

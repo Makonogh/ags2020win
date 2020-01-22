@@ -1,5 +1,6 @@
 #include "GameBg.h"
 #include "common/ImgMng.h"
+#include <Scene/SceneMng.h>
 
 GameBg::GameBg()
 {
@@ -37,11 +38,11 @@ bool GameBg::GameBgInit(BG_DATA bg_data)
 	image = Img_List.at(std::get<static_cast<int>(BG_STATE::IMAGE)>(bg_data));
 
 	_pos = std::get<static_cast<int>(BG_STATE::POS)>(bg_data);
-	bgSpeed = DFBG_SPEED;
+	
 	return false;
 }
 
 void GameBg::Updata(void)
 {
-	_pos.x -= bgSpeed;
+	_pos.x -= lpSceneMng.bgSpeed;
 }

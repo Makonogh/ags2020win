@@ -62,7 +62,7 @@ public:
 	int GameCount;					// ¹Þ°Ñ‚Ì¶³ÝÄ
 	bool OldReturn;
 	bool Return;
-	
+	int bgSpeed;
 private:
 	static SceneMng* sInstance;
 

@@ -5,7 +5,7 @@
 
 #define STAGE_SIZE_X 640
 #define STAGE_SIZE_Y 216
-#define DFBG_SPEED 128
+
 
 class Bg;
 using sharedBG = std::shared_ptr<Bg>;
@@ -34,7 +34,7 @@ public:
 	void Draw(void);
 	void Draw(int id);
 	virtual ~Bg();
-	int bgSpeed;
+	
 	Vector2Dbl _pos;
 private:
 	

@@ -38,6 +38,8 @@ GameScene::GameScene()
 
 	_objList.emplace_back(new Player({ 125.0, (LIMIT_UP + LIMIT_DOWN) / 2.0 }, { 70.0,150.0 }));
 
+	lpSceneMng.bgSpeed = DFBG_SPEED;
+
 	for (auto type : OBS_TYPE())
 	{
 		ObsState state = { static_cast<OBS_TYPE>(type),{ 500.0 + 134 * static_cast<double>(type), LIMIT_UP + ((rand() % 2) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0)) },{ 100.0,10.0 } };
@@ -74,9 +76,9 @@ unique_Base GameScene::Update(unique_Base own)
 				_objList.emplace_back(new Obstacles(state));
 				break;
 			}
-			score += static_cast<double>(bg.bgSpeed) / 1000;
+			score += static_cast<double>(lpSceneMng.bgSpeed) / 1000;
 		}
-		TRACE("%d\n", bg.bgSpeed);
+		TRACE("%d\n", lpSceneMng.bgSpeed);
 		for (auto data : _bgList)
 		{
 			(*data).Updata();
