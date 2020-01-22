@@ -13,6 +13,14 @@ enum class GAME_TYPE
 	BG5,
 	BG6,
 	BG7,
+	BG8,
+	BG9,
+	BG10,
+	BG11,
+	BG12,
+	BG13,
+	BG14,
+	BG15,
 	MAX
 };
 

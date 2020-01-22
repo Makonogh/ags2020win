@@ -22,7 +22,7 @@ public:
 	int PlayerCount;
 private:
 	Vector2Dbl plSpeed;		// プレイヤーのスピード
-
+	Bg bg;
 	void Init(void);
 	bool CheckHit(int lane,Vector2Dbl plPos, Vector2Dbl plSize);
 	std::shared_ptr<InputState>_input;

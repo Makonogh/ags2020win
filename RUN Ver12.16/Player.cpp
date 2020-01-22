@@ -3,6 +3,7 @@
 #include <common/ImgMng.h>
 #include <Input/KeyState.h>
 #include <_debug\_DebugConOut.h>
+#include "Bg.h"
 
 Player::Player()
 {
@@ -82,14 +83,17 @@ void Player::Updata()
 		TRACE("ƒAƒNƒVƒ‡ƒ“\n");
 		_animCount = 0;
 		_animFrame = 0;
+		
 		state(STATE::JUMP);
+		bg.bgSpeed = 0;
 		PlayerCount = -75;
 	}
 	if (PlayerCount >= 0)
 	{
 		state(STATE::NORMAL);
+		/*bg.bgSpeed = DFBG_SPEED;*/
 	}
-	TRACE("%d\n",_animCount);
+	/*TRACE("%d\n",bg.bgSpeed);*/
 }
 
 

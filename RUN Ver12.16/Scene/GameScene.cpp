@@ -6,6 +6,7 @@
 #include "DxLib.h"
 #include "Bg.h"
 #include "Bg/GameBg.h"
+#include <_debug/_DebugConOut.h>
 
 GameScene::GameScene()
 {
@@ -25,6 +26,14 @@ GameScene::GameScene()
 	lpImgMng.GetID("罐把攚宨5", "image/BG5.png");
 	lpImgMng.GetID("罐把攚宨6", "image/BG6.png");
 	lpImgMng.GetID("罐把攚宨7", "image/BG7.png");
+	lpImgMng.GetID("罐把攚宨8", "image/BG8.png");
+	lpImgMng.GetID("罐把攚宨9", "image/BG9.png");
+	lpImgMng.GetID("罐把攚宨10", "image/BG10.png");
+	lpImgMng.GetID("罐把攚宨11", "image/BG11.png");
+	lpImgMng.GetID("罐把攚宨12", "image/BG12.png");
+	lpImgMng.GetID("罐把攚宨13", "image/BG13.png");
+	lpImgMng.GetID("罐把攚宨14", "image/BG14.png");
+	lpImgMng.GetID("罐把攚宨15", "image/BG15.png");
 
 
 	_objList.emplace_back(new Player({ 125.0, (LIMIT_UP + LIMIT_DOWN) / 2.0 }, { 70.0,150.0 }));
@@ -67,7 +76,7 @@ unique_Base GameScene::Update(unique_Base own)
 			}
 			score += static_cast<double>(bg.bgSpeed) / 1000;
 		}
-
+		TRACE("%d\n", bg.bgSpeed);
 		for (auto data : _bgList)
 		{
 			(*data).Updata();
@@ -75,10 +84,10 @@ unique_Base GameScene::Update(unique_Base own)
 		}
 		for (auto data : _bgList)
 		{
-			if ((*data)._pos.x == -320)
+			if ((*data)._pos.x <= -320)
 			{
 				_bgList.erase(_bgList.begin());
-				_bgList.emplace_back(new GameBg({ static_cast<GAME_TYPE>(rand() % 8),{ 1600.0,288.0 },{ 640,576 } }));
+				_bgList.emplace_back(new GameBg({ static_cast<GAME_TYPE>(rand() % 16),{ 1600.0,288.0 },{ 640,576 } }));
 				
 				break;
 			}
