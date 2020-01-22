@@ -5,6 +5,7 @@
 #include "Obstacles.h"
 #include "DxLib.h"
 #include "Bg.h"
+
 #include "Bg/GameBg.h"
 #include <_debug/_DebugConOut.h>
 
@@ -14,7 +15,7 @@ GameScene::GameScene()
 	lpImgMng.GetID("UI", "image/UI2.png");
 	lpImgMng.GetID("è·äQï®", "image/Obj1.png", { 200,200 }, { 3,1 });
 	lpImgMng.GetID("∑¨◊", "image/pl.png", { 100,150 }, { PL_DIV_CNT,1 });
-	lpImgMng.GetID("ºﬁ¨›Ãﬂ", "image/Jump.png", { 150,150 }, { PL_DIV_CNT,1 });
+	lpImgMng.GetID("ºﬁ¨›Ãﬂ", "image/Jump.png", { 160,160 }, { PL_DIV_CNT,1 });
 	lpImgMng.GetID("ì]ì|", "image/FALL.png", { 160,144 }, { PL_DIV_CNT,1 });
 	lpImgMng.GetID("ÇÊÅ[Ç¢", "image/ready.png", { 210,75 }, { 1,2 });
 	lpImgMng.GetID("Ω∫±", "image/num.png", { 60,60 }, { 10,1 });
@@ -34,7 +35,6 @@ GameScene::GameScene()
 	lpImgMng.GetID("πﬁ∞—îwåi13", "image/BG13.png");
 	lpImgMng.GetID("πﬁ∞—îwåi14", "image/BG14.png");
 	lpImgMng.GetID("πﬁ∞—îwåi15", "image/BG15.png");
-
 
 	_objList.emplace_back(new Player({ 125.0, (LIMIT_UP + LIMIT_DOWN) / 2.0 }, { 70.0,150.0 }));
 
@@ -111,14 +111,19 @@ unique_Base GameScene::Update(unique_Base own)
 
 	lpSceneMng.AddDrawQue({ IMAGE_ID("UI")[0],UICenter.x,UICenter.y,0.0,INT_MAX, LAYER::UI });
 
-	if (lpSceneMng.Return && !lpSceneMng.OldReturn)
-	{
-		return std::make_unique<ResultScene>();
-	}
-
 	SceneCount++;
 
 	tmpScore = static_cast<int> (score);
+	tmpTime = abs(SceneCount - 10800 - 120) / 60;
+	if (tmpTime > 180)
+	{
+		tmpTime = 180;
+	}
+
+	if (tmpTime <= 0)
+	{
+		return std::make_unique<ResultScene>();
+	}
 
 	// ÉXÉRÉAÇÃï\é¶
 	lpSceneMng.AddDrawQue({ IMAGE_ID("Ω∫±")[tmpScore % 10],270.05,UICenter.y + 30.0,0.0,INT_MAX, LAYER::UI });
@@ -128,6 +133,13 @@ unique_Base GameScene::Update(unique_Base own)
 	{
 		lpSceneMng.AddDrawQue({ IMAGE_ID("Ω∫±")[tmpScore % 10],150.0 - (i * 60),UICenter.y + 30.0,0.0,INT_MAX, LAYER::UI });
 		tmpScore /= 10;
+	}
+
+	// écÇËéûä‘ÇÃï\é¶
+	for (int i = 0; i < 3; i++)
+	{
+		lpSceneMng.AddDrawQue({ IMAGE_ID("Ω∫±")[tmpTime % 10],1170.0 - (i * 60),UICenter.y + 30.0,0.0,INT_MAX, LAYER::UI });
+		tmpTime /= 10;
 	}
 
 	return own;
