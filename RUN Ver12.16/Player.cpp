@@ -55,6 +55,7 @@ void Player::Updata()
 		}
 	};
 
+
 	// ãˆÚ“®
 	if ((*_input).state(INPUT_ID::UP).first && !(*_input).state(INPUT_ID::UP).second)
 	{
@@ -96,7 +97,7 @@ void Player::Updata()
 
 		state(STATE::FALL);
 		lpSceneMng.bgSpeed = 0;
-		PlayerCount = -30;
+		PlayerCount = -70;
 	}
 
 	if (PlayerCount >= 0)
@@ -132,10 +133,11 @@ void Player::Init(void)
 	SetAnim(STATE::JUMP, data);
 
 	data.reserve(PL_DIV_CNT);
-	for (int i = 0; i < PL_DIV_CNT; i++)
+	for (int i = 0; i < PL_DIV_CNT - 1; i++)
 	{
 		data.emplace_back(IMAGE_ID("“]“|")[i], (i + 1) * 2);
 	}
+	data.emplace_back(IMAGE_ID("“]“|")[PL_DIV_CNT - 1], 70);
 	SetAnim(STATE::FALL, data);
 
 	_input = std::make_shared<KeyState>();

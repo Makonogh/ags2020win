@@ -51,8 +51,6 @@ public:
 private:
 	std::map<STATE, AnimVector>_animMap;
 	STATE _state;
-
-
 protected:
 	Vector2Dbl _pos;									// 座標
 	Vector2Dbl _size;									// サイズ
