@@ -51,7 +51,7 @@ GameScene::GameScene()
 	_bgList.emplace_back(new GameBg({ GAME_TYPE::BG2,{ 1600.0,288.0 },{ 640,576 } }));
 	SceneCount = 0;
 
-	score = 0.0;
+	lpSceneMng.score = 0.0;
 }
 
 
@@ -76,7 +76,7 @@ unique_Base GameScene::Update(unique_Base own)
 				_objList.emplace_back(new Obstacles(state));
 				break;
 			}
-			score += static_cast<double>(lpSceneMng.bgSpeed) / 1000;
+			lpSceneMng.score += static_cast<double>(lpSceneMng.bgSpeed) / 1000;
 		}
 		TRACE("%d\n", lpSceneMng.bgSpeed);
 		for (auto data : _bgList)
@@ -115,7 +115,7 @@ unique_Base GameScene::Update(unique_Base own)
 
 	SceneCount++;
 
-	tmpScore = static_cast<int> (score);
+	lpSceneMng.tmpScore = static_cast<int> (lpSceneMng.score);
 	tmpTime = abs(SceneCount - 10800 - 120) / 60;
 	if (tmpTime > 180)
 	{
@@ -128,13 +128,13 @@ unique_Base GameScene::Update(unique_Base own)
 	}
 
 	// スコアの表示
-	lpSceneMng.AddDrawQue({ IMAGE_ID("ｽｺｱ")[tmpScore % 10],270.05,UICenter.y + 30.0,0.0,INT_MAX, LAYER::UI });
-	tmpScore /= 10;
+	lpSceneMng.AddDrawQue({ IMAGE_ID("ｽｺｱ")[lpSceneMng.tmpScore % 10],270.05,UICenter.y + 30.0,0.0,INT_MAX, LAYER::UI });
+	lpSceneMng.tmpScore /= 10;
 
 	for (int i = 0; i < 3; i++)
 	{
-		lpSceneMng.AddDrawQue({ IMAGE_ID("ｽｺｱ")[tmpScore % 10],150.0 - (i * 60),UICenter.y + 30.0,0.0,INT_MAX, LAYER::UI });
-		tmpScore /= 10;
+		lpSceneMng.AddDrawQue({ IMAGE_ID("ｽｺｱ")[lpSceneMng.tmpScore % 10],150.0 - (i * 60),UICenter.y + 30.0,0.0,INT_MAX, LAYER::UI });
+		lpSceneMng.tmpScore /= 10;
 	}
 
 	// 残り時間の表示
@@ -146,4 +146,5 @@ unique_Base GameScene::Update(unique_Base own)
 
 	return own;
 }
+
 

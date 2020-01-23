@@ -21,7 +21,7 @@ unique_Base ResultScene::Update(unique_Base own)
 	{
 		return std::make_unique<TitleScene>();
 	}
-	/*bg.Draw(BG_TYPE::RESULT);*/
+	
 	SceneCount++;
 	return std::move(own);
 

@@ -63,6 +63,8 @@ public:
 	bool OldReturn;
 	bool Return;
 	int bgSpeed;
+	double score;
+	int tmpScore;
 private:
 	static SceneMng* sInstance;
 
