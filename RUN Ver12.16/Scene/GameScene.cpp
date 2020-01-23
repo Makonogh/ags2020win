@@ -122,7 +122,7 @@ unique_Base GameScene::Update(unique_Base own)
 		tmpTime = 180;
 	}
 
-	if (tmpTime <= 0)
+	if (tmpTime <= 0 || (lpSceneMng.Return && !lpSceneMng.OldReturn))
 	{
 		return std::make_unique<ResultScene>();
 	}

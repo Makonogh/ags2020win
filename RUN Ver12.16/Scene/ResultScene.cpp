@@ -6,7 +6,7 @@
 
 ResultScene::ResultScene()
 {
-	lpImgMng.GetID("Ø»ŞÙÄ”wŒi", "image/Obj.png");
+	lpImgMng.GetID("Ø»ŞÙÄ”wŒi", "image/Result_Test.png");
 }
 
 
