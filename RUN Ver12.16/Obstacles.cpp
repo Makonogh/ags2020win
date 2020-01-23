@@ -13,8 +13,6 @@ Obstacles::Obstacles(ObsState & state)
 	//_size = std::move(std::get <static_cast<int>(OBS_STATE::SIZE)>(state));
 	_objID = OBJ_ID::OBSTACLES;
 
-
-
 	Init();
 }
 

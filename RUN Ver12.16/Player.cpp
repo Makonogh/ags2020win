@@ -84,10 +84,21 @@ void Player::Updata()
 		_animCount = 0;
 		_animFrame = 0;
 		
-		state(STATE::FALL);
-		lpSceneMng.bgSpeed = 0;
+		state(STATE::JUMP);
 		PlayerCount = -75;
 	}
+
+	if ((*_input).state(INPUT_ID::DEBUG).first && !(*_input).state(INPUT_ID::DEBUG).second && PlayerCount >= 0)
+	{
+		TRACE("ƒfƒoƒbƒO\n");
+		_animCount = 0;
+		_animFrame = 0;
+
+		state(STATE::FALL);
+		lpSceneMng.bgSpeed = 0;
+		PlayerCount = -30;
+	}
+
 	if (PlayerCount >= 0)
 	{
 		state(STATE::NORMAL);
@@ -123,7 +134,7 @@ void Player::Init(void)
 	data.reserve(PL_DIV_CNT);
 	for (int i = 0; i < PL_DIV_CNT; i++)
 	{
-		data.emplace_back(IMAGE_ID("“]“|")[i], (i + 1)* 5);
+		data.emplace_back(IMAGE_ID("“]“|")[i], (i + 1) * 2);
 	}
 	SetAnim(STATE::FALL, data);
 
