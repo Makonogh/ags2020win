@@ -5,6 +5,7 @@ enum class INPUT_ID// :型　　型の指定が可能
 	UP,
 	DOWN,
 	ACTION,
+	DEBUG,
 	MAX,
 };
 

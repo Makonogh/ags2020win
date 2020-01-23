@@ -10,6 +10,7 @@ KeyState::KeyState()
 	_keyConDef.emplace_back(KEY_INPUT_UP);
 	_keyConDef.emplace_back(KEY_INPUT_DOWN);
 	_keyConDef.emplace_back(KEY_INPUT_SPACE);
+	_keyConDef.emplace_back(KEY_INPUT_A);
 
 	_keyDef.resize(static_cast<size_t>(end(INPUT_ID())));
 
