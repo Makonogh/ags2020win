@@ -67,15 +67,15 @@ void SceneMng::Draw()
 
 	}
 
-	for (int i = 0; i < 4; i++)
-	{
-		DrawLine(0, 360 + (72 * i), 1280, 360 + (72 * i), 0x00FF00);
-	}
+	//for (int i = 0; i < 4; i++)
+	//{
+	//	DrawLine(0, 360 + (72 * i), 1280, 360 + (72 * i), 0x00FF00);
+	//}
 
-	for (int i = 0; i < 10; i++)
-	{
-		DrawLine(i * 128, 576, 245 + (i * 128), 360, 0x00FF00);
-	}
+	//for (int i = 0; i < 10; i++)
+	//{
+	//	DrawLine(i * 128, 576, 245 + (i * 128), 360, 0x00FF00);
+	//}
 
 	ScreenFlip();
 }
@@ -121,7 +121,7 @@ bool SceneMng::SysInit(void)
 	// ---------¼½ÃÑˆ—
 	SetWindowText("RUN");
 	SetGraphMode(ScreenSize.x, ScreenSize.y, 16);			// 1280*720ÄÞ¯ÄA65536FÓ°ÄÞ‚ÉÝ’è
-	ChangeWindowMode(true);									// true:window false:ÌÙ½¸Ø°Ý
+	ChangeWindowMode(false);									// true:window false:ÌÙ½¸Ø°Ý
 
 	if (DxLib_Init() == -1)
 	{

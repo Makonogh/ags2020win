@@ -105,6 +105,8 @@ void Player::Updata()
 		state(STATE::NORMAL);
 		lpSceneMng.bgSpeed = DFBG_SPEED;
 	}
+
+	_zOrder = _pos.y + 1;
 	/*TRACE("%d\n",lpSceneMng.bgSpeed);*/
 }
 

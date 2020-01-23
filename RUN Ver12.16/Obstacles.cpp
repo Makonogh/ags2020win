@@ -52,9 +52,20 @@ void Obstacles::Updata()
 		_size = { 60.0,0.0 };
 		obsSpeed = lpSceneMng.bgSpeed;
 		break;
+	case OBS_TYPE::CAN:
+		_size = { 60.0,0.0 };
+		obsSpeed = lpSceneMng.bgSpeed;
+		break;
+	case OBS_TYPE::PUDDLE:
+		_size = { 200,0.0 };
+		obsSpeed = lpSceneMng.bgSpeed;
+		break;
+
 	default:
 		break;
 	}
+
+	_zOrder = _pos.y;
 }
 
 Obstacles::~Obstacles()

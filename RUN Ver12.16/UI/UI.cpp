@@ -13,9 +13,9 @@ void UI::Draw(void)
 {
 }
 
-void UI::Draw(int id)
-{
-}
+//void UI::Draw(int id)
+//{
+//}
 
 
 UI::~UI()

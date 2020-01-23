@@ -7,7 +7,9 @@ enum class OBS_TYPE
 	CAR,		// 車
 	BICYCLE,	// 自転車
 	BANANA,		// バナナの皮
-	CONE,
+	CONE,		// さんかくコーン
+	CAN,		// 空き缶
+	PUDDLE,		// 水たまり
 	MAX
 };
 
