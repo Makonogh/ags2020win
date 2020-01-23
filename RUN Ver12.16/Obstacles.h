@@ -1,5 +1,6 @@
 #pragma once
 #include "Obj.h"
+#include <map>
 
 enum class OBS_TYPE
 {
@@ -33,6 +34,8 @@ public:
 private:
 	OBS_TYPE _obsType;
 	void Init(void);
+	std::map<OBS_TYPE, Vector2Dbl> _obsMap;
+	Vector2Dbl GetSize(OBS_TYPE);
 };
 
 OBS_TYPE begin(OBS_TYPE);

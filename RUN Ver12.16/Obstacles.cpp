@@ -65,6 +65,11 @@ void Obstacles::Init(void)
 	SetAnim(STATE::NORMAL, data);
 }
 
+Vector2Dbl Obstacles::GetSize(OBS_TYPE)
+{
+	return _size;
+}
+
 OBS_TYPE begin(OBS_TYPE)
 {
 	return OBS_TYPE::CAR;
