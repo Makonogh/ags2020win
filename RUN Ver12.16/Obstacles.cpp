@@ -48,6 +48,12 @@ void Obstacles::Updata()
 		_size = { 60.0,0.0 };
 		obsSpeed = lpSceneMng.bgSpeed;
 		break;
+	case OBS_TYPE::CONE:
+		_size = { 60.0,0.0 };
+		obsSpeed = lpSceneMng.bgSpeed;
+		break;
+	default:
+		break;
 	}
 }
 
@@ -63,6 +69,11 @@ void Obstacles::Init(void)
 	data.reserve(1);
 	data.emplace_back(IMAGE_ID("è·äQï®")[static_cast<int>(_obsType)], 30);
 	SetAnim(STATE::NORMAL, data);
+}
+
+Vector2Dbl Obstacles::GetSize(OBS_TYPE)
+{
+	return _size;
 }
 
 OBS_TYPE begin(OBS_TYPE)
