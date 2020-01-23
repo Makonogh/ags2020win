@@ -64,6 +64,8 @@ unique_Base GameScene::Update(unique_Base own)
 	
 	Vector2Dbl UICenter = { lpSceneMng.GameSize.x / 2.0 ,(lpSceneMng.ScreenSize.y + lpSceneMng.GameSize.y) / 2.0 };
 
+	
+
 	if (SceneCount >= 60)
 	{
 		for (auto data : _objList)
@@ -76,8 +78,8 @@ unique_Base GameScene::Update(unique_Base own)
 				_objList.emplace_back(new Obstacles(state));
 				break;
 			}
-			lpSceneMng.score += static_cast<double>(lpSceneMng.bgSpeed) / 1000;
 		}
+		lpSceneMng.score += static_cast<double>(lpSceneMng.bgSpeed) / 150;
 		TRACE("%d\n", lpSceneMng.bgSpeed);
 		for (auto data : _bgList)
 		{

@@ -18,23 +18,13 @@ enum class BG_STATE
 	SIZE,
 };
 
-enum class BG_TYPE
-{
-	TITLE,
-	GAME,
-	RESULT,
-	MAX
-};
-
 class Bg
 {
 public:
 	Bg();
 	virtual void Updata();
 	void Draw(void);
-	void Draw(int id);
 	virtual ~Bg();
-	
 	Vector2Dbl _pos;
 private:
 	
@@ -45,4 +35,3 @@ protected:
 	Vector2Dbl _size;
 	int _zOrder;										// ï`âÊóDêÊìx
 };
-

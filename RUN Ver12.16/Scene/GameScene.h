@@ -19,6 +19,5 @@ private:
 	
 	std::vector<sharedObj> _objList;
 	std::vector<sharedBG> _bgList;
-
 };
 
