@@ -13,7 +13,7 @@ GameScene::GameScene()
 {
 	lpImgMng.GetID("πﬁ∞—îwåi", "image/BGB.png");
 	lpImgMng.GetID("UI", "image/UI2.png");
-	lpImgMng.GetID("è·äQï®", "image/Obj1.png", { 200,200 }, { 3,1 });
+	lpImgMng.GetID("è·äQï®", "image/Obj1.png", { 200,200 }, { static_cast<int>(OBS_TYPE::MAX),1 });
 	lpImgMng.GetID("∑¨◊", "image/pl.png", { 100,150 }, { PL_DIV_CNT,1 });
 	lpImgMng.GetID("ºﬁ¨›Ãﬂ", "image/Jump.png", { 160,160 }, { PL_DIV_CNT,1 });
 	lpImgMng.GetID("ì]ì|", "image/FALL.png", { 160,144 }, { PL_DIV_CNT,1 });
@@ -146,10 +146,11 @@ unique_Base GameScene::Update(unique_Base own)
 
 	if (rand() % 100 == 0)
 	{
-		ObsState state = { static_cast<OBS_TYPE>(rand() % static_cast<int>(OBS_STATE::MAX)),{ lpSceneMng.ScreenSize.x + static_cast<double>(rand() % 100), LIMIT_UP + static_cast<double>(((rand() % 3) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0))) },{ 100.0,10.0 } };
+		ObsState state = { static_cast<OBS_TYPE>(rand() % static_cast<int>(OBS_TYPE::MAX)),{ lpSceneMng.ScreenSize.x + static_cast<double>(rand() % 100), LIMIT_UP + static_cast<double>(((rand() % 3) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0))) },{ 100.0,10.0 } };
 		_objList.emplace_back(new Obstacles(state));
 	}
 	return own;
+
 }
 
 

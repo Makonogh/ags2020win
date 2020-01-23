@@ -7,6 +7,7 @@ enum class OBS_TYPE
 	CAR,		// ŽÔ
 	BICYCLE,	// Ž©“]ŽÔ
 	BANANA,		// ƒoƒiƒi‚Ì”ç
+	CONE,
 	MAX
 };
 

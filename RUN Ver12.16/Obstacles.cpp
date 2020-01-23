@@ -48,6 +48,12 @@ void Obstacles::Updata()
 		_size = { 60.0,0.0 };
 		obsSpeed = lpSceneMng.bgSpeed;
 		break;
+	case OBS_TYPE::CONE:
+		_size = { 60.0,0.0 };
+		obsSpeed = lpSceneMng.bgSpeed;
+		break;
+	default:
+		break;
 	}
 }
 
