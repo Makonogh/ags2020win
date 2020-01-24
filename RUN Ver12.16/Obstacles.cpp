@@ -10,7 +10,6 @@ Obstacles::Obstacles(ObsState & state)
 {
 	_obsType = std::move(std::get <static_cast<int>(OBS_STATE::TYPE)>(state));
 	_pos = std::move(std::get <static_cast<int>(OBS_STATE::VECTOR)>(state));
-	//_size = std::move(std::get <static_cast<int>(OBS_STATE::SIZE)>(state));
 	_objID = OBJ_ID::OBSTACLES;
 
 	Init();
@@ -23,7 +22,6 @@ void Obstacles::Updata()
 	switch (_obsType)
 	{
 	case OBS_TYPE::CAR:
-		_size = { 200.0,0.0 };
 		if (lpSceneMng.bgSpeed >= 1)
 		{
 			obsSpeed = lpSceneMng.bgSpeed + 3.0;
@@ -34,7 +32,6 @@ void Obstacles::Updata()
 		}
 		break;
 	case OBS_TYPE::BICYCLE:
-		_size = { 100.0,0.0 };
 		if (lpSceneMng.bgSpeed >= 1)
 		{
 			obsSpeed = lpSceneMng.bgSpeed + 1.0;
@@ -45,15 +42,12 @@ void Obstacles::Updata()
 		}
 		break;
 	case OBS_TYPE::BANANA:
-		_size = { 60.0,0.0 };
 		obsSpeed = lpSceneMng.bgSpeed;
 		break;
 	case OBS_TYPE::CONE:
-		_size = { 60.0,0.0 };
 		obsSpeed = lpSceneMng.bgSpeed;
 		break;
 	case OBS_TYPE::CAN:
-		_size = { 60.0,0.0 };
 		obsSpeed = lpSceneMng.bgSpeed;
 		break;
 	case OBS_TYPE::PUDDLE:
@@ -65,7 +59,7 @@ void Obstacles::Updata()
 		break;
 	}
 
-	_zOrder = _pos.y;
+	_zOrder = static_cast<int>(_pos.y);
 }
 
 Obstacles::~Obstacles()
@@ -79,12 +73,22 @@ void Obstacles::Init(void)
 
 	data.reserve(1);
 	data.emplace_back(IMAGE_ID("è·äQï®")[static_cast<int>(_obsType)], 30);
+
+	SizeMap.insert(std::make_pair(OBS_TYPE::CAR,200.0));
+	SizeMap.insert(std::make_pair(OBS_TYPE::BICYCLE,100.0));
+	SizeMap.insert(std::make_pair(OBS_TYPE::BANANA,60.0));
+	SizeMap.insert(std::make_pair(OBS_TYPE::CONE,60.0));
+	SizeMap.insert(std::make_pair(OBS_TYPE::CAN,60.0));
+	SizeMap.insert(std::make_pair(OBS_TYPE::PUDDLE,200.0));
+
 	SetAnim(STATE::NORMAL, data);
 }
 
-Vector2Dbl Obstacles::GetSize(OBS_TYPE)
+double Obstacles::GetSize(OBS_TYPE key)
 {
-	return _size;
+	double size;
+	size = SizeMap.at(key);
+	return size;
 }
 
 OBS_TYPE begin(OBS_TYPE)

@@ -21,8 +21,9 @@ enum class OBS_STATE
 	MAX
 };
 
-// 障害物の状態<種類,座標,サイズ>
-using ObsState = std::tuple<OBS_TYPE, Vector2Dbl, Vector2Dbl>;
+// 障害物の状態<種類,座標>
+using ObsState = std::tuple<OBS_TYPE, Vector2Dbl>;
+using ObjSize = std::pair<double,double>;
 
 class Obstacles :
 	public Obj
@@ -34,11 +35,11 @@ public:
 	void Updata() override;
 	~Obstacles();
 	double obsSpeed;
+	double GetSize(OBS_TYPE key);
 private:
 	OBS_TYPE _obsType;
 	void Init(void);
-	std::map<OBS_TYPE, Vector2Dbl> _obsMap;
-	Vector2Dbl GetSize(OBS_TYPE);
+	std::map<OBS_TYPE,double> SizeMap;
 };
 
 OBS_TYPE begin(OBS_TYPE);
