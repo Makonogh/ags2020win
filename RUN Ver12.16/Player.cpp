@@ -130,6 +130,13 @@ void Player::Init(void)
 	data.reserve(PL_DIV_CNT);
 	for (int i = 0; i < PL_DIV_CNT; i++)
 	{
+		data.emplace_back(IMAGE_ID("·¬×")[i], (i + 1));
+	}
+	SetAnim(STATE::RUN, data);
+
+	data.reserve(PL_DIV_CNT);
+	for (int i = 0; i < PL_DIV_CNT; i++)
+	{
 		data.emplace_back(IMAGE_ID("¼Þ¬ÝÌß")[i], (i + 1) * 5);
 	}
 	SetAnim(STATE::JUMP, data);
