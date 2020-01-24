@@ -121,7 +121,7 @@ bool SceneMng::SysInit(void)
 	// ---------¼½ÃÑˆ—
 	SetWindowText("RUN");
 	SetGraphMode(ScreenSize.x, ScreenSize.y, 16);			// 1280*720ÄŞ¯ÄA65536FÓ°ÄŞ‚Éİ’è
-	ChangeWindowMode(false);									// true:window false:ÌÙ½¸Ø°İ
+	ChangeWindowMode(true);									// true:window false:ÌÙ½¸Ø°İ
 
 	if (DxLib_Init() == -1)
 	{
