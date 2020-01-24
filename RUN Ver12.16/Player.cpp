@@ -106,7 +106,7 @@ void Player::Updata()
 		lpSceneMng.bgSpeed = DFBG_SPEED;
 	}
 
-	_zOrder = _pos.y + 1;
+	_zOrder = static_cast<int>(_pos.y + 1);
 	/*TRACE("%d\n",lpSceneMng.bgSpeed);*/
 }
 
@@ -155,5 +155,7 @@ void Player::Init(void)
 // ƒvƒŒƒCƒ„[‚ÆáŠQ•¨‚Ì“–‚½‚è”»’è
 bool Player::CheckHit(int lane,Vector2Dbl plPos, Vector2Dbl plSize)
 {
+
+
 	return false;
 }
