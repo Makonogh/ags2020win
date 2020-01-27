@@ -5,9 +5,9 @@
 #include "Obstacles.h"
 #include "DxLib.h"
 #include "Bg.h"
-
 #include "Bg/GameBg.h"
 #include <_debug/_DebugConOut.h>
+#include <algorithm>
 
 GameScene::GameScene()
 {
@@ -72,20 +72,22 @@ unique_Base GameScene::Update(unique_Base own)
 		{
 			(*data).Updata();
 
-			if ((*data).pos().x == (*data).size().x)
-			{
-				ObsState state = { static_cast<OBS_TYPE>(rand() % static_cast<int>(OBS_STATE::MAX)),{ lpSceneMng.ScreenSize.x + static_cast<double>(rand() % 100), LIMIT_UP + static_cast<double>(((rand() % 2) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0))) } };
-				_objList.emplace_back(new Obstacles(state));
-				break;
-			}
+			//auto itr = std::remove_if(_objList.begin(), _objList.end(), [](sharedObj& obj) {return obj. });
+			//_objList.erase(itr, _objList.end());
+
+			ObsState state = { static_cast<OBS_TYPE>(rand() % static_cast<int>(OBS_STATE::MAX)),{ lpSceneMng.ScreenSize.x + static_cast<double>(rand() % 100), LIMIT_UP + static_cast<double>(((rand() % 2) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0))) } };
+			_objList.emplace_back(new Obstacles(state));
+			break;
 		}
+
 		lpSceneMng.score += static_cast<double>(lpSceneMng.bgSpeed) / 150;
 		TRACE("%d\n", lpSceneMng.bgSpeed);
+
 		for (auto data : _bgList)
 		{
 			(*data).Updata();
-	
 		}
+
 		for (auto data : _bgList)
 		{
 			if ((*data)._pos.x <= -320)

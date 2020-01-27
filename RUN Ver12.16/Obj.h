@@ -50,11 +50,12 @@ public:
 	const OBJ_ID &objID(void) const;
 	bool SetAnim(const STATE state, AnimVector& data);	// アニメーションのセット
 	//bool isAnimEnd(void);								// アニメーションが終了しているかの情報取得
+	Vector2Dbl _pos;									// 座標
+
 private:
 	std::map<STATE, AnimVector>_animMap;
 	STATE _state;
 protected:
-	Vector2Dbl _pos;									// 座標
 	Vector2Dbl _size;									// サイズ
 	int _lane;
 	int _zOrder;										// 描画優先度
