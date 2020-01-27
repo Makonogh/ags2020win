@@ -70,15 +70,14 @@ unique_Base GameScene::Update(unique_Base own)
 		for (auto data : _objList)
 		{
 			(*data).Updata();
-
+		}
+		for (auto data : _objList)
+		{
 			auto itr = std::remove_if(_objList.begin(), _objList.end(), [](sharedObj& obj) {return obj->isJudge(); });
 			_objList.erase(itr, _objList.end());
-
-		
-
 		}
 
-		if (_objList.size() <= 4)
+		if (_objList.size() <= 5)
 		{
 			ObsState state = { static_cast<OBS_TYPE>(rand() % static_cast<int>(OBS_STATE::MAX)),{ lpSceneMng.ScreenSize.x + static_cast<double>(rand() % 100), LIMIT_UP + static_cast<double>(((rand() % 2) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0))) } };
 			_objList.emplace_back(new Obstacles(state));
