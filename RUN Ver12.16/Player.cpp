@@ -79,14 +79,14 @@ void Player::Updata()
 	}
 
 
-	if ((*_input).state(INPUT_ID::ACTION).first && !(*_input).state(INPUT_ID::ACTION).second && PlayerCount >= 0)
+	if ((*_input).state(INPUT_ID::ACTION).first && !(*_input).state(INPUT_ID::ACTION).second)
 	{
 		TRACE("ƒAƒNƒVƒ‡ƒ“\n");
 		_animCount = 0;
 		_animFrame = 0;
+		PlayerCount = -75;
 		
 		state(STATE::JUMP);
-		PlayerCount = -75;
 	}
 
 	if ((*_input).state(INPUT_ID::DEBUG).first && !(*_input).state(INPUT_ID::DEBUG).second && PlayerCount >= 0)
@@ -102,12 +102,11 @@ void Player::Updata()
 	if (PlayerCount >= 0)
 	{
 		state(STATE::NORMAL);
-	
 	}
 
 	_zOrder = static_cast<int>(_pos.y + 1);
 	/*TRACE("%d\n",lpSceneMng.bgSpeed);*/
-	if (PlayerCount < 0)
+	if (_state == STATE::FALL)
 	{
 		lpSceneMng.bgSpeed = 0;
 	}
@@ -134,7 +133,6 @@ void Player::Updata()
 			break;
 		}
 	}
-
 }
 
 

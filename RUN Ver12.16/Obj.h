@@ -51,10 +51,11 @@ public:
 	bool SetAnim(const STATE state, AnimVector& data);	// アニメーションのセット
 	//bool isAnimEnd(void);								// アニメーションが終了しているかの情報取得
 	Vector2Dbl _pos;									// 座標
+	STATE _state;
+
 	bool isJudge(void) { return _judge; }					// 死亡しているかの情報取得
 private:
 	std::map<STATE, AnimVector>_animMap;
-	STATE _state;
 protected:
 	bool _judge;
 	Vector2Dbl _size;									// サイズ
