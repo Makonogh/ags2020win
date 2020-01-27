@@ -96,18 +96,45 @@ void Player::Updata()
 		_animFrame = 0;
 
 		state(STATE::FALL);
-		lpSceneMng.bgSpeed = 0;
 		PlayerCount = -70;
 	}
 
 	if (PlayerCount >= 0)
 	{
 		state(STATE::NORMAL);
-		lpSceneMng.bgSpeed = DFBG_SPEED;
+	
 	}
 
 	_zOrder = static_cast<int>(_pos.y + 1);
 	/*TRACE("%d\n",lpSceneMng.bgSpeed);*/
+	if (PlayerCount < 0)
+	{
+		lpSceneMng.bgSpeed = 0;
+	}
+	else
+	{
+		switch (PlayerCount)
+		{
+		case 0:
+			lpSceneMng.bgSpeed = DFBG_SPEED;
+			break;
+		case 180:
+			lpSceneMng.bgSpeed = 8;
+			break;
+		case 360:
+			lpSceneMng.bgSpeed = 10;
+			break;
+		case 540:
+			lpSceneMng.bgSpeed = 16;
+			break;
+		case 800:
+			lpSceneMng.bgSpeed = 20;
+			break;
+		default:
+			break;
+		}
+	}
+
 }
 
 
