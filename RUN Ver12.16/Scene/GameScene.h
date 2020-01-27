@@ -16,7 +16,6 @@ public:
 	
 private:
 	int tmpTime;
-	
 	std::vector<sharedObj> _objList;
 	std::vector<sharedBG> _bgList;
 };

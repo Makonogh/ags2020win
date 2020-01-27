@@ -42,7 +42,7 @@ GameScene::GameScene()
 
 	for (auto type : OBS_TYPE())
 	{
-		ObsState state = { static_cast<OBS_TYPE>(type),{ 500.0 + 134 * static_cast<double>(type), LIMIT_UP + ((rand() % 2) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0)) }};
+		ObsState state = { static_cast<OBS_TYPE>(type),{ 500.0 + 134 * static_cast<double>(type), LIMIT_UP + ((rand() % 3) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0)) }};
 		_objList.emplace_back(new Obstacles(state));
 	}
 
@@ -65,7 +65,6 @@ unique_Base GameScene::Update(unique_Base own)
 	Vector2Dbl UICenter = { lpSceneMng.GameSize.x / 2.0 ,(lpSceneMng.ScreenSize.y + lpSceneMng.GameSize.y) / 2.0 };
 
 	
-
 	if (SceneCount >= 60)
 	{
 		for (auto data : _objList)
@@ -75,10 +74,17 @@ unique_Base GameScene::Update(unique_Base own)
 			//auto itr = std::remove_if(_objList.begin(), _objList.end(), [](sharedObj& obj) {return obj. });
 			//_objList.erase(itr, _objList.end());
 
+		
+
+		}
+
+		if (_objList.size() <= 4)
+		{
 			ObsState state = { static_cast<OBS_TYPE>(rand() % static_cast<int>(OBS_STATE::MAX)),{ lpSceneMng.ScreenSize.x + static_cast<double>(rand() % 100), LIMIT_UP + static_cast<double>(((rand() % 2) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0))) } };
 			_objList.emplace_back(new Obstacles(state));
-			break;
 		}
+	
+
 
 		lpSceneMng.score += static_cast<double>(lpSceneMng.bgSpeed) / 150;
 		TRACE("%d\n", lpSceneMng.bgSpeed);
@@ -148,10 +154,10 @@ unique_Base GameScene::Update(unique_Base own)
 		tmpTime /= 10;
 	}
 
-	if (rand() % 100 == 0)
-	{
-		ObsState state = { static_cast<OBS_TYPE>(rand() % static_cast<int>(OBS_TYPE::MAX)),{ lpSceneMng.ScreenSize.x + static_cast<double>(rand() % 100), LIMIT_UP + static_cast<double>(((rand() % 3) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0))) }};
-		_objList.emplace_back(new Obstacles(state));
-	}
+	//if (rand() % 100 == 0)
+	//{
+	//	ObsState state = { static_cast<OBS_TYPE>(rand() % static_cast<int>(OBS_TYPE::MAX)),{ lpSceneMng.ScreenSize.x + static_cast<double>(rand() % 100), LIMIT_UP + static_cast<double>(((rand() % 3) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0))) }};
+	//	_objList.emplace_back(new Obstacles(state));
+	//}
 	return own;
 }
