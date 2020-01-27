@@ -102,8 +102,7 @@ unique_Base GameScene::Update(unique_Base own)
 				
 				break;
 			}
-		}
-		
+		}	
 	}
 	else
 	{

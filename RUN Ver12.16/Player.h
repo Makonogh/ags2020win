@@ -24,6 +24,6 @@ private:
 	Vector2Dbl plSpeed;		// プレイヤーのスピード
 	Bg bg;
 	void Init(void);
-	bool CheckHit(int lane,Vector2Dbl plPos, Vector2Dbl plSize);
+	bool CheckHit();
 	std::shared_ptr<InputState>_input;
 };

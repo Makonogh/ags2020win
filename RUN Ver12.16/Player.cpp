@@ -73,12 +73,6 @@ void Player::Updata()
 		move(_input, INPUT_ID::DOWN, plSpeed);
 	}
 
-	if (Player::CheckHit(_lane,_pos, _size))
-	{
-
-	}
-
-
 	if ((*_input).state(INPUT_ID::ACTION).first && !(*_input).state(INPUT_ID::ACTION).second)
 	{
 		TRACE("アクション\n");
@@ -175,12 +169,4 @@ void Player::Init(void)
 	SetAnim(STATE::FALL, data);
 
 	_input = std::make_shared<KeyState>();
-}
-
-// プレイヤーと障害物の当たり判定
-bool Player::CheckHit(int lane,Vector2Dbl plPos, Vector2Dbl plSize)
-{
-
-
-	return false;
 }
