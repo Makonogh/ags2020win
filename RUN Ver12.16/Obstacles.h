@@ -35,11 +35,11 @@ public:
 	void Updata() override;
 	~Obstacles();
 	double obsSpeed;
-	double GetSize(OBS_TYPE key);
+	Vector2Dbl GetSize(OBS_TYPE key);
 private:
 	OBS_TYPE _obsType;
 	void Init(void);
-	std::map<OBS_TYPE,double> SizeMap;
+	std::map<OBS_TYPE,Vector2Dbl> SizeMap;
 };
 
 OBS_TYPE begin(OBS_TYPE);

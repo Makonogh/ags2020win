@@ -74,19 +74,20 @@ void Obstacles::Init(void)
 	data.reserve(1);
 	data.emplace_back(IMAGE_ID("è·äQï®")[static_cast<int>(_obsType)], 30);
 
-	SizeMap.insert(std::make_pair(OBS_TYPE::CAR,200.0));
-	SizeMap.insert(std::make_pair(OBS_TYPE::BICYCLE,100.0));
-	SizeMap.insert(std::make_pair(OBS_TYPE::BANANA,60.0));
-	SizeMap.insert(std::make_pair(OBS_TYPE::CONE,60.0));
-	SizeMap.insert(std::make_pair(OBS_TYPE::CAN,60.0));
-	SizeMap.insert(std::make_pair(OBS_TYPE::PUDDLE,200.0));
+	SizeMap[OBS_TYPE::CAR] = { 200.0,50.0 };
+	SizeMap[OBS_TYPE::BICYCLE] = { 200.0,50.0 };
+	SizeMap[OBS_TYPE::BANANA] = { 200.0,50.0 };
+	SizeMap[OBS_TYPE::CONE] = { 200.0,50.0 };
+	SizeMap[OBS_TYPE::CAN] = { 200.0,50.0 };
+	SizeMap[OBS_TYPE::PUDDLE] = { 200.0,50.0 };
+
 
 	SetAnim(STATE::NORMAL, data);
 }
 
-double Obstacles::GetSize(OBS_TYPE key)
+Vector2Dbl Obstacles::GetSize(OBS_TYPE key)
 {
-	double size;
+	Vector2Dbl size;
 	size = SizeMap.at(key);
 	return size;
 }
