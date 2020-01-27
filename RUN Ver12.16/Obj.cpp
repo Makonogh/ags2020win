@@ -6,6 +6,8 @@ Obj::Obj()
 {
 	_animFrame = 0;
 	_animCount = 0;
+
+	_judge = false;
 }
 
 void Obj::Draw(int id)

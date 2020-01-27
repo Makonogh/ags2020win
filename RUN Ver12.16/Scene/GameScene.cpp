@@ -71,8 +71,8 @@ unique_Base GameScene::Update(unique_Base own)
 		{
 			(*data).Updata();
 
-			//auto itr = std::remove_if(_objList.begin(), _objList.end(), [](sharedObj& obj) {return obj. });
-			//_objList.erase(itr, _objList.end());
+			auto itr = std::remove_if(_objList.begin(), _objList.end(), [](sharedObj& obj) {return obj->isJudge(); });
+			_objList.erase(itr, _objList.end());
 
 		
 

@@ -60,6 +60,11 @@ void Obstacles::Updata()
 	}
 
 	_zOrder = static_cast<int>(_pos.y);
+
+	if (_pos.x <= -300)
+	{
+		_judge = true;
+	}
 }
 
 Obstacles::~Obstacles()
