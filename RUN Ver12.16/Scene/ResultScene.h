@@ -10,6 +10,8 @@ public:
 	~ResultScene();
 	unique_Base Update(unique_Base);
 private:
+	void Init(void);
+	int tmpScore[SCR_MAX];
 	std::vector<sharedBG> _bgList;
 };
 
