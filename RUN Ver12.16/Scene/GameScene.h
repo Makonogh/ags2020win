@@ -12,8 +12,6 @@ public:
 	GameScene();
 	~GameScene();
 	unique_Base Update(unique_Base);
-
-	
 private:
 	int tmpTime;
 	std::vector<sharedObj> _objList;
