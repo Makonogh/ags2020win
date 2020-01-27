@@ -79,7 +79,7 @@ unique_Base GameScene::Update(unique_Base own)
 
 		if (_objList.size() <= 5)
 		{
-			ObsState state = { static_cast<OBS_TYPE>(rand() % static_cast<int>(OBS_STATE::MAX)),{ lpSceneMng.ScreenSize.x + static_cast<double>(rand() % 100), LIMIT_UP + static_cast<double>(((rand() % 2) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0))) } };
+			ObsState state = { static_cast<OBS_TYPE>(rand() % static_cast<int>(OBS_STATE::MAX)),{ lpSceneMng.ScreenSize.x + static_cast<double>(rand() % 100), LIMIT_UP + static_cast<double>(((rand() % 3) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0))) } };
 			_objList.emplace_back(new Obstacles(state));
 		}
 	
