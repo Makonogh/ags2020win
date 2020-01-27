@@ -86,7 +86,7 @@ unique_Base GameScene::Update(unique_Base own)
 
 
 		lpSceneMng.score += static_cast<double>(lpSceneMng.bgSpeed) / 150;
-		TRACE("%d\n", lpSceneMng.bgSpeed);
+		//TRACE("%d\n", lpSceneMng.bgSpeed);
 
 		for (auto data : _bgList)
 		{

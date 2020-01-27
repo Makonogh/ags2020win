@@ -90,6 +90,21 @@ void Obstacles::Init(void)
 	SetAnim(STATE::NORMAL, data);
 }
 
+// “–‚½‚è”»’è
+//void Obstacles::CheckHit(void)
+//{
+//	TRACE("%d\n", pl._pos.y);
+//
+//	if (_pos.y == pl._pos.y)
+//	{
+//		if (abs(_pos.x - pl._pos.x) <= (_size.x + pl._size.x) / 2)
+//		{
+//			pl.state(STATE::FALL);
+//			pl.PlayerCount = -70;
+//		}
+//	}
+//}
+
 Vector2Dbl Obstacles::GetSize(OBS_TYPE key)
 {
 	Vector2Dbl size;

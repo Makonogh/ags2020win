@@ -51,6 +51,7 @@ public:
 	bool SetAnim(const STATE state, AnimVector& data);	// アニメーションのセット
 	//bool isAnimEnd(void);								// アニメーションが終了しているかの情報取得
 	Vector2Dbl _pos;									// 座標
+	Vector2Dbl _size;									// サイズ
 	STATE _state;
 
 	bool isJudge(void) { return _judge; }					// 死亡しているかの情報取得
@@ -58,7 +59,6 @@ private:
 	std::map<STATE, AnimVector>_animMap;
 protected:
 	bool _judge;
-	Vector2Dbl _size;									// サイズ
 	int _lane;
 	int _zOrder;										// 描画優先度
 	OBJ_ID _objID;
