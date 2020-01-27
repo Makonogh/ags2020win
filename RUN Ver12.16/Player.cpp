@@ -55,22 +55,24 @@ void Player::Updata()
 		}
 	};
 
-
-	// ãˆÚ“®
-	if ((*_input).state(INPUT_ID::UP).first && !(*_input).state(INPUT_ID::UP).second)
+	if (_state == STATE::NORMAL)
 	{
-		if (!(*_input).state(INPUT_ID::DOWN).first)
+		// ãˆÚ“®
+		if ((*_input).state(INPUT_ID::UP).first && !(*_input).state(INPUT_ID::UP).second)
 		{
-			plSpeed = { 0.0,-moveLane };
-			move(_input, INPUT_ID::UP, plSpeed);
+			if (!(*_input).state(INPUT_ID::DOWN).first)
+			{
+				plSpeed = { 0.0,-moveLane };
+				move(_input, INPUT_ID::UP, plSpeed);
+			}
 		}
-	}
 
-	// ‰ºˆÚ“®
-	if ((*_input).state(INPUT_ID::DOWN).first && !(*_input).state(INPUT_ID::DOWN).second)
-	{
-		plSpeed = { 0.0,moveLane };
-		move(_input, INPUT_ID::DOWN, plSpeed);
+		// ‰ºˆÚ“®
+		if ((*_input).state(INPUT_ID::DOWN).first && !(*_input).state(INPUT_ID::DOWN).second)
+		{
+			plSpeed = { 0.0,moveLane };
+			move(_input, INPUT_ID::DOWN, plSpeed);
+		}
 	}
 
 	if ((*_input).state(INPUT_ID::ACTION).first && !(*_input).state(INPUT_ID::ACTION).second)
@@ -78,8 +80,6 @@ void Player::Updata()
 		TRACE("ƒAƒNƒVƒ‡ƒ“\n");
 		_animCount = 0;
 		_animFrame = 0;
-		PlayerCount = -75;
-		
 		state(STATE::JUMP);
 	}
 
@@ -91,11 +91,6 @@ void Player::Updata()
 
 		state(STATE::FALL);
 		PlayerCount = -70;
-	}
-
-	if (PlayerCount >= 0)
-	{
-		state(STATE::NORMAL);
 	}
 
 	_zOrder = static_cast<int>(_pos.y + 1);
@@ -110,6 +105,7 @@ void Player::Updata()
 		{
 		case 0:
 			lpSceneMng.bgSpeed = DFBG_SPEED;
+			state(STATE::NORMAL);
 			break;
 		case 180:
 			lpSceneMng.bgSpeed = 8;
