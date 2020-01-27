@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <vector>
 #include "Bg.h"
 
 #define SCR_MAX 5
@@ -15,7 +16,8 @@ public:
 	virtual ~BaseScene();
 	virtual unique_Base Update(unique_Base) = 0;
 	int SceneCount;
+	static std::vector<double> highScore;
+
 protected:
-	double score[SCR_MAX];
 	Bg bg;
 };

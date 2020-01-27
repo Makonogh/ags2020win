@@ -2,8 +2,10 @@
 #include "Scene\TitleScene.h"
 #include "DxLib.h"
 #include "SceneMng.h"
+#include <vector>
 #include "common/ImgMng.h"
 #include "bg/ResultBg.h"
+#include <_debug/_DebugConOut.h>
 
 ResultScene::ResultScene()
 {
@@ -22,7 +24,6 @@ ResultScene::~ResultScene()
 
 unique_Base ResultScene::Update(unique_Base own)
 {
-
 	if (lpSceneMng.Return && !lpSceneMng.OldReturn)
 	{
 		return std::make_unique<TitleScene>();
@@ -38,7 +39,7 @@ unique_Base ResultScene::Update(unique_Base own)
 	// スコアの表示
 	for (int k = 0; k < SCR_MAX; k++)
 	{
-		tmpScore[k] = static_cast<int> (score[k]);
+		tmpScore[k] = static_cast<int> (highScore[k]);
 
 		lpSceneMng.AddDrawQue({ IMAGE_ID("ｽｺｱ")[tmpScore[k] % 10],730.0,270.0 + (60.0 * k),0.0,INT_MAX, LAYER::UI });
 		tmpScore[k] /= 10;
@@ -54,15 +55,16 @@ unique_Base ResultScene::Update(unique_Base own)
 
 void ResultScene::Init(void)
 {
+	TRACE("%d\n", static_cast<int>(lpSceneMng.score));
 	for (int i = 0; i < SCR_MAX; i++)
 	{
-		if (score[i] < lpSceneMng.score)
+		if (highScore[i] < lpSceneMng.score)
 		{
 			for (int j = SCR_MAX - 2; j >= i; j--)
 			{
-				score[j + 1] = score[j];
+				highScore[j + 1] = highScore[j];
 			}
-			score[i] = lpSceneMng.score;
+			highScore[i] = lpSceneMng.score;
 			break;
 		}
 	}
@@ -70,8 +72,8 @@ void ResultScene::Init(void)
 	FILE* fp = NULL;
 	if (fopen_s(&fp, "scr.dat", "wb") == 0)
 	{
-		fwrite(&score[0],
-			sizeof(score[0]),
+		fwrite(&highScore[0],
+			sizeof(highScore[0]),
 			SCR_MAX,
 			fp);
 		fclose(fp);

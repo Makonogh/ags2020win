@@ -47,13 +47,14 @@ void TitleScene::Init(void)
 	{
 		for (int i = 0; i < SCR_MAX; i++)
 		{
-			score[i] = 0.0;
+			highScore = { 0.0, 0.0, 0.0, 0.0, 0.0 };
 		}
 	}
 	else
 	{
-		fread(&score[0],
-			sizeof(score[0]),
+		highScore.resize(5);
+		fread(&highScore[0],
+			sizeof(highScore[0]),
 			SCR_MAX,
 			fp);
 		fclose(fp);
