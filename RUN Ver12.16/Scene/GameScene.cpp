@@ -77,13 +77,12 @@ unique_Base GameScene::Update(unique_Base own)
 			_objList.erase(itr, _objList.end());
 		}
 
-		if (_objList.size() <= 5)
+		if (_objList.size() <= 5 && ObsCount >= 60)
 		{
+			ObsCount = 0;
 			ObsState state = { static_cast<OBS_TYPE>(rand() % static_cast<int>(OBS_TYPE::MAX)),{ lpSceneMng.ScreenSize.x + static_cast<double>(rand() % 100), LIMIT_UP + static_cast<double>(((rand() % 3) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0))) } };
 			_objList.emplace_back(new Obstacles(state));
 		}
-	
-
 
 		lpSceneMng.score += static_cast<double>(lpSceneMng.bgSpeed) / 150;
 		//TRACE("%d\n", lpSceneMng.bgSpeed);
@@ -121,7 +120,7 @@ unique_Base GameScene::Update(unique_Base own)
 
 	lpSceneMng.AddDrawQue({ IMAGE_ID("UI")[0],UICenter.x,UICenter.y,0.0,INT_MAX, LAYER::UI });
 
-	SceneCount++;
+	
 
 	lpSceneMng.tmpScore = static_cast<int> (lpSceneMng.score);
 	tmpTime = abs(SceneCount - 10800 - 120) / 60;
@@ -157,5 +156,8 @@ unique_Base GameScene::Update(unique_Base own)
 	//	ObsState state = { static_cast<OBS_TYPE>(rand() % static_cast<int>(OBS_TYPE::MAX)),{ lpSceneMng.ScreenSize.x + static_cast<double>(rand() % 100), LIMIT_UP + static_cast<double>(((rand() % 3) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0))) }};
 	//	_objList.emplace_back(new Obstacles(state));
 	//}
+
+	SceneCount++;
+	ObsCount += lpSceneMng.bgSpeed / 4;
 	return own;
 }
