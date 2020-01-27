@@ -79,7 +79,7 @@ unique_Base GameScene::Update(unique_Base own)
 
 		if (_objList.size() <= 5)
 		{
-			ObsState state = { static_cast<OBS_TYPE>(rand() % static_cast<int>(OBS_STATE::MAX)),{ lpSceneMng.ScreenSize.x + static_cast<double>(rand() % 100), LIMIT_UP + static_cast<double>(((rand() % 3) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0))) } };
+			ObsState state = { static_cast<OBS_TYPE>(rand() % static_cast<int>(OBS_TYPE::MAX)),{ lpSceneMng.ScreenSize.x + static_cast<double>(rand() % 100), LIMIT_UP + static_cast<double>(((rand() % 3) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0))) } };
 			_objList.emplace_back(new Obstacles(state));
 		}
 	
@@ -98,7 +98,7 @@ unique_Base GameScene::Update(unique_Base own)
 			if ((*data)._pos.x <= -320)
 			{
 				_bgList.erase(_bgList.begin());
-				_bgList.emplace_back(new GameBg({ static_cast<GAME_TYPE>(rand() % 16),{ 1600.0,288.0 },{ 640,576 } }));
+				_bgList.emplace_back(new GameBg({ static_cast<GAME_TYPE>(rand() % 16),{(*_bgList.back())._pos.x + 640,288.0 },{ 640,576 } }));
 				
 				break;
 			}
