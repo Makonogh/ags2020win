@@ -11,8 +11,7 @@ ResultScene::ResultScene()
 	lpImgMng.GetID("ﾘｻﾞﾙﾄｽｺｱ", "image/Result_Score.png");
 	SceneCount = 0;
 	_bgList.emplace_back(new ResultBg({ RESULT_TYPE::BG ,{ 640.0,288.0 },lpSceneMng.ScreenSize }));
-	_bgList.emplace_back(new ResultBg({ RESULT_TYPE::SCORE,{640.0,360.0}, lpSceneMng.ScreenSize
-}));
+	_bgList.emplace_back(new ResultBg({ RESULT_TYPE::SCORE,{640.0,360.0}, lpSceneMng.ScreenSize}));
 	Init();
 }
 
@@ -36,11 +35,6 @@ unique_Base ResultScene::Update(unique_Base own)
 
 	SceneCount++;
 
-	for (int i = 0; i < SCR_MAX; i++)
-	{
-		DrawFormatString(320, 16 + i * 16, 0xffffff, "%d:%d", i + 1, score[i]);
-	}
-
 	// スコアの表示
 	for (int k = 0; k < SCR_MAX; k++)
 	{
@@ -55,7 +49,6 @@ unique_Base ResultScene::Update(unique_Base own)
 			tmpScore[k] /= 10;
 		}
 	}
-
 	return std::move(own);
 }
 
