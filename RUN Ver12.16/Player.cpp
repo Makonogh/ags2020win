@@ -19,7 +19,7 @@ Player::Player(Vector2Dbl pos, Vector2Dbl size)
 	Init();
 }
 
-void Player::Updata()
+void Player::Updata(std::vector<sharedObj> list)
 {
 	PlayerCount++;
 	double moveLane = (LIMIT_DOWN - LIMIT_UP) / 2.0;
@@ -75,23 +75,23 @@ void Player::Updata()
 		}
 	}
 
-	if ((*_input).state(INPUT_ID::ACTION).first && !(*_input).state(INPUT_ID::ACTION).second)
-	{
-		TRACE("アクション\n");
-		_animCount = 0;
-		_animFrame = 0;
-		state(STATE::JUMP);
-	}
+	//if ((*_input).state(INPUT_ID::ACTION).first && !(*_input).state(INPUT_ID::ACTION).second)
+	//{
+	//	TRACE("アクション\n");
+	//	_animCount = 0;
+	//	_animFrame = 0;
+	//	state(STATE::JUMP);
+	//}
 
-	if ((*_input).state(INPUT_ID::DEBUG).first && !(*_input).state(INPUT_ID::DEBUG).second && PlayerCount >= 0)
-	{
-		TRACE("デバッグ\n");
-		_animCount = 0;
-		_animFrame = 0;
+	//if ((*_input).state(INPUT_ID::DEBUG).first && !(*_input).state(INPUT_ID::DEBUG).second && PlayerCount >= 0)
+	//{
+	//	TRACE("デバッグ\n");
+	//	_animCount = 0;
+	//	_animFrame = 0;
 
-		state(STATE::FALL);
-		PlayerCount = -70;
-	}
+	//	state(STATE::FALL);
+	//	PlayerCount = -70;
+	//}
 
 	_zOrder = static_cast<int>(_pos.y + 1);
 	/*TRACE("%d\n",lpSceneMng.bgSpeed);*/
@@ -128,6 +128,16 @@ void Player::Updata()
 
 Player::~Player()
 {
+}
+
+Vector2Dbl Player::GetPos(void)
+{
+	return _pos;
+}
+
+Vector2Dbl Player::GetSize(void)
+{
+	return _size;
 }
 
 // プレイヤーのイニシャライズ

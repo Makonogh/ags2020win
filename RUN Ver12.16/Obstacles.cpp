@@ -1,8 +1,10 @@
 #include "Obstacles.h"
 #include <common/ImgMng.h>
+#include <_debug/_DebugConOut.h>
 
 Obstacles::Obstacles()
 {
+	
 	Init();
 }
 
@@ -15,8 +17,9 @@ Obstacles::Obstacles(ObsState & state)
 	Init();
 }
 
-void Obstacles::Updata()
+void Obstacles::Updata(std::vector<sharedObj> list)
 {
+	
 	_pos.x -= obsSpeed;
 	_lane = ((static_cast<int>(_pos.y - 360.0) % 3) + 1);
 	switch (_obsType)
@@ -59,6 +62,8 @@ void Obstacles::Updata()
 		break;
 	}
 
+	CheckHit(list.front());
+
 	_zOrder = static_cast<int>(_pos.y);
 
 	if (_pos.x <= -300)
@@ -90,20 +95,27 @@ void Obstacles::Init(void)
 	SetAnim(STATE::NORMAL, data);
 }
 
-// “–‚½‚è”»’è
-//void Obstacles::CheckHit(void)
-//{
-//	TRACE("%d\n", pl._pos.y);
-//
-//	if (_pos.y == pl._pos.y)
-//	{
-//		if (abs(_pos.x - pl._pos.x) <= (_size.x + pl._size.x) / 2)
-//		{
-//			pl.state(STATE::FALL);
-//			pl.PlayerCount = -70;
-//		}
-//	}
-//}
+
+void Obstacles::CheckHit(sharedObj pl)
+{
+	Vector2Dbl plPos = (*pl)._pos;
+	Vector2Dbl plSize = (*pl)._size;
+
+	TRACE("%d\n", static_cast<int> ((*pl).PlayerCount));
+
+	if (_pos.y == plPos.y)
+	{
+		if (abs(_pos.x - plPos.x) <= (_size.x + plSize.x) / 2)
+		{
+			(*pl).PlayerCount = -70;
+			(*pl)._animFrame = 0;
+			(*pl)._animCount = 0;
+			(*pl).state(STATE::FALL);
+			_judge = true;
+			TRACE("%d\n", static_cast<int>(plPos.y));
+		}
+	}
+}
 
 Vector2Dbl Obstacles::GetSize(OBS_TYPE key)
 {
