@@ -17,9 +17,8 @@ class Player :
 public:
 	Player();
 	Player(Vector2Dbl pos, Vector2Dbl size);
-	void Updata(std::vector<sharedObj> list) override;
+	void Updata(sharedObj& list) override;
 	~Player();
-	int PlayerCount;
 	Vector2Dbl GetPos(void);
 	Vector2Dbl GetSize(void);
 private:

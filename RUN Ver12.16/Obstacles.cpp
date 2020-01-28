@@ -17,7 +17,7 @@ Obstacles::Obstacles(ObsState & state)
 	Init();
 }
 
-void Obstacles::Updata(std::vector<sharedObj> list)
+void Obstacles::Updata(sharedObj& list)
 {
 	
 	_pos.x -= obsSpeed;
@@ -62,7 +62,7 @@ void Obstacles::Updata(std::vector<sharedObj> list)
 		break;
 	}
 
-	CheckHit(list.front());
+	CheckHit(list);
 
 	_zOrder = static_cast<int>(_pos.y);
 
@@ -96,12 +96,12 @@ void Obstacles::Init(void)
 }
 
 
-void Obstacles::CheckHit(sharedObj pl)
+void Obstacles::CheckHit(sharedObj& pl)
 {
 	Vector2Dbl plPos = (*pl)._pos;
 	Vector2Dbl plSize = (*pl)._size;
-
-	TRACE("%d\n", static_cast<int> ((*pl).PlayerCount));
+	
+	TRACE("%d\n", pl->PlayerCount);
 
 	if (_pos.y == plPos.y)
 	{

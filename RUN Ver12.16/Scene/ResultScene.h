@@ -11,6 +11,7 @@ public:
 	unique_Base Update(unique_Base);
 private:
 	void Init(void);
+	int _score;
 	int tmpScore[SCR_MAX];
 	std::vector<sharedBG> _bgList;
 };

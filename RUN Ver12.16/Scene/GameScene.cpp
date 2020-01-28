@@ -69,7 +69,7 @@ unique_Base GameScene::Update(unique_Base own)
 	{
 		for (auto data : _objList)
 		{
-			(*data).Updata(_objList);
+			(*data).Updata(_objList.front());
 		}
 		for (auto data : _objList)
 		{

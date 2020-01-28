@@ -36,7 +36,7 @@ public:
 	Obstacles();
 	Obstacles(ObsState& state);
 	const OBS_TYPE& type() { return _obsType; }
-	void Updata(std::vector<sharedObj> list) override;
+	void Updata(sharedObj& list) override;
 	~Obstacles();
 	double obsSpeed;
 	Vector2Dbl GetSize(OBS_TYPE key);
@@ -44,7 +44,7 @@ public:
 private:
 	OBS_TYPE _obsType;
 	void Init(void);
-	void CheckHit(sharedObj);
+	void CheckHit(sharedObj& pl);
 	std::map<OBS_TYPE,Vector2Dbl> SizeMap;
 	
 };

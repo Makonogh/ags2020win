@@ -36,6 +36,17 @@ unique_Base ResultScene::Update(unique_Base own)
 	SceneCount++;
 
 	 //スコアの表示
+	_score = lpSceneMng.score;
+	lpSceneMng.AddDrawQue({ IMAGE_ID("ﾘｻﾞﾙﾄｽｺｱ")[_score % 10],450.0,210.0,0.0,INT_MAX, LAYER::SYSTEM });
+	_score /= 10;
+
+	for (int i = 0; i < 3; i++)
+	{
+		lpSceneMng.AddDrawQue({ IMAGE_ID("ﾘｻﾞﾙﾄｽｺｱ")[_score % 10],330.0 - (60.0 * i),210.0,0.0,INT_MAX, LAYER::SYSTEM });
+		_score /= 10;
+	}
+
+
 	for (int k = 0; k < SCR_MAX; k++)
 	{
 		tmpScore[k] = static_cast<int> (highScore[k]);

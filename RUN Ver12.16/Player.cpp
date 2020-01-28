@@ -19,7 +19,7 @@ Player::Player(Vector2Dbl pos, Vector2Dbl size)
 	Init();
 }
 
-void Player::Updata(std::vector<sharedObj> list)
+void Player::Updata(sharedObj& list)
 {
 	PlayerCount++;
 	double moveLane = (LIMIT_DOWN - LIMIT_UP) / 2.0;
@@ -93,6 +93,11 @@ void Player::Updata(std::vector<sharedObj> list)
 	//	PlayerCount = -70;
 	//}
 
+	if (PlayerCount >= 0)
+	{
+		state(STATE::NORMAL);
+	}
+
 	_zOrder = static_cast<int>(_pos.y + 1);
 	/*TRACE("%d\n",lpSceneMng.bgSpeed);*/
 	if (_state == STATE::FALL)
@@ -105,7 +110,6 @@ void Player::Updata(std::vector<sharedObj> list)
 		{
 		case 0:
 			lpSceneMng.bgSpeed = DFBG_SPEED;
-			state(STATE::NORMAL);
 			break;
 		case 180:
 			lpSceneMng.bgSpeed = 8;

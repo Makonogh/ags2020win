@@ -37,7 +37,7 @@ class Obj
 {
 public:
 	Obj();
-	virtual void Updata(std::vector<sharedObj> list);
+	virtual void Updata(sharedObj& list);
 	void Draw(void);
 	void Draw(int id);
 	virtual ~Obj();
