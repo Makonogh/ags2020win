@@ -37,7 +37,7 @@ class Obj
 {
 public:
 	Obj();
-	virtual void Updata();
+	virtual void Updata(std::vector<sharedObj> list);
 	void Draw(void);
 	void Draw(int id);
 	virtual ~Obj();
@@ -53,8 +53,10 @@ public:
 	Vector2Dbl _pos;									// 座標
 	Vector2Dbl _size;									// サイズ
 	STATE _state;
-
+	int PlayerCount;
 	bool isJudge(void) { return _judge; }					// 死亡しているかの情報取得
+	unsigned int _animCount;							// 見出しから何回ﾙｰﾌﾟしてるか
+	unsigned int _animFrame;							// なんﾌﾚｰﾑか
 private:
 	std::map<STATE, AnimVector>_animMap;
 protected:
@@ -63,6 +65,5 @@ protected:
 	int _zOrder;										// 描画優先度
 	OBJ_ID _objID;
 	Bg bg;
-	unsigned int _animCount;							// 見出しから何回ﾙｰﾌﾟしてるか
-	unsigned int _animFrame;							// なんﾌﾚｰﾑか
+
 };
