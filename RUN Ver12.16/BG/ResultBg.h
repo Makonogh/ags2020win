@@ -6,7 +6,6 @@
 enum class RESULT_TYPE
 {
 	BG,
-	SCORE,
 	MAX,
 };
 
