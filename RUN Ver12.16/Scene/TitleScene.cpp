@@ -52,7 +52,7 @@ void TitleScene::Init(void)
 	}
 	else
 	{
-		highScore.resize(5);
+		highScore.resize(SCR_MAX);
 		fread(&highScore[0],
 			sizeof(highScore[0]),
 			SCR_MAX,

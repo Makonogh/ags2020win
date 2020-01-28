@@ -3,7 +3,7 @@
 #include <vector>
 #include "Bg.h"
 
-#define SCR_MAX 5
+#define SCR_MAX 3
 
 class BaseScene;
 

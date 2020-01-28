@@ -9,11 +9,10 @@
 
 ResultScene::ResultScene()
 {
-	lpImgMng.GetID("Ø»ÞÙÄ”wŒi", "image/Result_Test.png");
-	lpImgMng.GetID("Ø»ÞÙÄ½º±", "image/Result_Score.png");
+	lpImgMng.GetID("Ø»ÞÙÄ”wŒi", "image/Result.png");
+	lpImgMng.GetID("Ø»ÞÙÄ½º±", "image/number.png",{ 60, 60 }, { 10,1 });
 	SceneCount = 0;
-	_bgList.emplace_back(new ResultBg({ RESULT_TYPE::BG ,{ 640.0,288.0 },lpSceneMng.ScreenSize }));
-	_bgList.emplace_back(new ResultBg({ RESULT_TYPE::SCORE,{640.0,360.0}, lpSceneMng.ScreenSize}));
+	_bgList.emplace_back(new ResultBg({ RESULT_TYPE::BG ,{ 640.0,360.0 },lpSceneMng.ScreenSize }));
 	Init();
 }
 
@@ -37,19 +36,19 @@ unique_Base ResultScene::Update(unique_Base own)
 	SceneCount++;
 
 	// ƒXƒRƒA‚Ì•\Ž¦
-	for (int k = 0; k < SCR_MAX; k++)
-	{
-		tmpScore[k] = static_cast<int> (highScore[k]);
+	//for (int k = 0; k < SCR_MAX; k++)
+	//{
+	//	tmpScore[k] = static_cast<int> (highScore[k]);
 
-		lpSceneMng.AddDrawQue({ IMAGE_ID("½º±")[tmpScore[k] % 10],730.0,270.0 + (60.0 * k),0.0,INT_MAX, LAYER::UI });
-		tmpScore[k] /= 10;
+	//	lpSceneMng.AddDrawQue({ IMAGE_ID("Ø»ÞÙÄ½º±")[tmpScore[k] % 10],990.0,150.0 + (60.0 * k),0.0,INT_MAX, LAYER::SYSTEM });
+	//	tmpScore[k] /= 10;
 
-		for (int i = 0; i < 3; i++)
-		{
-			lpSceneMng.AddDrawQue({ IMAGE_ID("½º±")[tmpScore[k] % 10],610.0 - (60.0 * i),270.0 + (60.0 * k),0.0,INT_MAX, LAYER::UI });
-			tmpScore[k] /= 10;
-		}
-	}
+	//	for (int i = 0; i < 3; i++)
+	//	{
+	//		lpSceneMng.AddDrawQue({ IMAGE_ID("Ø»ÞÙÄ½º±")[tmpScore[k] % 10],870.0 - (60.0 * i),150.0 + (60.0 * k),0.0,INT_MAX, LAYER::SYSTEM });
+	//		tmpScore[k] /= 10;
+	//	}
+	//}
 	return std::move(own);
 }
 
