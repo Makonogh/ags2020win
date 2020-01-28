@@ -35,20 +35,20 @@ unique_Base ResultScene::Update(unique_Base own)
 
 	SceneCount++;
 
-	// スコアの表示
-	//for (int k = 0; k < SCR_MAX; k++)
-	//{
-	//	tmpScore[k] = static_cast<int> (highScore[k]);
+	 //スコアの表示
+	for (int k = 0; k < SCR_MAX; k++)
+	{
+		tmpScore[k] = static_cast<int> (highScore[k]);
 
-	//	lpSceneMng.AddDrawQue({ IMAGE_ID("ﾘｻﾞﾙﾄｽｺｱ")[tmpScore[k] % 10],990.0,150.0 + (60.0 * k),0.0,INT_MAX, LAYER::SYSTEM });
-	//	tmpScore[k] /= 10;
+		lpSceneMng.AddDrawQue({ IMAGE_ID("ﾘｻﾞﾙﾄｽｺｱ")[tmpScore[k] % 10],990.0,150.0 + (60.0 * k),0.0,INT_MAX, LAYER::SYSTEM });
+		tmpScore[k] /= 10;
 
-	//	for (int i = 0; i < 3; i++)
-	//	{
-	//		lpSceneMng.AddDrawQue({ IMAGE_ID("ﾘｻﾞﾙﾄｽｺｱ")[tmpScore[k] % 10],870.0 - (60.0 * i),150.0 + (60.0 * k),0.0,INT_MAX, LAYER::SYSTEM });
-	//		tmpScore[k] /= 10;
-	//	}
-	//}
+		for (int i = 0; i < 3; i++)
+		{
+			lpSceneMng.AddDrawQue({ IMAGE_ID("ﾘｻﾞﾙﾄｽｺｱ")[tmpScore[k] % 10],870.0 - (60.0 * i),150.0 + (60.0 * k),0.0,INT_MAX, LAYER::SYSTEM });
+			tmpScore[k] /= 10;
+		}
+	}
 	return std::move(own);
 }
 
