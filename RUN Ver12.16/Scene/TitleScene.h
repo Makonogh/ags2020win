@@ -14,6 +14,8 @@ public:
 	unique_Base Update(unique_Base);
 private:
 	void Init(void);
+	int ObsCount;
+	std::vector<sharedObj> _objList;
 	std::vector<sharedBG> _bgList;
 };
 

@@ -38,6 +38,7 @@ class Obj
 public:
 	Obj();
 	virtual void Updata(sharedObj& list);
+	virtual void Updata();
 	void Draw(void);
 	void Draw(int id);
 	virtual ~Obj();

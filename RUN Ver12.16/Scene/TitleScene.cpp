@@ -3,6 +3,8 @@
 #include "GameScene.h"
 #include "common/ImgMng.h"
 #include "Bg/TitleBg.h"
+#include "Obstacles.h"
+#include <algorithm>
 
 
 TitleScene::TitleScene()
@@ -43,12 +45,16 @@ TitleScene::TitleScene()
 	lpImgMng.GetID("Ø»ÞÙÄ½º±", "image/number.png", { 60, 60 }, { 10,1 });
 
 	SceneCount = 0;
+	lpSceneMng.bgSpeed = DFBG_SPEED;
 
 	_bgList.emplace_back(new TitleBg({ TITLE_TYPE::BG0,{ 320.0,288.0 },{ 640,576 } }));
 	_bgList.emplace_back(new TitleBg({ TITLE_TYPE::BG1,{ 960.0,288.0 },{ 640,576 } }));
 	_bgList.emplace_back(new TitleBg({ TITLE_TYPE::BG2,{ 1600.0,288.0 },{ 640,576 } }));
-	_bgList.emplace_back(new TitleBg({ TITLE_TYPE::TEXT,{ 640.0,static_cast<double>(lpSceneMng.ScreenSize.y - (lpSceneMng.UISize.y / 2 ))},{600,150} }));
-	_bgList.emplace_back(new TitleBg({ TITLE_TYPE::TITLE ,{ 320.0,172.5 },lpSceneMng.ScreenSize }));
+	for (auto type : OBS_TYPE())
+	{
+		ObsState state = { static_cast<OBS_TYPE>(type),{ 500.0 + 134 * static_cast<double>(type), LIMIT_UP + ((rand() % 3) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0)) } };
+		_objList.emplace_back(new Obstacles(state));
+	}
 	Init();
 }
 
@@ -78,15 +84,42 @@ unique_Base TitleScene::Update(unique_Base own)
 
 			break;
 		}
+	}
 
+	for (auto data : _objList)
+	{
+		(*data).Updata();
+	}
+
+	for (auto data : _objList)
+	{
+		auto itr = std::remove_if(_objList.begin(), _objList.end(), [](sharedObj& obj) {return obj->isJudge(); });
+		_objList.erase(itr, _objList.end());
+	}
+
+
+	if (_objList.size() <= 5 && ObsCount >= 60)
+	{
+		ObsCount = 0;
+		ObsState state = { static_cast<OBS_TYPE>(rand() % static_cast<int>(OBS_TYPE::MAX)),{ lpSceneMng.ScreenSize.x + static_cast<double>(rand() % 100), LIMIT_UP + static_cast<double>(((rand() % 3) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0))) } };
+		_objList.emplace_back(new Obstacles(state));
 	}
 	
+	for (auto data : _objList)
+	{
+		(*data).Draw();
+	}
+
 	for (auto data : _bgList)
 	{
 		(*data).Draw();
 	}
 
+	lpSceneMng.AddDrawQue({ IMAGE_ID("À²ÄÙÃ·½Ä")[0],640.0,static_cast<double>(lpSceneMng.ScreenSize.y - (lpSceneMng.UISize.y / 2)),0.0,INT_MAX,LAYER::UI });
+	lpSceneMng.AddDrawQue({ IMAGE_ID("À²ÄÙ")[0], 320.0,172.5,0.0,INT_MAX,LAYER::UI });
+
 	SceneCount++;
+	ObsCount++;
 	
 	return std::move(own);
 }
