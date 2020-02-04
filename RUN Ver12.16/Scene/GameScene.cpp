@@ -133,6 +133,6 @@ unique_Base GameScene::Update(unique_Base own)
 	//}
 
 	SceneCount++;
-	ObsCount += lpSceneMng.bgSpeed / 4;
+	ObsCount += static_cast<int>(lpSceneMng.bgSpeed / 4);
 	return own;
 }
