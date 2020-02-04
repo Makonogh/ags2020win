@@ -6,6 +6,7 @@
 enum class RESULT_TYPE
 {
 	BG,
+	TEXT,
 	MAX,
 };
 
