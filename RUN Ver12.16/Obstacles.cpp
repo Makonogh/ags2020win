@@ -25,7 +25,7 @@ void Obstacles::Updata(sharedObj& list)
 	switch (_obsType)
 	{
 	case OBS_TYPE::CAR:
-		if (lpSceneMng.bgSpeed >= 1)
+		if (lpSceneMng.bgSpeed >= 1.0)
 		{
 			obsSpeed = lpSceneMng.bgSpeed + 3.0;
 		}
@@ -35,7 +35,7 @@ void Obstacles::Updata(sharedObj& list)
 		}
 		break;
 	case OBS_TYPE::BICYCLE:
-		if (lpSceneMng.bgSpeed >= 1)
+		if (lpSceneMng.bgSpeed >= 1.0)
 		{
 			obsSpeed = lpSceneMng.bgSpeed + 1.0;
 		}
@@ -149,7 +149,7 @@ void Obstacles::CheckHit(sharedObj& pl)
 	Vector2Dbl plPos = (*pl)._pos;
 	Vector2Dbl plSize = (*pl)._size;
 	
-	TRACE("%d\n", pl->PlayerCount);
+	//TRACE("%d\n", pl->PlayerCount);
 
 	double ObsSize = SizeMap[_obsType].x;
 
@@ -162,7 +162,7 @@ void Obstacles::CheckHit(sharedObj& pl)
 			(*pl)._animCount = 0;
 			(*pl).state(STATE::FALL);
 			_judge = true;
-			TRACE("%d\n", static_cast<int>(plPos.y));
+			//TRACE("%d\n", static_cast<int>(plPos.y));
 		}
 	}
 }

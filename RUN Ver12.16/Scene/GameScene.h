@@ -3,7 +3,7 @@
 #include "Obj.h"
 #include <vector>
 
-#define DFBG_SPEED 4
+#define DFBG_SPEED 4.0
 
 class GameScene :
 	public BaseScene
