@@ -102,29 +102,34 @@ void Player::Updata(sharedObj& list)
 	/*TRACE("%d\n",lpSceneMng.bgSpeed);*/
 	if (_state == STATE::FALL)
 	{
-		lpSceneMng.bgSpeed = 0;
+		lpSceneMng.bgSpeed = 0.0;
 	}
 	else
 	{
-		switch (PlayerCount)
+		//switch (PlayerCount)
+		//{
+		//case 0:
+		//	lpSceneMng.bgSpeed = DFBG_SPEED;
+		//	break;
+		//case 180:
+		//	lpSceneMng.bgSpeed = DFBG_SPEED * 1.5;
+		//	break;
+		//case 360:
+		//	lpSceneMng.bgSpeed = DFBG_SPEED * 2;
+		//	break;
+		//case 540:
+		//	lpSceneMng.bgSpeed = DFBG_SPEED * 2.5;
+		//	break;
+		//case 800:
+		//	lpSceneMng.bgSpeed = DFBG_SPEED * 3;
+		//	break;
+		//default:
+		//	break;
+		//}
+		lpSceneMng.bgSpeed = DFBG_SPEED + (PlayerCount / 300);
+		if (lpSceneMng.bgSpeed >= 20.0)
 		{
-		case 0:
-			lpSceneMng.bgSpeed = DFBG_SPEED;
-			break;
-		case 180:
-			lpSceneMng.bgSpeed = 8;
-			break;
-		case 360:
-			lpSceneMng.bgSpeed = 10;
-			break;
-		case 540:
-			lpSceneMng.bgSpeed = 16;
-			break;
-		case 800:
-			lpSceneMng.bgSpeed = 20;
-			break;
-		default:
-			break;
+			lpSceneMng.bgSpeed = 20.0;
 		}
 	}
 }
