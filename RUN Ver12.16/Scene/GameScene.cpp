@@ -61,7 +61,7 @@ unique_Base GameScene::Update(unique_Base own)
 			_objList.emplace_back(new Obstacles(state));
 		}
 
-		lpSceneMng.score += (static_cast<double>(lpSceneMng.bgSpeed) / 150) * 11.01514734;
+		lpSceneMng.score += (static_cast<double>(lpSceneMng.bgSpeed) / 150) * 14.52589;
 		//TRACE("%d\n", lpSceneMng.bgSpeed);
 
 		for (auto data : _bgList)
@@ -97,7 +97,6 @@ unique_Base GameScene::Update(unique_Base own)
 
 	lpSceneMng.AddDrawQue({ IMAGE_ID("UI")[0],UICenter.x,UICenter.y,0.0,INT_MAX, LAYER::UI });
 
-	lpSceneMng.tmpScore = static_cast<int> (lpSceneMng.score);
 	tmpTime = abs(SceneCount - 7200 - 120) / 60;
 	if (tmpTime > 120)
 	{
@@ -110,6 +109,7 @@ unique_Base GameScene::Update(unique_Base own)
 	}
 
 	// スコアの表示
+	lpSceneMng.tmpScore = static_cast<int> (lpSceneMng.score);
 	lpSceneMng.AddDrawQue({ IMAGE_ID("ｽｺｱ")[lpSceneMng.tmpScore % 10],270.05,UICenter.y + 30.0,0.0,INT_MAX, LAYER::UI });
 	lpSceneMng.tmpScore /= 10;
 
