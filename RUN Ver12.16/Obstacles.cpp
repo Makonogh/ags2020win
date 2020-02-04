@@ -13,7 +13,7 @@ Obstacles::Obstacles(ObsState & state)
 	_obsType = std::move(std::get <static_cast<int>(OBS_STATE::TYPE)>(state));
 	_pos = std::move(std::get <static_cast<int>(OBS_STATE::VECTOR)>(state));
 	_objID = OBJ_ID::OBSTACLES;
-
+	
 	Init();
 }
 
@@ -61,6 +61,56 @@ void Obstacles::Updata(sharedObj& list)
 	}
 
 	CheckHit(list);
+
+	_zOrder = static_cast<int>(_pos.y);
+
+	if (_pos.x <= -300)
+	{
+		_judge = true;
+	}
+}
+
+void Obstacles::Updata()
+{
+	_pos.x -= obsSpeed;
+	_lane = ((static_cast<int>(_pos.y - 360.0) % 3) + 1);
+	switch (_obsType)
+	{
+	case OBS_TYPE::CAR:
+		if (lpSceneMng.bgSpeed >= 1)
+		{
+			obsSpeed = lpSceneMng.bgSpeed + 3.0;
+		}
+		else
+		{
+			obsSpeed = 3.0;
+		}
+		break;
+	case OBS_TYPE::BICYCLE:
+		if (lpSceneMng.bgSpeed >= 1)
+		{
+			obsSpeed = lpSceneMng.bgSpeed + 1.0;
+		}
+		else
+		{
+			obsSpeed = 1.0;
+		}
+		break;
+	case OBS_TYPE::BANANA:
+		obsSpeed = lpSceneMng.bgSpeed;
+		break;
+	case OBS_TYPE::CONE:
+		obsSpeed = lpSceneMng.bgSpeed;
+		break;
+	case OBS_TYPE::CAN:
+		obsSpeed = lpSceneMng.bgSpeed;
+		break;
+	case OBS_TYPE::PUDDLE:
+		obsSpeed = lpSceneMng.bgSpeed;
+		break;
+	default:
+		break;
+	}
 
 	_zOrder = static_cast<int>(_pos.y);
 

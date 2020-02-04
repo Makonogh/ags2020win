@@ -26,7 +26,7 @@ GameScene::GameScene()
 	_bgList.emplace_back(new GameBg({ GAME_TYPE::BG1,{ 960.0,288.0 },{ 640,576 } }));
 	_bgList.emplace_back(new GameBg({ GAME_TYPE::BG2,{ 1600.0,288.0 },{ 640,576 } }));
 	SceneCount = 0;
-
+	ObsCount = 0;
 	lpSceneMng.score = 0.0;
 }
 

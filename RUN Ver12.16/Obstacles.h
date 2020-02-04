@@ -37,6 +37,7 @@ public:
 	Obstacles(ObsState& state);
 	const OBS_TYPE& type() { return _obsType; }
 	void Updata(sharedObj& list) override;
+	void Updata() override;
 	~Obstacles();
 	double obsSpeed;
 	Vector2Dbl GetSize(OBS_TYPE key);

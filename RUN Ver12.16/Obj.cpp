@@ -59,6 +59,10 @@ void Obj::Updata(sharedObj&)
 {
 }
 
+void Obj::Updata()
+{
+}
+
 Obj::~Obj()
 {
 }
