@@ -7,7 +7,6 @@
 
 enum class TITLE_TYPE
 {
-	
 	TEXT,
 	BG,
 	TITLE,
