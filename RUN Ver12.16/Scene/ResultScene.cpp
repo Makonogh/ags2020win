@@ -9,9 +9,6 @@
 
 ResultScene::ResultScene()
 {
-	lpImgMng.GetID("Ø»ÞÙÄ”wŒi", "image/Result.png");
-	lpImgMng.GetID("Ø»ÞÙÄÃ·½Ä", "image/ResultText.png");
-	lpImgMng.GetID("Ø»ÞÙÄ½º±", "image/number.png",{ 60, 60 }, { 10,1 });
 	SceneCount = 0;
 	_bgList.emplace_back(new ResultBg({ RESULT_TYPE::BG ,{ 640.0,360.0 },lpSceneMng.ScreenSize }));
 	_bgList.emplace_back(new ResultBg({ RESULT_TYPE::TEXT,{ 640.0,static_cast<double>(lpSceneMng.ScreenCenter.y) },{ 600,150 } }));

@@ -11,30 +11,6 @@
 
 GameScene::GameScene()
 {
-	lpImgMng.GetID("πﬁ∞—îwåi", "image/BGB.png");
-	lpImgMng.GetID("UI", "image/UI2.png");
-	lpImgMng.GetID("è·äQï®", "image/Obj1.png", { 200,200 }, { static_cast<int>(OBS_TYPE::MAX),1 });
-	lpImgMng.GetID("∑¨◊", "image/pl.png", { 100,150 }, { PL_DIV_CNT,1 });
-	lpImgMng.GetID("ºﬁ¨›Ãﬂ", "image/Jump.png", { 160,160 }, { PL_DIV_CNT,1 });
-	lpImgMng.GetID("ì]ì|", "image/FALL.png", { 160,144 }, { PL_DIV_CNT,1 });
-	lpImgMng.GetID("ÇÊÅ[Ç¢", "image/ready.png", { 210,75 }, { 1,2 });
-	lpImgMng.GetID("Ω∫±", "image/num.png", { 60,60 }, { 10,1 });
-	lpImgMng.GetID("πﬁ∞—îwåi0", "image/BGB.png");
-	lpImgMng.GetID("πﬁ∞—îwåi1", "image/BG1.png");
-	lpImgMng.GetID("πﬁ∞—îwåi2", "image/BG2.png");
-	lpImgMng.GetID("πﬁ∞—îwåi3", "image/BG3.png");
-	lpImgMng.GetID("πﬁ∞—îwåi4", "image/BG4.png");
-	lpImgMng.GetID("πﬁ∞—îwåi5", "image/BG5.png");
-	lpImgMng.GetID("πﬁ∞—îwåi6", "image/BG6.png");
-	lpImgMng.GetID("πﬁ∞—îwåi7", "image/BG7.png");
-	lpImgMng.GetID("πﬁ∞—îwåi8", "image/BG8.png");
-	lpImgMng.GetID("πﬁ∞—îwåi9", "image/BG9.png");
-	lpImgMng.GetID("πﬁ∞—îwåi10", "image/BG10.png");
-	lpImgMng.GetID("πﬁ∞—îwåi11", "image/BG11.png");
-	lpImgMng.GetID("πﬁ∞—îwåi12", "image/BG12.png");
-	lpImgMng.GetID("πﬁ∞—îwåi13", "image/BG13.png");
-	lpImgMng.GetID("πﬁ∞—îwåi14", "image/BG14.png");
-	lpImgMng.GetID("πﬁ∞—îwåi15", "image/BG15.png");
 
 	_objList.emplace_back(new Player({ 125.0, (LIMIT_UP + LIMIT_DOWN) / 2.0 }, { 70.0,150.0 }));
 
@@ -71,6 +47,7 @@ unique_Base GameScene::Update(unique_Base own)
 		{
 			(*data).Updata(_objList.front());
 		}
+
 		for (auto data : _objList)
 		{
 			auto itr = std::remove_if(_objList.begin(), _objList.end(), [](sharedObj& obj) {return obj->isJudge(); });
@@ -119,8 +96,6 @@ unique_Base GameScene::Update(unique_Base own)
 	}
 
 	lpSceneMng.AddDrawQue({ IMAGE_ID("UI")[0],UICenter.x,UICenter.y,0.0,INT_MAX, LAYER::UI });
-
-	
 
 	lpSceneMng.tmpScore = static_cast<int> (lpSceneMng.score);
 	tmpTime = abs(SceneCount - 7200 - 120) / 60;

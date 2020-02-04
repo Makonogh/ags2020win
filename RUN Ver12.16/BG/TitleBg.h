@@ -7,8 +7,23 @@
 
 enum class TITLE_TYPE
 {
+	BG0,
+	BG1,
+	BG2,
+	BG3,
+	BG4,
+	BG5,
+	BG6,
+	BG7,
+	BG8,
+	BG9,
+	BG10,
+	BG11,
+	BG12,
+	BG13,
+	BG14,
+	BG15,
 	TEXT,
-	BG,
 	TITLE,
 	MAX,
 };

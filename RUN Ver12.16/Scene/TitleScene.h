@@ -2,6 +2,7 @@
 #include <Scene/BaseScene.h>
 #include <vector>
 #include <Bg.h>
+#include "../Obstacles.h"
 
 
 class TitleScene :
