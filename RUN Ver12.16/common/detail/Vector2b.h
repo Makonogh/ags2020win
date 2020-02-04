@@ -174,7 +174,7 @@ Vector2Template<T> operator+(const Vector2Template<T> & v, T k)
 template<class T>
 Vector2Template<T> operator-(const Vector2Template<T> & v, T k)
 {
-	Vector2Template<T>;
+	Vector2Template<T> vec;
 	vec.x = v.x - k;
 	vec.y = v.y - k;
 
