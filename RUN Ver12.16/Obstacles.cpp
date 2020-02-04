@@ -54,10 +54,8 @@ void Obstacles::Updata(sharedObj& list)
 		obsSpeed = lpSceneMng.bgSpeed;
 		break;
 	case OBS_TYPE::PUDDLE:
-		_size = { 200,0.0 };
 		obsSpeed = lpSceneMng.bgSpeed;
 		break;
-
 	default:
 		break;
 	}
@@ -84,12 +82,12 @@ void Obstacles::Init(void)
 	data.reserve(1);
 	data.emplace_back(IMAGE_ID("è·äQï®")[static_cast<int>(_obsType)], 30);
 
-	SizeMap[OBS_TYPE::CAR] = { 200.0,50.0 };
-	SizeMap[OBS_TYPE::BICYCLE] = { 200.0,50.0 };
-	SizeMap[OBS_TYPE::BANANA] = { 200.0,50.0 };
-	SizeMap[OBS_TYPE::CONE] = { 200.0,50.0 };
-	SizeMap[OBS_TYPE::CAN] = { 200.0,50.0 };
-	SizeMap[OBS_TYPE::PUDDLE] = { 200.0,50.0 };
+	SizeMap[OBS_TYPE::CAR] = { 100.0,50.0 };
+	SizeMap[OBS_TYPE::BICYCLE] = { 40.0,50.0 };
+	SizeMap[OBS_TYPE::BANANA] = { 0.0,50.0 };
+	SizeMap[OBS_TYPE::CONE] = { 5.0,50.0 };
+	SizeMap[OBS_TYPE::CAN] = { 0.0,50.0 };
+	SizeMap[OBS_TYPE::PUDDLE] = { 75.0,50.0 };
 
 
 	SetAnim(STATE::NORMAL, data);
@@ -103,9 +101,11 @@ void Obstacles::CheckHit(sharedObj& pl)
 	
 	TRACE("%d\n", pl->PlayerCount);
 
+	double ObsSize = SizeMap[_obsType].x;
+
 	if (_pos.y == plPos.y)
 	{
-		if (abs(_pos.x - plPos.x) <= (_size.x + plSize.x) / 2)
+		if (abs(_pos.x - plPos.x) <= (ObsSize + plSize.x) / 2)
 		{
 			(*pl).PlayerCount = -70;
 			(*pl)._animFrame = 0;

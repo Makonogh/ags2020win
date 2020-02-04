@@ -84,7 +84,7 @@ unique_Base GameScene::Update(unique_Base own)
 			_objList.emplace_back(new Obstacles(state));
 		}
 
-		lpSceneMng.score += static_cast<double>(lpSceneMng.bgSpeed) / 150;
+		lpSceneMng.score += (static_cast<double>(lpSceneMng.bgSpeed) / 150) * 11.01514734;
 		//TRACE("%d\n", lpSceneMng.bgSpeed);
 
 		for (auto data : _bgList)
@@ -123,10 +123,10 @@ unique_Base GameScene::Update(unique_Base own)
 	
 
 	lpSceneMng.tmpScore = static_cast<int> (lpSceneMng.score);
-	tmpTime = abs(SceneCount - 10800 - 120) / 60;
-	if (tmpTime > 180)
+	tmpTime = abs(SceneCount - 7200 - 120) / 60;
+	if (tmpTime > 120)
 	{
-		tmpTime = 180;
+		tmpTime = 120;
 	}
 
 	if (tmpTime <= 0 || (lpSceneMng.Return && !lpSceneMng.OldReturn))
