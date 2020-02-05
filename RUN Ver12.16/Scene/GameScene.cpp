@@ -125,13 +125,10 @@ unique_Base GameScene::Update(unique_Base own)
 		lpSceneMng.AddDrawQue({ IMAGE_ID("½º±")[tmpTime % 10],1170.0 - (i * 60),UICenter.y + 30.0,0.0,INT_MAX, LAYER::UI });
 		tmpTime /= 10;
 	}
-
-	//if (rand() % 100 == 0)
-	//{
-	//	ObsState state = { static_cast<OBS_TYPE>(rand() % static_cast<int>(OBS_TYPE::MAX)),{ lpSceneMng.ScreenSize.x + static_cast<double>(rand() % 100), LIMIT_UP + static_cast<double>(((rand() % 3) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0))) }};
-	//	_objList.emplace_back(new Obstacles(state));
-	//}
-
+	if (lpSceneMng.bgSpeed >= 14)
+	{
+		lpSceneMng.AddDrawQue({ IMAGE_ID("¹Þ°Ñ´Ìª¸Ä")[(SceneCount / 5) % 4],UICenter.x,lpSceneMng.GameSize.y / 2,0.0,INT_MAX,LAYER::SYSTEM });
+	}
 	SceneCount++;
 	ObsCount += static_cast<int>(lpSceneMng.bgSpeed / 4);
 	return own;
