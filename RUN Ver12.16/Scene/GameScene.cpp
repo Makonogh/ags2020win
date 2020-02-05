@@ -126,11 +126,10 @@ unique_Base GameScene::Update(unique_Base own)
 		tmpTime /= 10;
 	}
 
-	//if (rand() % 100 == 0)
-	//{
-	//	ObsState state = { static_cast<OBS_TYPE>(rand() % static_cast<int>(OBS_TYPE::MAX)),{ lpSceneMng.ScreenSize.x + static_cast<double>(rand() % 100), LIMIT_UP + static_cast<double>(((rand() % 3) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0))) }};
-	//	_objList.emplace_back(new Obstacles(state));
-	//}
+	if (lpSceneMng.bgSpeed >= 14.0)
+	{
+		lpSceneMng.AddDrawQue({ IMAGE_ID("´Ìª¸Ä")[0],lpSceneMng.GameSize.x / 2.0,lpSceneMng.GameSize.y / 2.0,0.0,0, LAYER::CHAR });
+	}
 
 	SceneCount++;
 	ObsCount += static_cast<int>(lpSceneMng.bgSpeed / 4);

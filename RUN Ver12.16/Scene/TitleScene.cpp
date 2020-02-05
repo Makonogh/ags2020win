@@ -15,7 +15,7 @@ TitleScene::TitleScene()
 
 	// πﬁ∞—
 	lpImgMng.GetID("πﬁ∞—îwåi", "image/BGB.png");
-	lpImgMng.GetID("UI", "image/UI2.png");
+	lpImgMng.GetID("UI", "image/UI3.png");
 	lpImgMng.GetID("è·äQï®", "image/Obj1.png", { 200,200 }, { static_cast<int>(OBS_TYPE::MAX),1 });
 	lpImgMng.GetID("∑¨◊", "image/pl.png", { 100,150 }, { PL_DIV_CNT,1 });
 	lpImgMng.GetID("ºﬁ¨›Ãﬂ", "image/Jump.png", { 160,160 }, { PL_DIV_CNT,1 });
@@ -38,6 +38,7 @@ TitleScene::TitleScene()
 	lpImgMng.GetID("πﬁ∞—îwåi13", "image/BG13.png");
 	lpImgMng.GetID("πﬁ∞—îwåi14", "image/BG14.png");
 	lpImgMng.GetID("πﬁ∞—îwåi15", "image/BG15.png");
+	lpImgMng.GetID("¥Ã™∏ƒ", "image/SpeedEffect.png");
 
 	// ÿªﬁŸƒ
 	lpImgMng.GetID("ÿªﬁŸƒîwåi", "image/Result.png");
