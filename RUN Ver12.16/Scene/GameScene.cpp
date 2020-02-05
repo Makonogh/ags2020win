@@ -125,12 +125,19 @@ unique_Base GameScene::Update(unique_Base own)
 		lpSceneMng.AddDrawQue({ IMAGE_ID("½º±")[tmpTime % 10],1170.0 - (i * 60),UICenter.y + 30.0,0.0,INT_MAX, LAYER::UI });
 		tmpTime /= 10;
 	}
+<<<<<<< HEAD
 
 	if (lpSceneMng.bgSpeed >= 14.0)
 	{
 		lpSceneMng.AddDrawQue({ IMAGE_ID("´Ìª¸Ä")[0],lpSceneMng.GameSize.x / 2.0,lpSceneMng.GameSize.y / 2.0,0.0,0, LAYER::CHAR });
 	}
 
+=======
+	if (lpSceneMng.bgSpeed >= 14)
+	{
+		lpSceneMng.AddDrawQue({ IMAGE_ID("¹Þ°Ñ´Ìª¸Ä")[(SceneCount / 5) % 4],UICenter.x,lpSceneMng.GameSize.y / 2,0.0,INT_MAX,LAYER::SYSTEM });
+	}
+>>>>>>> bae936ce12129882c0a001887cae008138ff04fc
 	SceneCount++;
 	ObsCount += static_cast<int>(lpSceneMng.bgSpeed / 4);
 	return own;

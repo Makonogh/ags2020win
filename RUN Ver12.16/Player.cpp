@@ -16,12 +16,14 @@ Player::Player(Vector2Dbl pos, Vector2Dbl size)
 	_size = size;
 	_objID = OBJ_ID::PLAYER;
 	PlayerCount = 0;
+	aliveCount;
 	Init();
 }
 
 void Player::Updata(sharedObj& list)
 {
 	PlayerCount++;
+	aliveCount++;
 	double moveLane = (LIMIT_DOWN - LIMIT_UP) / 2.0;
 
 	_lane = ((static_cast<int>(_pos.y - 360.0) % 3) + 1);
@@ -75,13 +77,17 @@ void Player::Updata(sharedObj& list)
 		}
 	}
 
-	//if ((*_input).state(INPUT_ID::ACTION).first && !(*_input).state(INPUT_ID::ACTION).second)
-	//{
-	//	TRACE("アクション\n");
-	//	_animCount = 0;
-	//	_animFrame = 0;
-	//	state(STATE::JUMP);
-	//}
+	if ((*_input).state(INPUT_ID::ACTION).first && !(*_input).state(INPUT_ID::ACTION).second)
+	{
+		if (_state == STATE::NORMAL)
+		{
+			TRACE("アクション\n");
+			_animCount = 0;
+			_animFrame = 0;
+			PlayerCount = -30;
+			state(STATE::JUMP);
+		}
+	}
 
 	//if ((*_input).state(INPUT_ID::DEBUG).first && !(*_input).state(INPUT_ID::DEBUG).second && PlayerCount >= 0)
 	//{
@@ -126,7 +132,7 @@ void Player::Updata(sharedObj& list)
 		//default:
 		//	break;
 		//}
-		lpSceneMng.bgSpeed = DFBG_SPEED + (PlayerCount / 300);
+		lpSceneMng.bgSpeed = DFBG_SPEED + (aliveCount / 300);
 		if (lpSceneMng.bgSpeed >= 20.0)
 		{
 			lpSceneMng.bgSpeed = 20.0;
@@ -171,7 +177,7 @@ void Player::Init(void)
 	data.reserve(PL_DIV_CNT);
 	for (int i = 0; i < PL_DIV_CNT; i++)
 	{
-		data.emplace_back(IMAGE_ID("ｼﾞｬﾝﾌﾟ")[i], (i + 1) * 5);
+		data.emplace_back(IMAGE_ID("ｼﾞｬﾝﾌﾟ")[i], (i + 1) * 2);
 	}
 	SetAnim(STATE::JUMP, data);
 

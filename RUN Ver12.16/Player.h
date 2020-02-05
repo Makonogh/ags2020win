@@ -25,5 +25,6 @@ private:
 	Vector2Dbl plSpeed;		// プレイヤーのスピード
 	Bg bg;
 	void Init(void);
+	
 	std::shared_ptr<InputState>_input;
 };

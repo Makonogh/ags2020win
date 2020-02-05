@@ -60,7 +60,17 @@ void Obstacles::Updata(sharedObj& list)
 		break;
 	}
 
-	CheckHit(list);
+	if (_obsType == OBS_TYPE::CAR)
+	{
+		CheckHit(list);
+	}
+	else if((*list)._state == STATE::NORMAL)
+	{
+		CheckHit(list);
+	}
+	else
+	{
+	}
 
 	_zOrder = static_cast<int>(_pos.y);
 
@@ -158,6 +168,7 @@ void Obstacles::CheckHit(sharedObj& pl)
 		if (abs(_pos.x - plPos.x) <= (ObsSize + plSize.x) / 2)
 		{
 			(*pl).PlayerCount = -70;
+			(*pl).aliveCount = -70;
 			(*pl)._animFrame = 0;
 			(*pl)._animCount = 0;
 			(*pl).state(STATE::FALL);

@@ -55,6 +55,7 @@ public:
 	Vector2Dbl _size;									// サイズ
 	STATE _state;
 	int PlayerCount;
+	int aliveCount;
 	bool isJudge(void) { return _judge; }					// 死亡しているかの情報取得
 	unsigned int _animCount;							// 見出しから何回ﾙｰﾌﾟしてるか
 	unsigned int _animFrame;							// なんﾌﾚｰﾑか
