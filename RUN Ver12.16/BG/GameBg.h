@@ -3,7 +3,7 @@
 #include <map>
 #include <tuple>
 
-enum class GAME_TYPE
+enum class GAME_TYPE					// ”wŒi‚ÌŽí—Þ
 {
 	BG0,
 	BG1,
@@ -35,8 +35,8 @@ public:
 	GameBg(BG_DATA bg_data);
 	~GameBg();
 private:
-	bool GameBgInit(BG_DATA bg_data);
+	bool GameBgInit(BG_DATA bg_data);							// IMGLIST‚É“o˜^‚·‚é
 	void Updata(void);
-	std::map<GAME_TYPE, std::string> Img_List;
+	std::map<GAME_TYPE, std::string> Img_List;					// ‰æ‘œØ½Ä
 };
 

@@ -147,7 +147,6 @@
     <ClCompile Include="Scene\LAYER.cpp" />
     <ClCompile Include="Scene\SceneMng.cpp" />
     <ClCompile Include="Scene\TitleScene.cpp" />
-    <ClCompile Include="UI\UI.cpp" />
     <ClCompile Include="_debug\_DebugConOut.cpp" />
   </ItemGroup>
   <ItemGroup>

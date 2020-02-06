@@ -16,7 +16,7 @@ Player::Player(Vector2Dbl pos, Vector2Dbl size)
 	_size = size;
 	_objID = OBJ_ID::PLAYER;
 	PlayerCount = 0;
-	aliveCount;
+	aliveCount = 0;
 	Init();
 }
 
@@ -25,8 +25,6 @@ void Player::Updata(sharedObj& list)
 	PlayerCount++;
 	aliveCount++;
 	double moveLane = (LIMIT_DOWN - LIMIT_UP) / 2.0;
-
-	_lane = ((static_cast<int>(_pos.y - 360.0) % 3) + 1);
 
 	_input->Updata();
 
@@ -57,6 +55,7 @@ void Player::Updata(sharedObj& list)
 		}
 	};
 
+	// 移動可能な状態かの判定
 	if (_state == STATE::NORMAL)
 	{
 		// 上移動
@@ -77,9 +76,11 @@ void Player::Updata(sharedObj& list)
 		}
 	}
 
-	if ((*_input).state(INPUT_ID::ACTION).first && !(*_input).state(INPUT_ID::ACTION).second)
+	// アクションが可能な状態かどうか
+	if (_state == STATE::NORMAL)
 	{
-		if (_state == STATE::NORMAL)
+		// アクション用キーが押下されているか
+		if ((*_input).state(INPUT_ID::ACTION).first && !(*_input).state(INPUT_ID::ACTION).second)
 		{
 			TRACE("アクション\n");
 			_animCount = 0;
@@ -89,54 +90,27 @@ void Player::Updata(sharedObj& list)
 		}
 	}
 
-	//if ((*_input).state(INPUT_ID::DEBUG).first && !(*_input).state(INPUT_ID::DEBUG).second && PlayerCount >= 0)
-	//{
-	//	TRACE("デバッグ\n");
-	//	_animCount = 0;
-	//	_animFrame = 0;
-
-	//	state(STATE::FALL);
-	//	PlayerCount = -70;
-	//}
-
-	if (PlayerCount >= 0)
-	{
-		state(STATE::NORMAL);
-	}
-
 	_zOrder = static_cast<int>(_pos.y + 1);
-	/*TRACE("%d\n",lpSceneMng.bgSpeed);*/
+
+	// 転倒時は背景を停止
 	if (_state == STATE::FALL)
 	{
 		lpSceneMng.bgSpeed = 0.0;
 	}
 	else
 	{
-		//switch (PlayerCount)
-		//{
-		//case 0:
-		//	lpSceneMng.bgSpeed = DFBG_SPEED;
-		//	break;
-		//case 180:
-		//	lpSceneMng.bgSpeed = DFBG_SPEED * 1.5;
-		//	break;
-		//case 360:
-		//	lpSceneMng.bgSpeed = DFBG_SPEED * 2;
-		//	break;
-		//case 540:
-		//	lpSceneMng.bgSpeed = DFBG_SPEED * 2.5;
-		//	break;
-		//case 800:
-		//	lpSceneMng.bgSpeed = DFBG_SPEED * 3;
-		//	break;
-		//default:
-		//	break;
-		//}
+		// 生存時間に応じて背景のスピード上昇
 		lpSceneMng.bgSpeed = DFBG_SPEED + (aliveCount / 300);
+		// 上限設定
 		if (lpSceneMng.bgSpeed >= 20.0)
 		{
 			lpSceneMng.bgSpeed = 20.0;
 		}
+	}
+
+	if (PlayerCount >= 0)
+	{
+		state(STATE::NORMAL);
 	}
 }
 
@@ -166,13 +140,6 @@ void Player::Init(void)
 		data.emplace_back(IMAGE_ID("ｷｬﾗ")[i], (i + 1) * 2);
 	}
 	SetAnim(STATE::NORMAL, data);
-
-	data.reserve(PL_DIV_CNT);
-	for (int i = 0; i < PL_DIV_CNT; i++)
-	{
-		data.emplace_back(IMAGE_ID("ｷｬﾗ")[i], (i + 1));
-	}
-	SetAnim(STATE::RUN, data);
 
 	data.reserve(PL_DIV_CNT);
 	for (int i = 0; i < PL_DIV_CNT; i++)

@@ -19,9 +19,7 @@ Obstacles::Obstacles(ObsState & state)
 
 void Obstacles::Updata(sharedObj& list)
 {
-	
-	_pos.x -= obsSpeed;
-	_lane = ((static_cast<int>(_pos.y - 360.0) % 3) + 1);
+	// オブジェクトごとの初期化
 	switch (_obsType)
 	{
 	case OBS_TYPE::CAR:
@@ -60,30 +58,34 @@ void Obstacles::Updata(sharedObj& list)
 		break;
 	}
 
+	// 障害物が車の場合当たり判定に入る
 	if (_obsType == OBS_TYPE::CAR)
 	{
 		CheckHit(list);
 	}
+	// 車以外でジャンプしていない場合当たり判定に入る
 	else if((*list)._state == STATE::NORMAL)
 	{
 		CheckHit(list);
 	}
 	else
 	{
+		// 何もしない
 	}
 
-	_zOrder = static_cast<int>(_pos.y);
-
+	// 画面外に行った場合オブジェクトを破棄
 	if (_pos.x <= -300)
 	{
 		_judge = true;
 	}
+
+	_zOrder = static_cast<int>(_pos.y);
+	_pos.x -= obsSpeed;
 }
 
 void Obstacles::Updata()
 {
 	_pos.x -= obsSpeed;
-	_lane = ((static_cast<int>(_pos.y - 360.0) % 3) + 1);
 	switch (_obsType)
 	{
 	case OBS_TYPE::CAR:
@@ -142,6 +144,7 @@ void Obstacles::Init(void)
 	data.reserve(1);
 	data.emplace_back(IMAGE_ID("障害物")[static_cast<int>(_obsType)], 30);
 
+	// オブジェクトの当たり判定サイズ
 	SizeMap[OBS_TYPE::CAR] = { 100.0,50.0 };
 	SizeMap[OBS_TYPE::BICYCLE] = { 40.0,50.0 };
 	SizeMap[OBS_TYPE::BANANA] = { 0.0,50.0 };
@@ -149,23 +152,21 @@ void Obstacles::Init(void)
 	SizeMap[OBS_TYPE::CAN] = { 0.0,50.0 };
 	SizeMap[OBS_TYPE::PUDDLE] = { 75.0,50.0 };
 
-
 	SetAnim(STATE::NORMAL, data);
 }
 
 
 void Obstacles::CheckHit(sharedObj& pl)
 {
+	// プレイヤーのposとsizeの取得
 	Vector2Dbl plPos = (*pl)._pos;
 	Vector2Dbl plSize = (*pl)._size;
 	
-	//TRACE("%d\n", pl->PlayerCount);
-
-	double ObsSize = SizeMap[_obsType].x;
-
+	// 同一レーンかの判定
 	if (_pos.y == plPos.y)
 	{
-		if (abs(_pos.x - plPos.x) <= (ObsSize + plSize.x) / 2)
+		// 距離が当たり判定のサイズないかの判定
+		if (abs(_pos.x - plPos.x) <= (SizeMap[_obsType].x + plSize.x) / 2)
 		{
 			(*pl).PlayerCount = -70;
 			(*pl).aliveCount = -70;
@@ -173,7 +174,6 @@ void Obstacles::CheckHit(sharedObj& pl)
 			(*pl)._animCount = 0;
 			(*pl).state(STATE::FALL);
 			_judge = true;
-			//TRACE("%d\n", static_cast<int>(plPos.y));
 		}
 	}
 }

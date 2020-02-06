@@ -15,10 +15,8 @@ TitleScene::TitleScene()
 
 	// ｹﾞｰﾑ
 	lpImgMng.GetID("ｹﾞｰﾑ背景", "image/BGB.png");
-
 	lpImgMng.GetID("UI", "image/UI2.png");
 	lpImgMng.GetID("ｹﾞｰﾑｴﾌｪｸﾄ", "image/SpeedAnim.png", { 1280,576 }, { 4,1 });
-
 	lpImgMng.GetID("障害物", "image/Obj1.png", { 200,200 }, { static_cast<int>(OBS_TYPE::MAX),1 });
 	lpImgMng.GetID("ｷｬﾗ", "image/pl.png", { 100,150 }, { PL_DIV_CNT,1 });
 	lpImgMng.GetID("ｼﾞｬﾝﾌﾟ", "image/Jump.png", { 160,160 }, { PL_DIV_CNT,1 });
@@ -48,17 +46,21 @@ TitleScene::TitleScene()
 	lpImgMng.GetID("ﾘｻﾞﾙﾄﾃｷｽﾄ", "image/ResultText.png");
 	lpImgMng.GetID("ﾘｻﾞﾙﾄｽｺｱ", "image/number.png", { 60, 60 }, { 10,1 });
 
-	SceneCount = 0;
-	lpSceneMng.bgSpeed = DFBG_SPEED;
-
+	// オブジェクトの生成
 	_bgList.emplace_back(new TitleBg({ TITLE_TYPE::BG0,{ 320.0,288.0 },{ 640,576 } }));
 	_bgList.emplace_back(new TitleBg({ TITLE_TYPE::BG1,{ 960.0,288.0 },{ 640,576 } }));
 	_bgList.emplace_back(new TitleBg({ TITLE_TYPE::BG2,{ 1600.0,288.0 },{ 640,576 } }));
+
 	for (auto type : OBS_TYPE())
 	{
 		ObsState state = { static_cast<OBS_TYPE>(type),{ 500.0 + 134 * static_cast<double>(type), LIMIT_UP + ((rand() % 3) * static_cast<int>((LIMIT_DOWN - LIMIT_UP) / 2.0)) } };
 		_objList.emplace_back(new Obstacles(state));
 	}
+
+	// 変数の初期化
+	SceneCount = 0;
+	lpSceneMng.bgSpeed = DFBG_SPEED;
+
 	Init();
 }
 
@@ -69,6 +71,7 @@ TitleScene::~TitleScene()
 
 unique_Base TitleScene::Update(unique_Base own)
 {
+	// エンターキー押下でシーン変更
 	if (lpSceneMng.Return && !lpSceneMng.OldReturn)
 	{
 		return std::make_unique<GameScene>();
@@ -79,6 +82,7 @@ unique_Base TitleScene::Update(unique_Base own)
 		(*data).Updata();
 	}
 
+	// オブジェクトが画面外で削除及び生成
 	for (auto data : _bgList)
 	{
 		if ((*data)._pos.x <= -320)
@@ -97,6 +101,7 @@ unique_Base TitleScene::Update(unique_Base own)
 
 	for (auto data : _objList)
 	{
+		// 不要な要素の削除
 		auto itr = std::remove_if(_objList.begin(), _objList.end(), [](sharedObj& obj) {return obj->isJudge(); });
 		_objList.erase(itr, _objList.end());
 	}
@@ -119,6 +124,7 @@ unique_Base TitleScene::Update(unique_Base own)
 		(*data).Draw();
 	}
 
+	// ゲームタイトルとタイトル画面でのテキスト描画
 	lpSceneMng.AddDrawQue({ IMAGE_ID("ﾀｲﾄﾙﾃｷｽﾄ")[0],640.0,static_cast<double>(lpSceneMng.ScreenSize.y - (lpSceneMng.UISize.y / 2)),0.0,INT_MAX,LAYER::UI });
 	lpSceneMng.AddDrawQue({ IMAGE_ID("ﾀｲﾄﾙ")[0], 320.0,172.5,0.0,INT_MAX,LAYER::UI });
 

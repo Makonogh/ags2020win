@@ -38,8 +38,6 @@ void Obj::Draw(void)
 		}
 	}
 
-	
-
 	double OffSet;		// Šî€À•W(¹Ş°Ñ‰æ–Ê‚Ì‰º)‚Æ‚Ìy‚Ì·•ª
 	OffSet = lpSceneMng.GameSize.y - _pos.y;
 

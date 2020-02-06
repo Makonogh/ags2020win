@@ -67,16 +67,6 @@ void SceneMng::Draw()
 
 	}
 
-	//for (int i = 0; i < 4; i++)
-	//{
-	//	DrawLine(0, 360 + (72 * i), 1280, 360 + (72 * i), 0x00FF00);
-	//}
-
-	//for (int i = 0; i < 10; i++)
-	//{
-	//	DrawLine(i * 128, 576, 245 + (i * 128), 360, 0x00FF00);
-	//}
-
 	ScreenFlip();
 }
 

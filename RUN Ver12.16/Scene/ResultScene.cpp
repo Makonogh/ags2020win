@@ -45,7 +45,7 @@ unique_Base ResultScene::Update(unique_Base own)
 		_score /= 10;
 	}
 
-
+	// ランキングの表示
 	for (int k = 0; k < SCR_MAX; k++)
 	{
 		tmpScore[k] = static_cast<int> (highScore[k]);
@@ -64,7 +64,7 @@ unique_Base ResultScene::Update(unique_Base own)
 
 void ResultScene::Init(void)
 {
-	TRACE("%d\n", static_cast<int>(lpSceneMng.score));
+	// スコアの比較とランキングの変更
 	for (int i = 0; i < SCR_MAX; i++)
 	{
 		if (highScore[i] < lpSceneMng.score)
@@ -78,6 +78,7 @@ void ResultScene::Init(void)
 		}
 	}
 
+	// 変更後のランキングの書き込み
 	FILE* fp = NULL;
 	if (fopen_s(&fp, "scr.dat", "wb") == 0)
 	{

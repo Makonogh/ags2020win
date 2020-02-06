@@ -36,14 +36,13 @@ public:
 	Obstacles();
 	Obstacles(ObsState& state);
 	const OBS_TYPE& type() { return _obsType; }
+	Vector2Dbl GetSize(OBS_TYPE key);
 	void Updata(sharedObj& list) override;
 	void Updata() override;
 	~Obstacles();
-	double obsSpeed;
-	Vector2Dbl GetSize(OBS_TYPE key);
-
 private:
-	OBS_TYPE _obsType;
+	double obsSpeed;						// 障害物の移動スピード
+	OBS_TYPE _obsType;						// 障害物のタイプ
 	void Init(void);
 	void CheckHit(sharedObj& pl);
 	std::map<OBS_TYPE,Vector2Dbl> SizeMap;

@@ -13,8 +13,6 @@
 enum class STATE
 {
 	NORMAL,		// 通常状態
-	RUN,
-	DASH,
 	JUMP,		// ジャンプ
 	FALL,		// 転倒
 	MAX
@@ -50,20 +48,18 @@ public:
 	const Vector2Dbl &size(void) const;
 	const OBJ_ID &objID(void) const;
 	bool SetAnim(const STATE state, AnimVector& data);	// アニメーションのセット
-	//bool isAnimEnd(void);								// アニメーションが終了しているかの情報取得
 	Vector2Dbl _pos;									// 座標
 	Vector2Dbl _size;									// サイズ
-	STATE _state;
-	int PlayerCount;
-	int aliveCount;
-	bool isJudge(void) { return _judge; }					// 死亡しているかの情報取得
+	STATE _state;										// 状態
+	int PlayerCount;									// プレイヤー用アニメーションフレーム
+	int aliveCount;										// ノーミスで進んだカウント
+	bool isJudge(void) { return _judge; }				// 死亡しているかの情報取得
 	unsigned int _animCount;							// 見出しから何回ﾙｰﾌﾟしてるか
 	unsigned int _animFrame;							// なんﾌﾚｰﾑか
 private:
 	std::map<STATE, AnimVector>_animMap;
 protected:
-	bool _judge;
-	int _lane;
+	bool _judge;										// 当たり判定用
 	int _zOrder;										// 描画優先度
 	OBJ_ID _objID;
 	Bg bg;

@@ -3,7 +3,7 @@
 #include <tuple>
 #include <map>
 
-enum class RESULT_TYPE
+enum class RESULT_TYPE						// Ø»ÞÙÄ‚ÌŽí—Þ
 {
 	BG,
 	TEXT,
@@ -24,6 +24,6 @@ public:
 private:
 	bool ResultBgInit(BG_DATA bg_data);
 	void Updata(void);
-	std::map<RESULT_TYPE, std::string> Img_List;
+	std::map<RESULT_TYPE, std::string> Img_List;					// ‰æ‘œ‚ÌØ½Ä
 };
 

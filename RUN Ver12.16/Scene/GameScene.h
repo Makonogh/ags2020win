@@ -13,8 +13,8 @@ public:
 	~GameScene();
 	unique_Base Update(unique_Base);
 private:
-	int tmpTime;
-	int ObsCount;
+	int tmpTime;						// time‚Ì‘Ş”ğ—p•Ï”
+	int ObsCount;						// ‰æ–Êã‚ÌáŠQ•¨‚Ì”
 	std::vector<sharedObj> _objList;
 	std::vector<sharedBG> _bgList;
 };

@@ -5,7 +5,7 @@
 
 
 
-enum class TITLE_TYPE
+enum class TITLE_TYPE					// À²ÄÙ‚ÌŽí—Þ
 {
 	BG0,
 	BG1,
@@ -40,6 +40,6 @@ public:
 private:
 	bool TitleBgInit(BG_DATA);
 	void Updata(void);
-	std::map<TITLE_TYPE, std::string> Img_List;		
+	std::map<TITLE_TYPE, std::string> Img_List;								// ‰æ‘œØ½Ä
 };
 

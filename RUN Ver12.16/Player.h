@@ -6,7 +6,6 @@
 
 enum class PL_STATE
 {
-	LANE,
 	SIZE,
 	MAX
 };

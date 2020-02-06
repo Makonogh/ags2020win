@@ -10,9 +10,6 @@
 
 #define lpSceneMng SceneMng::GetInstance()
 
-#define SPEED_X 5.0
-#define SPEED_Y 5.0
-
 enum class DRAW_QUE
 {
 	IMAGE,
@@ -59,12 +56,12 @@ public:
 	const Vector2 ScreenCenter;
 	const Vector2 GameSize;
 	const Vector2 UISize;
-	int GameCount;					// ｹﾞｰﾑのｶｳﾝﾄ
-	bool OldReturn;
-	bool Return;
-	double bgSpeed;
-	double score;
-	int tmpScore;
+	int GameCount;							// ｹﾞｰﾑのｶｳﾝﾄ
+	bool OldReturn;							// 1フレーム前のエンターキーの押下フラグ
+	bool Return;							// 現在のエンターキーの押下フラグ
+	double bgSpeed;							// 背景のスピード
+	double score;							// スコア
+	int tmpScore;							// スコア退避用変数
 private:
 	static SceneMng* sInstance;
 

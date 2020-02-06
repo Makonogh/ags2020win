@@ -4,8 +4,7 @@
 InputState::InputState()
 {
 	// ƒL[î•ñ‚Ì‰Šú‰»
-	// _state.try_emplace(INPUT_ID::LEFT , KeyPair{ 0,1 });
-
+	
 	for (auto id : INPUT_ID())
 	{
 		_state.try_emplace(static_cast<INPUT_ID>(id), KeyPair{ 0,1 });
