@@ -11,6 +11,7 @@ ImgMng::ImgMng()
 
 ImgMng::~ImgMng()
 {
+
 }
 
 const VecInt & ImgMng::GetID(const std::string & key) 

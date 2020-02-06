@@ -101,11 +101,14 @@ unique_Base TitleScene::Update(unique_Base own)
 
 	for (auto data : _objList)
 	{
-		// 不要な要素の削除
-		auto itr = std::remove_if(_objList.begin(), _objList.end(), [](sharedObj& obj) {return obj->isJudge(); });
-		_objList.erase(itr, _objList.end());
+		if ((*data)._pos.x <= -320)
+		{
+			// 不要な要素の削除
+			auto itr = std::remove_if(_objList.begin(), _objList.end(), [](sharedObj& obj) {return obj->isJudge(); });
+			_objList.erase(itr, _objList.end());
+			break;
+		}
 	}
-
 
 	if (_objList.size() <= 5 && ObsCount >= 60)
 	{
