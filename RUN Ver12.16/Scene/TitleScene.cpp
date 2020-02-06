@@ -15,12 +15,10 @@ TitleScene::TitleScene()
 
 	// πﬁ∞—
 	lpImgMng.GetID("πﬁ∞—îwåi", "image/BGB.png");
-<<<<<<< HEAD
-	lpImgMng.GetID("UI", "image/UI3.png");
-=======
+
 	lpImgMng.GetID("UI", "image/UI2.png");
 	lpImgMng.GetID("πﬁ∞—¥Ã™∏ƒ", "image/SpeedAnim.png", { 1280,576 }, { 4,1 });
->>>>>>> bae936ce12129882c0a001887cae008138ff04fc
+
 	lpImgMng.GetID("è·äQï®", "image/Obj1.png", { 200,200 }, { static_cast<int>(OBS_TYPE::MAX),1 });
 	lpImgMng.GetID("∑¨◊", "image/pl.png", { 100,150 }, { PL_DIV_CNT,1 });
 	lpImgMng.GetID("ºﬁ¨›Ãﬂ", "image/Jump.png", { 160,160 }, { PL_DIV_CNT,1 });
