@@ -41,7 +41,7 @@ unique_Base GameScene::Update(unique_Base own)
 	Vector2Dbl UICenter = { lpSceneMng.GameSize.x / 2.0 ,(lpSceneMng.ScreenSize.y + lpSceneMng.GameSize.y) / 2.0 };
 
 	
-	if (SceneCount >= 60)
+	if (SceneCount >= 180)
 	{
 		for (auto data : _objList)
 		{
@@ -97,7 +97,7 @@ unique_Base GameScene::Update(unique_Base own)
 
 	lpSceneMng.AddDrawQue({ IMAGE_ID("UI")[0],UICenter.x,UICenter.y,0.0,INT_MAX, LAYER::UI });
 
-	tmpTime = abs(SceneCount - 7200 - 120) / 60;
+	tmpTime = abs(SceneCount - 7200 - 240) / 60;
 	if (tmpTime > 120)
 	{
 		tmpTime = 120;
