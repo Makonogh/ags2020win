@@ -1,0 +1,33 @@
+﻿  Bg.cpp
+c:\users\asheg\onedrive\デスクトップ\ags2020win\run ver12.16\bg.cpp(1): fatal error C1083: include ファイルを開けません。'DxLib.h':No such file or directory
+  GameBg.cpp
+c:\users\asheg\onedrive\デスクトップ\ags2020win\run ver12.16\bg\gamebg.h(2): fatal error C1083: include ファイルを開けません。'Bg.h':No such file or directory
+  ResultBg.cpp
+c:\users\asheg\onedrive\デスクトップ\ags2020win\run ver12.16\bg\resultbg.h(2): fatal error C1083: include ファイルを開けません。'Bg.h':No such file or directory
+  TitleBg.cpp
+c:\users\asheg\onedrive\デスクトップ\ags2020win\run ver12.16\bg\titlebg.h(2): fatal error C1083: include ファイルを開けません。'Bg.h':No such file or directory
+  ImgMng.cpp
+c:\users\asheg\onedrive\デスクトップ\ags2020win\run ver12.16\common\imgmng.cpp(2): fatal error C1083: include ファイルを開けません。'DxLib.h':No such file or directory
+  KeyState.cpp
+c:\users\asheg\onedrive\デスクトップ\ags2020win\run ver12.16\input\keystate.cpp(2): fatal error C1083: include ファイルを開けません。'DxLib.h':No such file or directory
+  main.cpp
+c:\users\asheg\onedrive\デスクトップ\ags2020win\run ver12.16\main.cpp(1): fatal error C1083: include ファイルを開けません。'DxLib.h':No such file or directory
+  Obj.cpp
+c:\users\asheg\onedrive\デスクトップ\ags2020win\run ver12.16\obj.cpp(1): fatal error C1083: include ファイルを開けません。'DxLib.h':No such file or directory
+  Obstacles.cpp
+c:\users\asheg\onedrive\デスクトップ\ags2020win\run ver12.16\scene\scenemng.h(3): fatal error C1083: include ファイルを開けません。'common/Vector2.h':No such file or directory
+  Player.cpp
+c:\users\asheg\onedrive\デスクトップ\ags2020win\run ver12.16\player.h(2): fatal error C1083: include ファイルを開けません。'DxLib.h':No such file or directory
+  ResultScene.cpp
+c:\users\asheg\onedrive\デスクトップ\ags2020win\run ver12.16\scene\resultscene.h(2): fatal error C1083: include ファイルを開けません。'Scene/BaseScene.h':No such file or directory
+  BaseScene.cpp
+c:\users\asheg\onedrive\デスクトップ\ags2020win\run ver12.16\scene\basescene.h(4): fatal error C1083: include ファイルを開けません。'Bg.h':No such file or directory
+  GameScene.cpp
+c:\users\asheg\onedrive\デスクトップ\ags2020win\run ver12.16\scene\gamescene.h(2): fatal error C1083: include ファイルを開けません。'Scene/BaseScene.h':No such file or directory
+  SceneMng.cpp
+c:\users\asheg\onedrive\デスクトップ\ags2020win\run ver12.16\scene\scenemng.cpp(1): fatal error C1083: include ファイルを開けません。'DxLib.h':No such file or directory
+  TitleScene.cpp
+c:\users\asheg\onedrive\デスクトップ\ags2020win\run ver12.16\scene\titlescene.h(2): fatal error C1083: include ファイルを開けません。'Scene/BaseScene.h':No such file or directory
+  UI.cpp
+c:\users\asheg\onedrive\デスクトップ\ags2020win\run ver12.16\ui\ui.h(2): fatal error C1083: include ファイルを開けません。'common/Vector2.h':No such file or directory
+  コードを生成中...

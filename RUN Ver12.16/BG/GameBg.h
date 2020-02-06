@@ -1,0 +1,42 @@
+#pragma once
+#include "Bg.h"
+#include <map>
+#include <tuple>
+
+enum class GAME_TYPE					// ”wŒi‚ÌŽí—Þ
+{
+	BG0,
+	BG1,
+	BG2,
+	BG3,
+	BG4,
+	BG5,
+	BG6,
+	BG7,
+	BG8,
+	BG9,
+	BG10,
+	BG11,
+	BG12,
+	BG13,
+	BG14,
+	BG15,
+	MAX
+};
+
+
+using BG_DATA = std::tuple<GAME_TYPE, Vector2Dbl, Vector2>;					// <‰æ‘œÀ²ÌßAÀ•WA»²½Þ>
+
+class GameBg :
+	public Bg
+{
+public:
+	GameBg();
+	GameBg(BG_DATA bg_data);
+	~GameBg();
+private:
+	bool GameBgInit(BG_DATA bg_data);							// IMGLIST‚É“o˜^‚·‚é
+	void Updata(void);
+	std::map<GAME_TYPE, std::string> Img_List;					// ‰æ‘œØ½Ä
+};
+

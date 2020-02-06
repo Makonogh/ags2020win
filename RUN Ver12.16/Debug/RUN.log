@@ -1,0 +1,21 @@
+﻿  GameBg.cpp
+  ResultBg.cpp
+  TitleBg.cpp
+  Bg.cpp
+  InputID.cpp
+  InputState.cpp
+  KeyState.cpp
+  Obj.cpp
+  Obstacles.cpp
+  Player.cpp
+  BaseScene.cpp
+  GameScene.cpp
+  LAYER.cpp
+  ResultScene.cpp
+  SceneMng.cpp
+  TitleScene.cpp
+  _DebugConOut.cpp
+  ImgMng.cpp
+  main.cpp
+  コードを生成中...
+  RUN.vcxproj -> C:\Users\asheg\OneDrive\デスクトップ\ags2020win\RUN Ver12.16\Debug\RUN.exe
